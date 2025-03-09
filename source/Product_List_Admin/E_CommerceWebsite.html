@@ -5,49 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome.min.css">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
-<!--Nav-->
-    <div class = "menu">
-        <div class="brand-name">
-            <h1>Point of Sale</h1>
+<!--SLIDEBAR-NAVIGATIONNAVIGATION-->
+    <div class = "menu"> <!-- Khi nhấn vào 3 gạch sẽ xuất hiện slidebarslidebar-->
+        <div class="sidebar">
+            <div class="logo"> <!--phần phía trêntrên-->
+                <img src = "image/logo.jpg" width = "30px" alt = "">
+                <span>Point of Sale</span>
+            </div>
         </div>
-        <ul>
-            <li><i class="bi bi-speedometer2"></i>&nbsp; Dashboard</li>
-            <li><i class="bi bi-box"></i>&nbsp; Danh Mục Sản Phẩm</li>
-            <li><i class="bi bi-pencil"></i>&nbsp; Editor</li>
-            <li><i class="bi bi-file-text"></i>&nbsp; Form</li>
-            <li><i class="bi bi-bell"></i>&nbsp; Notification</li>
-            <li><i class="bi bi-question-circle"></i>&nbsp; Help</li>
-        </ul>
-    </div>
 
-<!--Header-->
-   <div class = "container">
-        <div class = "header"> 
-            <div class = "nav">
-                <div class="search">
-                    <input type = "text" placeholder="Search..." >
-                    <button type = "submit"><i class="bi bi-search"></i>&nbsp;</button>
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img src = "image/user.jpg" height = "70px"  width = "70px" alt = "">
+                <div>
+                    <h3>Admin</h3>
+                    <span>admin123@gmail.com</span>
                 </div>
-                <div class="user">
-                    <a href = "#" class = "btn">Add New</a>
-                    <i class="bi bi-inbox"></i>&nbsp;
-                    <i class="bi bi-bell"></i>&nbsp;
-                    <img src = "image/Co_Vietnam.png" alt = "">
-                    <div class="img-case">
-                        <img src = "image/user.png" alt = "">
-                    </div>
-                    
+            </div>
+            <div class="sidebar-menu"> <!-- các danh mục quản lý-->
+                <ul>
 
+                    <li>
+                        <a href = "">
+                            <span class = "las la-home"></span>
+                            Trang chủ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href = "">
+                            <span class = "las la-users"></span>
+                            Quản lí nhân viên
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "">
+                            <span class = "las la-chart-line"></span>
+                            Quản lí khách hàng
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "">
+                            <span class = "las la-chart-line"></span>
+                            Quản lí sản phẩm và danh mục
+                        </a>
+                    </li>
+                    <li>
+                        <a href = "">
+                            <span class = "las la-chart-line"></span>
+                        Báo cáo và phân tích</a>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+    </div>
+    <!-- nội dung chính-->
+    <div class = "main-content">
+        <header>    <!--header-->
+            <div class="menu-toggle">
+                <label for = "">
+                    <span class = "las la-bars"></span> <!--icon menu-->
+                </label>
+            </div>
+            
+            <div class = "header-icon">
+                <span class = "las la-envelope"></span>
+                <span class = "las la-bell"></span>
+                <span>
+                    <img src = "image/user.jpg" width = "30px" height = "30px">
+                </span>
+                <span class = "las la-cog"></span>  
+            </div>
+        </header>
+
+        <main>
+            <div class = "page-header">
+                <div>
+                    <h3>Trang chủ</h3>
+                </div>
+                <div>
+                    <button class = "button-actions"> <!--button phía dưới cài đặtđặt-->
+                         <i class="fa-regular fa-calendar"></i> Today <i class="fa-solid fa-chevron-down"></i>
+                    </button>
                 </div>
 
             </div>
 
-        </div>
+
+            <div class="cards">
+                <!-- Purple Card (Biểu đồ đường) -->
+                <div class="card purple">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="las la-shopping-bag"></i></div>
+                        <div>
+                            <h4>NEW ORDERS</h4>
+                            <h2>35,673</h2>
+                            <p>2.00% (30 days)</p>
+                        </div>
+                    </div>
+                    <div class = "chart-container">
+                        <canvas id="lineChartPurple"></canvas>
+                    </div>
+                    
+                </div>
+            
+                <!-- Green Card (Biểu đồ cột) -->
+                <div class="card green">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="las la-dollar-sign"></i></div>
+                        <div>
+                            <h4>TOTAL INCOME</h4>
+                            <h2>$14,966</h2>
+                            <p>Increased by 7.35%</p>
+                        </div>
+                    </div>
+                    <div class = "chart-container"> 
+                        <canvas id="barChartGreen"></canvas>
+                    </div>
+                   
+                </div>
+            
+                <!-- Blue Card (Biểu đồ đường) -->
+                <div class="card blue">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="las la-file-invoice-dollar"></i></div>
+                        <div>
+                            <h4>TOTAL EXPENSE</h4>
+                            <h2>26,526</h2>
+                            <p>Increased by 7.35%</p>
+                        </div>
+                    </div>
+                    <div class = "chart-container"> 
+                        <canvas id="lineChartBlue"></canvas>
+                    </div>
+                   
+                </div>
+            
+                <!-- Yellow Card (Biểu đồ cột) -->
+                <div class="card yellow">
+                    <div class="card-content">
+                        <div class="card-icon"><i class="las la-user"></i></div>
+                        <div>
+                            <h4>NEW USERS</h4>
+                            <h2>32,566</h2>
+                            <p>54.1% less earnings</p>
+                        </div>
+                    </div>
+                    <div class = "chart-container">
+                        <canvas id="barChartYellow"></canvas>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+        <script>
+            // Khởi tạo biểu đồ đường cho card BLUE & PURPLE
+            function createLineChart(canvasId, data, borderColor, backgroundColor) {
+                new Chart(document.getElementById(canvasId).getContext("2d"), {
+                    type: "line",
+                    data: {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                        datasets: [{
+                            data: data,
+                            borderColor: borderColor,
+                            backgroundColor: backgroundColor,
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            pointBackgroundColor: borderColor,
+                            fill: true
+                            
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false } },
+                        scales: { 
+                            x: { display: false },
+                            y: { display: false } 
+                        }
+                    }
+                });
+            }
+
+            // Khởi tạo biểu đồ cột cho card GREEN & YELLOW
+            function createBarChart(canvasId, data, backgroundColor) {
+                new Chart(document.getElementById(canvasId).getContext("2d"), {
+                    type: "bar",
+                    data: {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                        datasets: [{
+                            data: data,
+                            backgroundColor: backgroundColor,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false } },
+                        scales: { 
+                            x: { display: false },
+                            y: { display: false } 
+                        }
+                    }
+                });
+            }
+
+            // Tạo biểu đồ cho từng card
+            createLineChart("lineChartBlue", [10, 20, 35, 40, 40, 40, 50], "#fff", "rgba(255, 255, 255, 0.2)");
+            createLineChart("lineChartPurple", [5, 15, 12, 28, 22, 30, 45], "#fff", "rgba(255, 255, 255, 0.2)");
+            createBarChart("barChartGreen", [20, 25, 30, 35, 40, 45, 50], "rgba(255, 255, 255, 0.7)");
+            createBarChart("barChartYellow", [15, 22, 28, 33, 38, 42, 47], "rgba(255, 255, 255, 0.7)");
+        </script>
+            
+        
     </div>
+
+
+
+
+
 </div>
+
     
 </body>
 </html>
