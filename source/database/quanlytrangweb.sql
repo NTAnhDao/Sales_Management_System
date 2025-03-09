@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2025 at 04:25 PM
+-- Generation Time: Mar 09, 2025 at 04:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,8 +62,16 @@ CREATE TABLE `danhmucsp` (
   `tendm` varchar(50) NOT NULL,
   `mota` varchar(100) DEFAULT NULL,
   `ngaytao` timestamp NOT NULL DEFAULT current_timestamp(),
-  `id_nguoitao` int(11) NOT NULL
+  `id_nguoitao` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `danhmucsp`
+--
+
+INSERT INTO `danhmucsp` (`id`, `tendm`, `mota`, `ngaytao`, `id_nguoitao`) VALUES
+(1, 'Điện thoại', NULL, '2025-03-09 14:55:14', NULL),
+(2, 'Tai nghe', NULL, '2025-03-09 14:55:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -104,6 +112,7 @@ CREATE TABLE `khachhang` (
 
 CREATE TABLE `nhanvien` (
   `id` int(11) NOT NULL,
+  `id_taikhoan` int(11) NOT NULL,
   `hoten` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `gioitinh` enum('Nữ','Nam') DEFAULT NULL,
@@ -127,6 +136,16 @@ CREATE TABLE `sanpham` (
   `ngaytao` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `sanpham`
+--
+
+INSERT INTO `sanpham` (`id`, `mavach`, `tensp`, `giagoc`, `giabanle`, `id_danhmuc`, `ngaytao`) VALUES
+(1, '12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, 1, '2025-03-09 15:00:16'),
+(2, '12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, 2, '2025-03-09 15:00:16'),
+(3, '12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, 2, '2025-03-09 15:04:00'),
+(4, '12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, 2, '2025-03-09 15:04:00');
+
 -- --------------------------------------------------------
 
 --
@@ -138,9 +157,16 @@ CREATE TABLE `taikhoan` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `role` enum('Admin','Nhân viên') NOT NULL,
-  `trangthai_hd` tinyint(1) NOT NULL,
+  `trangthai_hd` tinyint(1) DEFAULT NULL,
   `trangthai_khoa` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `taikhoan`
+--
+
+INSERT INTO `taikhoan` (`id`, `username`, `password`, `role`, `trangthai_hd`, `trangthai_khoa`) VALUES
+(1, 'admin', 'admin', 'Admin', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -184,7 +210,8 @@ ALTER TABLE `khachhang`
 -- Indexes for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD KEY `fk_nhanvien_taikhoan` (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_nhanvien_taikhoan` (`id_taikhoan`);
 
 --
 -- Indexes for table `sanpham`
@@ -214,7 +241,7 @@ ALTER TABLE `baocao`
 -- AUTO_INCREMENT for table `danhmucsp`
 --
 ALTER TABLE `danhmucsp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `donhang`
@@ -229,16 +256,22 @@ ALTER TABLE `khachhang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `nhanvien`
+--
+ALTER TABLE `nhanvien`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -262,7 +295,7 @@ ALTER TABLE `donhang`
 -- Constraints for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD CONSTRAINT `fk_nhanvien_taikhoan` FOREIGN KEY (`id`) REFERENCES `taikhoan` (`id`);
+  ADD CONSTRAINT `fk_nhanvien_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `taikhoan` (`id`);
 
 --
 -- Constraints for table `sanpham`
