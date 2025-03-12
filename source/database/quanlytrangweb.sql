@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 04:07 PM
+-- Generation Time: Mar 12, 2025 at 03:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,6 +51,13 @@ CREATE TABLE `chitietdonhang` (
   `giaban` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `chitietdonhang`
+--
+
+INSERT INTO `chitietdonhang` (`id_donhang`, `id_sanpham`, `soluong`, `tongtien`, `giaban`) VALUES
+(1, 3, 2, 900000, 450000);
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +97,13 @@ CREATE TABLE `donhang` (
   `soluongsp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `id_khachhang`, `id_nhanvien`, `tongtien`, `tienkhachdua`, `tientra`, `ngaymua`, `soluongsp`) VALUES
+(1, 1, 2, 900000, 1000000, 100000, '2025-03-12 14:29:32', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -98,11 +112,19 @@ CREATE TABLE `donhang` (
 
 CREATE TABLE `khachhang` (
   `id` int(11) NOT NULL,
-  `hoten` varchar(100) NOT NULL,
+  `hoten` varchar(50) NOT NULL,
   `diachi` text NOT NULL,
   `sdt` varchar(11) NOT NULL,
   `ngaytao` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `khachhang`
+--
+
+INSERT INTO `khachhang` (`id`, `hoten`, `diachi`, `sdt`, `ngaytao`) VALUES
+(1, 'Trương Lê Hiếu An', 'Bình Chánh', '0828828176', '2025-03-12 14:25:19'),
+(2, 'Nguyễn Thị Anh Đào', 'Quận 7', '0289712912', '2025-03-12 14:25:19');
 
 -- --------------------------------------------------------
 
@@ -112,13 +134,21 @@ CREATE TABLE `khachhang` (
 
 CREATE TABLE `nhanvien` (
   `id` int(11) NOT NULL,
-  `id_taikhoan` int(11) NOT NULL,
-  `hoten` varchar(100) NOT NULL,
+  `hoten` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `gioitinh` enum('Nữ','Nam') DEFAULT NULL,
   `sdt` int(11) DEFAULT NULL,
   `img` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `nhanvien`
+--
+
+INSERT INTO `nhanvien` (`id`, `hoten`, `email`, `gioitinh`, `sdt`, `img`) VALUES
+(1, 'Trương Lê Hiếu An', '52300005@student.tdtu.edu.vn', 'Nữ', NULL, NULL),
+(2, 'Trần Thị Mỹ Nữ', '52300048@student.tdtu.edu.vn', 'Nữ', NULL, NULL),
+(3, 'Nguyễn Thị Anh Đào', '52300014@student.tdtu.edu.vn', 'Nữ', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,6 +184,7 @@ INSERT INTO `sanpham` (`id`, `mavach`, `tensp`, `giagoc`, `giabanle`, `id_danhmu
 
 CREATE TABLE `taikhoan` (
   `id` int(11) NOT NULL,
+  `id_nhanvien` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `role` enum('Admin','Nhân viên') NOT NULL,
@@ -165,8 +196,9 @@ CREATE TABLE `taikhoan` (
 -- Dumping data for table `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`id`, `username`, `password`, `role`, `trangthai_hd`, `trangthai_khoa`) VALUES
-(1, 'admin', 'admin', 'Admin', NULL, 0);
+INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `trangthai_khoa`) VALUES
+(1, 2, 'admin', 'admin', 'Admin', NULL, 0),
+(2, 1, '52300005', '00005', 'Nhân viên', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -210,8 +242,7 @@ ALTER TABLE `khachhang`
 -- Indexes for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_nhanvien_taikhoan` (`id_taikhoan`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sanpham`
@@ -225,7 +256,8 @@ ALTER TABLE `sanpham`
 -- Indexes for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_nhanvien` (`id_nhanvien`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -247,19 +279,19 @@ ALTER TABLE `danhmucsp`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
@@ -271,7 +303,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -292,16 +324,16 @@ ALTER TABLE `donhang`
   ADD CONSTRAINT `fk_donhang_nhanvien` FOREIGN KEY (`id_nhanvien`) REFERENCES `nhanvien` (`id`);
 
 --
--- Constraints for table `nhanvien`
---
-ALTER TABLE `nhanvien`
-  ADD CONSTRAINT `fk_nhanvien_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `taikhoan` (`id`);
-
---
 -- Constraints for table `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `fk_sanpham_danhmuc` FOREIGN KEY (`id_danhmuc`) REFERENCES `danhmucsp` (`id`);
+
+--
+-- Constraints for table `taikhoan`
+--
+ALTER TABLE `taikhoan`
+  ADD CONSTRAINT `fk_taikhoan_nhanvien` FOREIGN KEY (`id_nhanvien`) REFERENCES `nhanvien` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
