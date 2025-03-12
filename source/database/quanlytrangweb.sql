@@ -146,7 +146,7 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`id`, `hoten`, `email`, `gioitinh`, `sdt`, `img`) VALUES
-(1, 'Trương Lê Hiếu An', '52300005@student.tdtu.edu.vn', 'Nữ', NULL, NULL),
+(1, 'Lee Min Hoo', 'admin@gmail.com', 'Nam', 828828176, NULL),
 (2, 'Trần Thị Mỹ Nữ', '52300048@student.tdtu.edu.vn', 'Nữ', NULL, NULL),
 (3, 'Nguyễn Thị Anh Đào', '52300014@student.tdtu.edu.vn', 'Nữ', NULL, NULL);
 
@@ -197,8 +197,8 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `trangthai_khoa`) VALUES
-(1, 2, 'admin', 'admin', 'Admin', NULL, 0),
-(2, 1, '52300005', '00005', 'Nhân viên', NULL, 0);
+(1, 1, 'admin', 'admin', 'Admin', NULL, 0),
+(2, 2, '52300048', '52300048', 'Nhân viên', NULL, 0);
 
 --
 -- Indexes for dumped tables
