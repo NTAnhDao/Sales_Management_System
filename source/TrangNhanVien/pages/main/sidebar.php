@@ -10,7 +10,7 @@
             </li>
             <li class="item">
                 <a class="link" href="index.php?sidebar=giaodich">
-                    <span class = "fa fa-cart-arrow-down"></span>
+                    <span class = "fa fa-shopping-cart"></span>
                     <p class="item-sidebar">Xử lý giao dịch </p>
                     
                 </a>

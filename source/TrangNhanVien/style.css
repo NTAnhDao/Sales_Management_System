@@ -209,16 +209,16 @@
 }
 .orders {
     display: flex;
-    gap: 20px;
-    padding: 15px;
+    justify-content: space-between;
+    padding: 15px 25px;
 }
 .order-box {
-    background: white;
-    padding: 20px;
+    background: #ffa55131;
+    padding: 18px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px #ffa551;
     text-align: center;
-    width: 120px;
+    width: 30%;
 }
 .order-box h2 {
     margin: 0;
@@ -264,6 +264,7 @@ table{
     border: 2px solid orange;
     padding: 15px;
     background-color: #f1f1f1;
+    margin: 5px 0;
 }
 
 .customer{
@@ -271,4 +272,8 @@ table{
 }
 .customer-infor{
     margin-top: 8px;
+}
+.errorMessage {
+    color: rgb(185, 0, 0);
+    font-size: 14px;
 }

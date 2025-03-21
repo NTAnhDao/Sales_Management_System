@@ -12,14 +12,14 @@
                     <div class="card-tt">
                         <h5>Thêm/quét sản phẩm</h5>
                         <form method="POST" class="form-product">
-                            <input id="product_id" type="text" name="product_id" placeholder="Nhập mã sản phẩm">
-                            <input id="soluong" type="number" name="quantity" placeholder="Số lượng" min="1" value="1">
-                            <button type="submit" class="btn-custom btn btn-success" name="add_product">Thêm</button>
+                            <input id="product_id" type="text" name="product_id" placeholder="Nhập tên hoặc mã sản phẩm">
+                            <input id="soluong" type="number" name="quantity" placeholder="Số lượng" min="1" >
+                            <button onclick = "return addProduct()" class="btn-custom btn btn-success" name="add_product" type="button" class="btn btn-default">Thêm</button>
                         </form>
+                        <div class="d-none errorMessage"></div>
                     </div>
                     
-                    
-                    <div class = "cart">
+                    <div class="card-tt">
                         <div class="cart-header">
                             <div class="cart-name"><h5>Giỏ hàng</h5></div>
                             <div class="actions">
@@ -34,6 +34,7 @@
                                 <th>Tổng tiền</th>
                                 <th>Hành động</th>
                             </tr>
+                            <tbody> </tbody>
                         </table>
                     </div>
                     
