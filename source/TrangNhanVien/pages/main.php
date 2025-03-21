@@ -16,9 +16,16 @@
             include("main/content/baocao.php");
         }
     }else if(isset($_GET['nav'])){
-        $nav = $_GET['nav'];
-        if($nav == 'hoso'){
-            include("main/content/hoso.php");
+        switch($_GET['nav']){
+            case 'hoso':
+                include("main/content/hoso.php");
+                break;
+            case 'Dangxuat':
+                if (isset($_SESSION['role'])) {
+                    unset($_SESSION['role']);
+                }
+                header('Location: ../Login/login.php');
+                break;
         }
     } else {
         include("main/content/trangchu.php");

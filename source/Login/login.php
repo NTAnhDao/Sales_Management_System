@@ -22,22 +22,26 @@
                     <form method="POST" action="plogin.php">
                         <h2 class="title-form">Login</h2>
                         <div class="input-box">
-                            <input type="text" placeholder="Username" required>
+                            <input name="username" type="text" placeholder="Username" required>
                             <i class='fa fa-user'></i>
                         </div>
                         <div class="input-box">
-                            <input type="password" placeholder="Password" required>
+                            <input name="password" type="password" placeholder="Password" required>
                             <div id="eye">
                                 <i class='fa fa-eye'></i>
                             </div>
                             
                         </div>
-                        <button type="submit" class="button">Login</button>
+                        <input name="login" type="submit" class="button" value="Login">
                         <?php
-                            $e=isset($_GET["e"]);
-                            if($e=="1"): ?>
+                            if(isset($_GET["e"])) {
+                                $e = $_GET["e"];
+                                if($e=="1"){ ?>
+                                <p style="color:red; margin: 10px 10px;" ><?php echo "Tên đăng nhập hoặc mật khẩu không chính xác"; ?></p>
+                                <?php } else if($e== "2"){ ?>
                                 <p style="color:red; margin: 10px 10px;" ><?php echo "Vui lòng đăng nhập bằng cách nhấp vào liên kết trong email của bạn"; ?></p>
-                        <?php endif;?>
+                                <?php }
+                            } ?>
                     </form>
                 </div>
                 

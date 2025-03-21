@@ -34,7 +34,7 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 50%;
-    background-color: #ff8214;
+    background-color: #ffa551;
     border-radius: 2% 30% 20% 2%;
 }
 
@@ -51,7 +51,7 @@ h2 {
 }
 
 .title-form {
-    color: #ff8214;
+    color: #ffa551;
 }
 .login-form {
     display: flex;
@@ -101,7 +101,7 @@ h2 {
 .button {
     width: 100%;
     height: 50px;
-    background: #ff8214;
+    background: #ffa551;
     border: none;
     outline: none;
     color: white;

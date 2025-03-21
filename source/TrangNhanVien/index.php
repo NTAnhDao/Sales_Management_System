@@ -12,17 +12,21 @@
 
 <body>
 <?php
-// session_start();
+    session_start();
 // require '../database/db.php'; 
-?>
-    <div >
-        <!--NAVIGATION-->
-        <?php include("pages/nav.php");?>
+    if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Nhân viên")) {
+        // NAVIGATION
+        include("pages/nav.php");
 
-        <!-- Main -->
-        <?php include("pages/main.php");?>
+        // Main
+        include("pages/main.php");
         
-    </div>
+    } else {
+        header("Location: ../Login/login.php");
+        exit();
+    }
+?>
+    
 
 
     
