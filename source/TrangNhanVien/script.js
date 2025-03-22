@@ -36,7 +36,7 @@ setInterval(changeWebsize, 100);
 
 
 function addProduct(){
-    let soluongfield = document.getElementById('soluong').value
+    let soluongfield = document.getElementById('soluong')
     let maspfield = document.getElementById('product_id')
     
     let ma = maspfield.value
@@ -91,4 +91,18 @@ function showError(message){
 
 function removeProduct(element){
     element.parentElement.parentElement.remove()
+}
+
+function giaodienthanhtoan(){
+    let cart = document.getElementsByClassName('cart') [0]
+    let thanhtoan = document.getElementsByClassName('purchase') [0]
+
+    if(!cart.classList.contains('d-none')){
+        cart.classList.add('d-none')
+        thanhtoan.classList.remove('d-none')
+    }else{
+        thanhtoan.classList.add('d-none')
+        cart.classList.remove('d-none')
+    }
+   
 }

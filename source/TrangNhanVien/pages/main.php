@@ -1,4 +1,4 @@
-<div class = "main">                
+<div class = "main">              
     <!-- sidebar -->
     <?php include("main/sidebar.php");?>
     <!-- nội dung chính-->
@@ -16,16 +16,8 @@
             include("main/content/baocao.php");
         }
     }else if(isset($_GET['nav'])){
-        switch($_GET['nav']){
-            case 'hoso':
-                include("main/content/hoso.php");
-                break;
-            case 'Dangxuat':
-                if (isset($_SESSION['role'])) {
-                    unset($_SESSION['role']);
-                }
-                header('Location: ../Login/login.php');
-                break;
+        if($_GET['nav']== 'hoso'){
+            include("main/content/hoso.php");
         }
     } else {
         include("main/content/trangchu.php");

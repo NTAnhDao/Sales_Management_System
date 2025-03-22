@@ -47,6 +47,7 @@
     height: 100%;
     position: absolute;
     padding: 15px;
+    width: 85%;
 }
 
 .main{
@@ -234,14 +235,20 @@
     display: flex;
     gap: 10px;
 }
-#product_id, #soluong,.sdt{
+#product_id,.sdt{
     flex-grow: 1;
+}
+#soluong{
+    width: 20%;
 }
 .cart-header{
     display: flex;
 }
-.cart{
+.cart, .purchase{
     margin: 15px 0;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart-name h5{
@@ -259,7 +266,7 @@ table{
     margin: 5px 0;
 }
 
-.card-tt{
+.card-cart{
     border-radius: 5px;
     border: 2px solid orange;
     padding: 15px;
@@ -267,7 +274,18 @@ table{
     margin: 5px 0;
 }
 
-.customer{
+.list-cart{
+    height: 350px;
+    overflow: auto;
+}
+.cart-submit{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-submit h5{
+    margin: 10px 5px;
+}
+.purchase-item{
     margin: 10px 15px;
 }
 .customer-infor{

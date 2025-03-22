@@ -5,14 +5,12 @@
                 <a class="link" href="index.php">
                     <span class = "fa fa-home"></span>
                     <p class="item-sidebar">Trang chủ</p>
-                    
                 </a>
             </li>
             <li class="item">
                 <a class="link" href="index.php?sidebar=giaodich">
                     <span class = "fa fa-shopping-cart"></span>
                     <p class="item-sidebar">Xử lý giao dịch </p>
-                    
                 </a>
             </li>
             <li class="item">
@@ -37,7 +35,7 @@
         </ul>
     </div>
     <div class="logout">
-        <a class="link" href="../login/login.php">
+        <a class="link" href="logout.php">
             <span class = "fa fa-sign-out"></span>
         </a>
     </div>

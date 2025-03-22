@@ -7,9 +7,8 @@
             </div>
         </div>
         <div class="content">
-            <div>
-                <section>
-                    <div class="card-tt">
+                <section class="cart">
+                    <div class="card-cart">
                         <h5>Thêm/quét sản phẩm</h5>
                         <form method="POST" class="form-product">
                             <input id="product_id" type="text" name="product_id" placeholder="Nhập tên hoặc mã sản phẩm">
@@ -19,7 +18,7 @@
                         <div class="d-none errorMessage"></div>
                     </div>
                     
-                    <div class="card-tt">
+                    <div class="card-cart list-cart">
                         <div class="cart-header">
                             <div class="cart-name"><h5>Giỏ hàng</h5></div>
                             <div class="actions">
@@ -37,22 +36,46 @@
                             <tbody> </tbody>
                         </table>
                     </div>
-                    
+
+                    <div class="cart-submit">
+                        <div>
+                            <h5 >Tổng tiền: ??</h5>
+                        </div>
+                        <button onclick = " giaodienthanhtoan()" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                            <span class = "fa fa-arrow-right"> </span> Tiếp tục
+                        </button>
+                    </div> 
+
                 </section>
-                <section>
-                <div class="card-tt">    
-                    <h5>Thông tin khách hàng</h5>
-                    <div class="customer">
-                        <form method="POST" class="search-form">
-                            <label for="customer_phone" style="margin:10px 0;" > Số điện thoại: </label>
-                            <input class="sdt" type="text" name="customer_phone" placeholder="Nhập số điện thoại khách hàng" required>
-                            <button type="submit" name="search_customer" class="btn-custom btn btn-secondary">Tìm kiếm</button>
-                        </form>
-                        <div class="customer-infor">Họ tên :</div>
-                        <div class="customer-infor">Địa chỉ : </div>
+
+                <section class="purchase d-none">
+                    <div class="card-cart">
+                        <h5>Thông tin khách hàng</h5>
+                        <div class="purchase-item">
+                            <form method="POST" class="search-form">
+                                <label for="customer_phone" style="margin:10px 0;" > Số điện thoại: </label>
+                                <input class="sdt" type="text" name="customer_phone" placeholder="Nhập số điện thoại" required>
+                                <button type="submit" name="search_customer" class="btn-custom btn btn-secondary">Tìm kiếm</button>
+                            </form>
+                            <div class="customer-infor">Họ tên :</div>
+                            <div class="customer-infor">Địa chỉ : </div>
+                        </div>
+                    </div>
+                    <div class="card-cart">
+                        <h5>Thông tin giao dịch </h5>
+                        <div class="purchase-item">
+                            
+                            <form method="POST" class="search-form">
+                                <label for="customer_phone" style="margin:10px 0;" > Tiền khách đưa: </label>
+                                <input class="sdt" type="text" name="customer_phone" placeholder="Nhập số điện thoại" required>
+                            </form>
+                            <div class="customer-infor">Tổng tiền :</div>
+                            <div class="customer-infor">Tiền thối : </div>
+                        </div>
                     </div>
                     
-                    <h5>Lịch sử mua hàng</h5>
+                    
+                    <!-- <h5>Lịch sử mua hàng</h5>
                     <table class="cart-table" border="1">
                         <tr>
                             <th>Ngày mua</th>
@@ -70,12 +93,17 @@
                             <td>5</td>
                             <td><button class="btn-custom btn btn-secondary">Xem</button></td>
                         </tr>
-                    </table>
-                    </div>
+                    </table> -->
+                    <div class="cart-submit">
+                        <button onclick = " giaodienthanhtoan()" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                            <span class = "	fa fa-arrow-left"></span> Quay lại 
+                        </button>
+                        <a class="btn-custom btn btn-success" href="index.php?sidebar=giaodich&id=1">
+                            <span class = "fa fa-shopping-cart"></span> Hoàn tất
+                        </a>
+                    </div> 
                 </section>
-                
-            </div>
-            
+                                       
     
         </div>
         
