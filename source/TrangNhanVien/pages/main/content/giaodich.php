@@ -8,47 +8,69 @@
         </div>
         <div class="content">
                 <section class="cart">
-                    <div class="card-cart">
-                        <h5>Thêm/quét sản phẩm</h5>
-                        <form method="POST" class="form-product">
-                            <input id="product_id" type="text" name="product_id" placeholder="Nhập tên hoặc mã sản phẩm">
-                            <input id="soluong" type="number" name="quantity" placeholder="Số lượng" min="1" >
-                            <button onclick = "return addProduct()" class="btn-custom btn btn-success" name="add_product" type="button" class="btn btn-default">Thêm</button>
-                        </form>
-                        <div class="d-none errorMessage"></div>
-                    </div>
-                    
-                    <div class="card-cart list-cart">
-                        <div class="cart-header">
-                            <div class="cart-name"><h5>Giỏ hàng</h5></div>
-                            <div class="actions">
-                                <button type="button" class="btn-custom btn btn-danger">Xoá tất cả</button>
+                    <div class="row">
+                        <div class="cart-product col-lg-6 col-sm-12">
+                            <div class="card-cart list-product">
+                                <div class="cart-header">
+                                    <div class="cart-name"><h5>Danh sách sản phẩm</h5></div>
+                                </div>
+                                <table class="cart-table" border="1">
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        <table class="cart-table" border="1">
-                            <tr>
-                                <th>Tên sản phẩm</th>
-                                <th>Đơn giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng tiền</th>
-                                <th>Hành động</th>
-                            </tr>
-                            <tbody> </tbody>
-                        </table>
+
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="card-cart ">
+                                <h5>Thêm/quét sản phẩm</h5>
+                                <form method="POST" class="form-product">
+                                    <input id="product_id" type="text" name="product_id" placeholder="Nhập tên hoặc mã sản phẩm">
+                                    <input id="soluong" type="number" name="quantity" placeholder="Số lượng" min="1" >
+                                    <button onclick = "return addProduct()" class="btn-custom btn btn-success" name="add_product" type="button" class="btn btn-default">Thêm</button>
+                                </form>
+                                <div class="d-none errorMessage"></div>
+                            </div>
+                        
+                            <div class="card-cart list-cart">
+                                <div class="cart-header">
+                                    <div class="cart-name"><h5>Giỏ hàng</h5></div>
+                                    <div class="actions">
+                                        <button type="button" class="btn-custom btn btn-danger">Xoá tất cả</button>
+                                    </div>
+                                </div>
+                                <table class="cart-table" border="1">
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                    <tbody id="tbody"> </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
                     </div>
+                    
 
                     <div class="cart-submit">
                         <div>
                             <h5 >Tổng tiền: ??</h5>
                         </div>
-                        <button onclick = " giaodienthanhtoan()" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                        <button onclick = " chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
                             <span class = "fa fa-arrow-right"> </span> Tiếp tục
                         </button>
                     </div> 
 
                 </section>
 
-                <section class="purchase d-none">
+                <section class="purchase d-none" >
                     <div class="card-cart">
                         <h5>Thông tin khách hàng</h5>
                         <div class="purchase-item">
@@ -75,31 +97,13 @@
                     </div>
                     
                     
-                    <!-- <h5>Lịch sử mua hàng</h5>
-                    <table class="cart-table" border="1">
-                        <tr>
-                            <th>Ngày mua</th>
-                            <th>Tổng tiền</th>
-                            <th>Số tiền khách đưa</th>
-                            <th>Số tiền trả lại</th>
-                            <th>Số lượng sản phẩm</th>
-                            <th>Chi tiết</th>
-                        </tr>
-                        <tr>
-                            <td>2024-03-20</td>
-                            <td>500,000 VND</td>
-                            <td>600,000 VND</td>
-                            <td>100,000 VND</td>
-                            <td>5</td>
-                            <td><button class="btn-custom btn btn-secondary">Xem</button></td>
-                        </tr>
-                    </table> -->
+              
                     <div class="cart-submit">
-                        <button onclick = " giaodienthanhtoan()" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                        <button onclick = " chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
                             <span class = "	fa fa-arrow-left"></span> Quay lại 
                         </button>
                         <a class="btn-custom btn btn-success" href="index.php?sidebar=giaodich&id=1">
-                            <span class = "fa fa-shopping-cart"></span> Hoàn tất
+                            <span class = "fa fa-shopping-cart"></span> Tạo hóa đơn
                         </a>
                     </div> 
                 </section>

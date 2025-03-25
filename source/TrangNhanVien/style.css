@@ -246,18 +246,20 @@
 }
 .cart, .purchase{
     margin: 15px 0;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
 
+}
+.cart-content{
+    display: flex;
+    margin: 20px;
+}
 .cart-name h5{
     margin: 10px 0 0 0;
 }
 
 .cart-table th, .cart-table td{
     border: 1px solid;
-    padding: 5px 15px;
+    padding: 5px 10px;
+    font-size: small;
 }
 table{
     width: 100%;
@@ -266,7 +268,7 @@ table{
     margin: 5px 0;
 }
 
-.card-cart{
+.card-cart, .card-customer{
     border-radius: 5px;
     border: 2px solid orange;
     padding: 15px;
@@ -274,8 +276,17 @@ table{
     margin: 5px 0;
 }
 
+.card-customer{
+    height: 500px;
+    overflow: auto;
+}
+
 .list-cart{
-    height: 350px;
+    height: 364px;
+    overflow: auto;
+}
+.list-product{
+    height: 480px;
     overflow: auto;
 }
 .cart-submit{
@@ -294,4 +305,13 @@ table{
 .errorMessage {
     color: rgb(185, 0, 0);
     font-size: 14px;
+}
+
+/* khachhang */
+.searchBox{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #f1f1f1;
+    background-color: #ffa5516c;
 }

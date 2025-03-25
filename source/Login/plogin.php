@@ -15,7 +15,7 @@
             if ($password == $pass) {
                 if($role=="Admin") {
                     $_SESSION["role"]= $role;
-                    header("Location: ../Product_List_Admin/E_CommerceWebsite.php");
+                    header("Location: ../Product_List_Admin/index.php");
                     exit();
                 } else if($role=="Nhân viên") {
                     $_SESSION["role"]= $role;

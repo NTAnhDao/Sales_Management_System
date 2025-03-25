@@ -68,13 +68,14 @@ function addProduct(){
 
     }
     showError(null)
-    let tbody = document.getElementsByTagName('tbody') [0]
+    let tbody = document.getElementById('tbody') 
     tbody.appendChild(tr)
     soluong = ''
     ma = ''
     maspfield.focus()
     return true
    }
+
 function showError(message){
     let error = document.getElementsByClassName('errorMessage') [0]
 
@@ -93,16 +94,16 @@ function removeProduct(element){
     element.parentElement.parentElement.remove()
 }
 
-function giaodienthanhtoan(){
-    let cart = document.getElementsByClassName('cart') [0]
-    let thanhtoan = document.getElementsByClassName('purchase') [0]
+function chuyengiaodien(class1,class2){
+    let box1 = document.getElementsByClassName(class1) [0]
+    let box2 = document.getElementsByClassName(class2) [0]
 
-    if(!cart.classList.contains('d-none')){
-        cart.classList.add('d-none')
-        thanhtoan.classList.remove('d-none')
+     if(!box1.classList.contains('d-none')){ 
+        //Nếu class1 không có d-none thì thêm vào để ẩn
+        box1.classList.add('d-none')
+        box2.classList.remove('d-none')
     }else{
-        thanhtoan.classList.add('d-none')
-        cart.classList.remove('d-none')
+        box2.classList.add('d-none')
+        box1.classList.remove('d-none')
     }
-   
 }

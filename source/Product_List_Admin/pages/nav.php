@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="leftnav justify-content-start">
             <a class="logo navbar-brand" href="index.php">
-                <img src="images/logo.png" alt="Avatar Logo" style="width:40px;" > 
+                <img src="image/logo.jpg" alt="Avatar Logo" style="width:40px;" > 
                 <h4>Point of Sale</h4>
             </a>
             <div class="openclose"><span class="navbar-toggler-icon" style="font-size:30px;cursor:pointer" onclick="open_closeNav() " class = "las la-bars"></span></div>   
