@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2025 at 03:43 PM
+-- Generation Time: Mar 29, 2025 at 05:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -78,7 +78,9 @@ CREATE TABLE `danhmucsp` (
 
 INSERT INTO `danhmucsp` (`id`, `tendm`, `mota`, `ngaytao`, `id_nguoitao`) VALUES
 (1, 'Điện thoại', NULL, '2025-03-09 14:55:14', NULL),
-(2, 'Tai nghe', NULL, '2025-03-09 14:55:17', NULL);
+(2, 'Tai nghe', NULL, '2025-03-09 14:55:17', NULL),
+(3, 'Sạc dự phòng', NULL, '2025-03-29 15:27:48', NULL),
+(4, 'Ốp lưng', NULL, '2025-03-29 15:27:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,9 @@ CREATE TABLE `khachhang` (
 
 INSERT INTO `khachhang` (`id`, `hoten`, `diachi`, `sdt`, `ngaytao`) VALUES
 (1, 'Trương Lê Hiếu An', 'Bình Chánh', '0828828176', '2025-03-12 14:25:19'),
-(2, 'Nguyễn Thị Anh Đào', 'Quận 7', '0289712912', '2025-03-12 14:25:19');
+(2, 'Nguyễn Thị Anh Đào', 'Quận 7', '0289712912', '2025-03-12 14:25:19'),
+(3, 'Nguyễn Thúc Thùy Tiên', 'Phú Mỹ Hưng, quận 7', '0717717717', '2025-03-29 15:17:47'),
+(5, 'Trần Trung Dũng', 'Korea', '0552552552', '2025-03-29 15:18:43');
 
 -- --------------------------------------------------------
 
@@ -162,6 +166,7 @@ CREATE TABLE `sanpham` (
   `tensp` varchar(100) NOT NULL,
   `giagoc` decimal(10,0) NOT NULL,
   `giabanle` decimal(10,0) NOT NULL,
+  `img` varchar(50) DEFAULT NULL,
   `id_danhmuc` int(11) NOT NULL,
   `ngaytao` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -170,11 +175,19 @@ CREATE TABLE `sanpham` (
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`id`, `mavach`, `tensp`, `giagoc`, `giabanle`, `id_danhmuc`, `ngaytao`) VALUES
-(1, '12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, 1, '2025-03-09 15:00:16'),
-(2, '12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, 2, '2025-03-09 15:00:16'),
-(3, '12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, 2, '2025-03-09 15:04:00'),
-(4, '12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, 2, '2025-03-09 15:04:00');
+INSERT INTO `sanpham` (`id`, `mavach`, `tensp`, `giagoc`, `giabanle`, `img`, `id_danhmuc`, `ngaytao`) VALUES
+(1, '12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, NULL, 1, '2025-03-09 15:00:16'),
+(2, '12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, NULL, 2, '2025-03-09 15:00:16'),
+(3, '12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, NULL, 2, '2025-03-09 15:04:00'),
+(4, '12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, NULL, 2, '2025-03-09 15:04:00'),
+(5, '12349', 'OPPO Find N5', 40000000, 45990000, NULL, 1, '2025-03-29 15:24:40'),
+(6, '12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, NULL, 1, '2025-03-29 15:24:40'),
+(7, '12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, NULL, 3, '2025-03-29 16:08:36'),
+(8, '123452', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, NULL, 3, '2025-03-29 16:08:36'),
+(9, '12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, NULL, 4, '2025-03-29 16:10:55'),
+(10, '123454', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, NULL, 4, '2025-03-29 16:10:55'),
+(11, '12355', 'Ốp lưng Galaxy S24 Ultra Nhựa cứng viền dẻo Samsung kèm dây đứng Chính hãng', 650000, 833000, NULL, 4, '2025-03-29 16:13:27'),
+(12, '12356', 'Ốp lưng Galaxy A26 TPU có khe đựng thẻ Samsung Chính hãng', 250000, 330000, NULL, 4, '2025-03-29 16:13:27');
 
 -- --------------------------------------------------------
 
@@ -273,7 +286,7 @@ ALTER TABLE `baocao`
 -- AUTO_INCREMENT for table `danhmucsp`
 --
 ALTER TABLE `danhmucsp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `donhang`
@@ -285,7 +298,7 @@ ALTER TABLE `donhang`
 -- AUTO_INCREMENT for table `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `nhanvien`
@@ -297,7 +310,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `taikhoan`
