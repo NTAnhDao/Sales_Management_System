@@ -69,6 +69,11 @@
     display: flex;
 }
 
+input{
+    height: 43px;
+    border-radius: 10px;
+    border: 1px solid #4f454538;
+}
 
 /* .sidebar-user{
     margin-top: 1rem;
@@ -256,11 +261,12 @@
     margin: 10px 0 0 0;
 }
 
-.cart-table th, .cart-table td{
-    border: 1px solid;
+.cart-table th, .cart-table tbody td{
     padding: 5px 10px;
     font-size: small;
+    border-bottom: 1px solid #ffa551;
 }
+
 table{
     width: 100%;
 }
@@ -274,6 +280,12 @@ table{
     padding: 15px;
     background-color: #f1f1f1;
     margin: 5px 0;
+}
+
+.purchase {
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-customer{

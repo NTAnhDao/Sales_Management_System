@@ -1,3 +1,5 @@
+var tensp=$("#product_id").val();
+var giabanle =  $("#soluong").val();
 var bool = true;
 function open_closeNav() {
     var sidebar = document.getElementById("mySidebar");
@@ -35,49 +37,54 @@ setInterval(changeWebsize, 100);
 
 
 
-function addProduct(){
-    let soluongfield = document.getElementById('soluong')
-    let maspfield = document.getElementById('product_id')
+// function addProduct(){
+//     let soluongfield = document.getElementById('soluong')
+//     let maspfield = document.getElementById('product_id')
+
     
-    let ma = maspfield.value
-    let soluong =soluongfield.value
+//     let stt = 1
+//     let ma = maspfield.value
+//     let soluong =soluongfield.value
 
-    let tr = document.createElement('tr')
-    let td1 = document.createElement('td')
-    let td2 = document.createElement('td')
-    let td3 = document.createElement('td')
-    let td4 = document.createElement('td')
-    let td5 = document.createElement('td')
+//     let tr = document.createElement('tr')
+//     let td1 = document.createElement('td')
+//     let td2 = document.createElement('td')
+//     let td3 = document.createElement('td')
+//     let td4 = document.createElement('td')
+//     let td5 = document.createElement('td')
+//     let td6= document.createElement('td')
 
-    tr.appendChild(td1)
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-    tr.appendChild(td5);
+//     tr.appendChild(td1)
+//     tr.appendChild(td2);
+//     tr.appendChild(td3);
+//     tr.appendChild(td4);
+//     tr.appendChild(td5);
+//     tr.appendChild(td6);
 
-    if(ma == '' || soluong == '' ){
-        showError("Vui lòng nhập đủ thông tin!")
-        return false
-    }
-    else{
-        td1.innerHTML = ma
-        td2.innerHTML = 'lastname'
-        td3.innerHTML = soluong
-        td4.innerHTML = 'email'
-        td5.innerHTML = '<button onclick = "removeProduct(this)" class="btn btn-danger btn-sm">Delete</button>'
+//     if(ma == '' || soluong == '' ){
+//         showError("Vui lòng nhập đủ thông tin!")
+//         return false
+//     }
+//     else{
+//         td1.innerHTML = stt
+//         td2.innerHTML = tensp
+//         td3.innerHTML = giabanle
+//         td4.innerHTML = soluong
+//         td5.innerHTML = soluong*giabanle
+//         td6.innerHTML = '<button onclick = "removeProduct(this)" class="btn btn-danger btn-sm">Delete</button>'
+//         stt++
+//     }
+//     showError(null)
+//     let tbody = document.getElementById('tbody') 
+//     tbody.appendChild(tr)
+//     soluong = ''
+//     ma = ''
+//     maspfield.focus()
+//     return true
+//    }
 
-    }
-    showError(null)
-    let tbody = document.getElementById('tbody') 
-    tbody.appendChild(tr)
-    soluong = ''
-    ma = ''
-    maspfield.focus()
-    return true
-   }
-
-function showError(message){
-    let error = document.getElementsByClassName('errorMessage') [0]
+function showError(message,id){
+    let error = document.getElementById(id)
 
     if(message == null || message == undefined){
         //hide
