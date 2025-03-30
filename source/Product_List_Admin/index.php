@@ -23,7 +23,7 @@
         include("pages/main.php");
         
     } else {
-        header("Location: ../Login/login.php");
+        header("Location: ../index.php");
         exit();
     }
 ?>

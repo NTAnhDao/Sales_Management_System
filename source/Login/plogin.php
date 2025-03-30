@@ -4,34 +4,35 @@
     include "../database/db.php";
     include "user.php";
 
-    if (isset($_POST["login"]) && ($_POST["login"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = $_POST["username"];
         $password = $_POST["password"];
         $info = getInfoUser($username);
-        $pass = $info[0]["password"];
-        $role = $info[0]["role"];
 
         if ($info != null) {
+            $pass = $info[0]["password"];
+            $role = $info[0]["role"];
+
             if ($password == $pass) {
-                if($role=="Admin") {
-                    $_SESSION["role"]= $role;
+                $_SESSION["role"]= $role;
+
+                if($role == "Admin") {
                     header("Location: ../Product_List_Admin/index.php");
                     exit();
-                } else if($role=="Nhân viên") {
-                    $_SESSION["role"]= $role;
+                } else if($role == "Nhân viên") {
                     header("Location: ../TrangNhanVien/index.php");
                     exit();
                 }
                 
             } else {
-                header("Location: login.php?e=1");
+                header("Location: ../Login/login.php?e=1");
                 exit();
             }
             
         } else {
-            header("Location: login.php?e=2");
+            header("Location: ../Login/login.php?e=2");
             exit();
         }
-    }
+    } 
     
 ?>

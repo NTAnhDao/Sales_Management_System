@@ -24,7 +24,7 @@
                 if (isset($_SESSION['role'])) {
                     unset($_SESSION['role']);
                 }
-                header('Location: ../Login/login.php');
+                header('Location: ../../../index.php');
                 break;
         }
     } else {

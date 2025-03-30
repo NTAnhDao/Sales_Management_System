@@ -6,6 +6,6 @@ session_unset(); // Xóa biến session
 session_destroy(); // Hủy session
 
 // Chuyển hướng về trang đăng nhập
-header("Location: ../Login/login.php");
+header("Location: ../index.php");
 exit();
 ?>

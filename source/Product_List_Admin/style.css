@@ -52,7 +52,8 @@
 
 .content{
     height: 100%;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     padding: 15px;
 }
 
@@ -62,7 +63,6 @@
 .main-content {
     padding: 1.5rem;
     height: auto;
-
 }
 #main {
     margin-left: 235px;
@@ -308,4 +308,87 @@
     max-width: 900px !important;
     height: 800px !important; 
     display: flex; 
+}
+
+
+/* CSS tạo tài khoản */
+.group{
+    display: flex;
+    gap: 50px; 
+}
+
+.input-box{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    max-width: 300px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="radio"]{
+    width: auto;
+    margin-right: 5px;
+}
+
+/* CSS danh sách nhân viên */
+table{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.employee{
+    border-radius: 5px;
+    border: 2px solid orange;
+    padding: 15px;
+    background-color:white;
+    margin: 30px 20px 0 20px;
+}
+
+.cart-table th, .cart-table tbody td{
+    padding: 5px 10px;
+    font-size: small;
+    border-bottom: 1px solid #ffa551;
+
+}
+
+#avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+
+.action button {
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-sendEmail {
+    background-color: #ffa551;
+}
+
+.btn-lock {
+    background-color: red;
+}
+
+.btn-unlock {
+    background-color: green;
+}
+
+.btn-detail {
+    background-color: #007bff;
+}
+
+.btn-viewSale {
+    background-color: #e413ad;
 }

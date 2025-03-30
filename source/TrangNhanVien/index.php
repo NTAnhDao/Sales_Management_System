@@ -23,8 +23,9 @@
         // Main
         include("pages/main.php");
         
-    } else {
-        header("Location: ../Login/login.php");
+    } 
+    else {
+        header("Location: ../index.php");
         exit();
     }
 ?>

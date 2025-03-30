@@ -5,7 +5,7 @@
                 <h3>Trang chủ</h3>
             </div>
             </div>
-                <button class = "button-actions"> <!--button phía dưới cài đặtđặt-->
+                <button class = "button-actions"> <!--button phía dưới cài đặt-->
                     <i class="fa-regular fa-calendar"></i> Today <i class="fa-solid fa-chevron-down"></i>
                 </button>
             </div>
