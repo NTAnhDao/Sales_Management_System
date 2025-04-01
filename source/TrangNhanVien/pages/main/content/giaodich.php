@@ -205,28 +205,4 @@
         </div>
     </main>
 </div> 
-<script src="func/addsp.js" ></script> 
-<script src="func/findsdt.js" ></script> 
-<script>
-
-    document.getElementById("btnthanhtoan").addEventListener("click", function () {
-        let sourceTable = document.getElementById("tbody");
-        let destinationTable = document.getElementById("tbodyhd");
-        document.getElementById("tong").innerHTML = total;
-        document.getElementById("tenkh").innerHTML = tenv;
-        document.getElementById("sdtkh").innerHTML = sdtv;
-
-        destinationTable.innerHTML = ""; 
-
-        let selectedCols = [0, 1, 2, 3]; 
-
-        for (let row of sourceTable.rows) {
-            let newRow = destinationTable.insertRow();
-            for (let i of selectedCols) {
-                let newCell = newRow.insertCell();
-                newCell.innerHTML = row.cells[i].innerHTML;
-            }
-        }
-    }
-    );
-</script>
+<script src="func/script.js" ></script> 

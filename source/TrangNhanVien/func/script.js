@@ -1,3 +1,46 @@
+var hoten = document.getElementById("hoten");
+var diachi = document.getElementById("diachi");
+var idkh = "";
+var btnfindsdt = document.getElementById("search-sdt");
+// Tìm số điện thoại
+document.addEventListener("DOMContentLoaded", function () {
+    btnfindsdt.addEventListener("click", function () {
+        let sdt = $("#customer-phone").val().trim();
+
+        if (sdt === "") {
+            annoucement("Vui lòng nhập số điện thoại!",'err-findsdt')
+            return;  
+        }
+
+        fetch("func/findsdt.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `sdt=${sdt}`
+        })
+        .then(response => response.json()) // Chuyển đổi kết quả JSON
+        .then(product => {
+            if (product.error) {
+                hoten.innerHTML = "";
+                diachi.innerHTML = "";
+                alert(product.error);
+                let nhapcustomer = new bootstrap.Modal(document.getElementById("nhapcustomer"));
+                nhapcustomer.show(); 
+                return;
+            }else{
+                tenv = product.name;
+                sdtv =  sdt;
+                idkh = product.id;
+                hoten.innerHTML = "Khách hàng: " + product.name + " - " + sdt;
+                diachi.innerHTML = "Địa chỉ: " + product.address;
+                annoucement(null,'err-findsdt');
+                annoucement(null ,'suc-addkh');
+            }
+
+        })
+        .catch(error => console.error("Lỗi:", error));
+    });
+});
+// thêm vào hóa đơn
 var total = 0;
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("add_product").addEventListener("click", function () {
@@ -73,3 +116,28 @@ function removeallProduct(){
     document.getElementById("total").innerHTML = total;
 
 }
+
+
+// Khi nhan thanh toan
+document.getElementById("btnthanhtoan").addEventListener("click", function () {
+    let sourceTable = document.getElementById("tbody");
+    let destinationTable = document.getElementById("tbodyhd");
+    document.getElementById("tong").innerHTML = total;
+    document.getElementById("tenkh").innerHTML = tenv;
+    document.getElementById("sdtkh").innerHTML = sdtv;
+
+    destinationTable.innerHTML = ""; 
+
+    let selectedCols = [0, 1, 2, 3]; 
+
+    for (let row of sourceTable.rows) {
+        let newRow = destinationTable.insertRow();
+        for (let i of selectedCols) {
+            let newCell = newRow.insertCell();
+            newCell.innerHTML = row.cells[i].innerHTML;
+        }
+    }
+}
+);
+
+

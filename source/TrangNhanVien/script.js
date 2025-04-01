@@ -116,3 +116,4 @@ function insertData() {
     }
     chuyengiaodien('purchase','bill');
 }
+
