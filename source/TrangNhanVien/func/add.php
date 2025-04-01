@@ -6,10 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["name"] ?? "";
     $soluong = intval($_POST["sl"] ?? 1);
 
-    if (empty($name)) {
-        echo json_encode(["error" => "Dữ liệu không hợp lệ!"]);
-        exit();
-    }
     $conn = connectDB();
 
     $query = $conn->prepare("SELECT * FROM sanpham WHERE tensp = ? or mavach= ?");

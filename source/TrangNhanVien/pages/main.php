@@ -7,7 +7,13 @@
     {
         $side = $_GET['sidebar'];
         if($side == 'khachhang'){
-            include("main/content/khachhang.php");
+            if(isset($_GET['idlskh']))
+            {
+                $id = $_GET['idlskh'];
+                include("main/content/lichsumua.php");
+            }else{
+                include("main/content/khachhang.php");
+            }
         }else if($side == 'giaodich'){
             include("main/content/giaodich.php");
         }else if($side == 'donhang'){

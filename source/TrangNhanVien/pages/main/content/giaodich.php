@@ -41,7 +41,7 @@
                                 <div class="cart-header">
                                     <div class="cart-name"><h5>Giỏ hàng</h5></div>
                                     <div class="actions">
-                                        <button type="button" class="btn-custom btn btn-danger">Xoá tất cả</button>
+                                        <button  onclick="removeallProduct()" type="button" class="btn-custom btn btn-danger">Xoá tất cả</button>
                                     </div>
                                 </div>
                                 <table class="cart-table">
@@ -83,12 +83,49 @@
                             <div class="customer-infor" id="hoten"> </div>
                             <div class="customer-infor" id="diachi"> </div>
                             <div class="d-none errorMessage" id="err-findsdt"></div>
+                            <div class="d-none successMessage" id="suc-addkh"></div>
+
+                        </div>
+
+                        <!-- The Modal -->
+                        <div class="modal" id="nhapcustomer">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Nhập thông tin khách hàng</h4>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="annouce">
+                                            Nhập đầy đủ và chính xác thông tin của khách hàng trước khi thoát.
+                                        </div>
+                                        <div>
+                                            <label for="name" style="margin:10px 0;" > Tên khách hàng: </label>
+                                            <input id="enter-name" type="text" name="name" placeholder="Nhập tên khách hàng">
+                                        </div>
+                                        <div>
+                                            <label for="name" style="margin:10px 0;" > Địa chỉ: </label>
+                                            <input id="enter-diachi" type="text" name="diachi" placeholder="Nhập địa chỉ"  >
+                                        </div>
+                                        <div class="d-none errorMessage" id="err-addkh"></div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button onclick="checkData()" class="btn btn-success">Hoàn tất</button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="card-cart">
                         <h5>Thông tin giao dịch </h5>
                         <div class="purchase-item">
-                            
                             <form method="POST" class="search-form">
                                 <label for="customer_phone" style="margin:10px 0;" > Tiền khách đưa: </label>
                                 <input class="sdt" type="text" name="customer_phone" placeholder="Nhập số tiền" required>
@@ -98,20 +135,98 @@
                         </div>
                     </div>
                     
+                    <div class="cart-submit">
+                        <button onclick = "chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                            <span class = "	fa fa-arrow-left"></span> Quay lại 
+                        </button>
+                        <button onclick="insertData()" type="button" id = "btnthanhtoan" class="btn-custom btn btn-success" >
+                            <span class = "fa fa-shopping-cart"></span> Thanh toán
+                        </button>
+                    </div> 
+                </section>
+                         
+                
+                <section class="bill d-none" >
+                    <div class="HoaDon">
+                        <div style="text-align: center;">
+                            <b> HÓA ĐƠN THANH TOÁN </b>
+                            <div> Số HD: </div>
+                            <div class = "hd-inf">
+                                <div>Thu ngân: </div>
+                                <div>Ngày: </div>
+                            </div>
+                        </div>
+                        <div class = "kh-inf">
+                               
+                            <div class=" d-flex">
+                            <div>Tên khách hàng: </div>
+                            <p id ="tenkh"> </p>
+                            </div>
+                            <div class=" d-flex">
+                            <div>Số điện thoại: </div>
+                            <p id ="sdtkh"> </p>
+                            </div>
+                        </div>
+                        <table class="cart-table">
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                        <tbody id="tbodyhd"> </tbody>
+                        </table>
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                            <b>Thành tiền: </b>
+                            <p id ="tong">0</p>
+                            </div>
+                            <div class = "hd-inf d-none">
+                            <div>Thuế VAT(0%)</div>
+                            <div>Thanh toán(chuyển khoản):</div>
+                            </div>
+                            <div class = "hd-inf">
+                            <div>Thuế VAT(0%)</div>
+                            <div>Thanh toán(tiền mặt):</div>
+                            <div>Tiền khách đưa: </div>
+                            <div>Tiền thối:</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     
               
                     <div class="cart-submit">
-                        <button onclick = " chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
-                            <span class = "	fa fa-arrow-left"></span> Quay lại 
+                        <button onclick = " chuyengiaodien('cart','bill')" id = "btninbill" type="button"  class="btn-custom btn btn-success" >
+                            <span class = "fa fa-print"></span> In hóa đơn
                         </button>
-                        <a class="btn-custom btn btn-success" href="index.php?sidebar=giaodich&id=1">
-                            <span class = "fa fa-shopping-cart"></span> Tạo hóa đơn
-                        </a>
                     </div> 
                 </section>
-                                       
         </div>
     </main>
 </div> 
 <script src="func/addsp.js" ></script> 
 <script src="func/findsdt.js" ></script> 
+<script>
+
+    document.getElementById("btnthanhtoan").addEventListener("click", function () {
+        let sourceTable = document.getElementById("tbody");
+        let destinationTable = document.getElementById("tbodyhd");
+        document.getElementById("tong").innerHTML = total;
+        document.getElementById("tenkh").innerHTML = tenv;
+        document.getElementById("sdtkh").innerHTML = sdtv;
+
+        destinationTable.innerHTML = ""; 
+
+        let selectedCols = [0, 1, 2, 3]; 
+
+        for (let row of sourceTable.rows) {
+            let newRow = destinationTable.insertRow();
+            for (let i of selectedCols) {
+                let newCell = newRow.insertCell();
+                newCell.innerHTML = row.cells[i].innerHTML;
+            }
+        }
+    }
+    );
+</script>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="nav">
     <div class="container-fluid">
         <div class="leftnav justify-content-start">
-            <a class="logo navbar-brand" href="index.php">
+            <a class="logo navbar-brand" href="index.php" data-bs-toggle="tooltip"  title="Về trang chủ">
                 <img src="images/logo.png" alt="Avatar Logo" style="width:40px;" > 
                 <h4>Point of Sale</h4>
             </a>
@@ -24,12 +24,12 @@
 
                             <img id="nav-avatar" src = "images/trai_tre.jpeg" height = "30px"  width = "30px" alt = "Employee">
                             <div class="infor">
-                                <p id ="user">Admin</p>
-                                <p id="email">admin@gmail.com</p>
+                                <p id ="user"><?= $_SESSION["username"]?></p>
+                                <p id="email"><?= $_SESSION["email"]?></p>
                             </div>
                         </a>
             
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end" >
                         <li>
                             <a class="dropdown-item" href="index.php?nav=hoso">
                                 <i class = "fa fa-user fa-fw "> </i> 

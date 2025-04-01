@@ -23,8 +23,8 @@
 
                             <img id="nav-avatar" src = "images/user.jpg" height = "30px"  width = "30px" alt = "Employee">
                             <div class="infor">
-                                <p id ="user">Admin</p>
-                                <p id="email">admin@gmail.com</p>
+                                <p id ="user"><?= $_SESSION["username"]?></p>
+                                <p id="email"><?= $_SESSION["email"]?></p>
                             </div>
                         </a>
             

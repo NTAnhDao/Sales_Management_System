@@ -37,53 +37,7 @@ setInterval(changeWebsize, 100);
 
 
 
-// function addProduct(){
-//     let soluongfield = document.getElementById('soluong')
-//     let maspfield = document.getElementById('product_id')
-
-    
-//     let stt = 1
-//     let ma = maspfield.value
-//     let soluong =soluongfield.value
-
-//     let tr = document.createElement('tr')
-//     let td1 = document.createElement('td')
-//     let td2 = document.createElement('td')
-//     let td3 = document.createElement('td')
-//     let td4 = document.createElement('td')
-//     let td5 = document.createElement('td')
-//     let td6= document.createElement('td')
-
-//     tr.appendChild(td1)
-//     tr.appendChild(td2);
-//     tr.appendChild(td3);
-//     tr.appendChild(td4);
-//     tr.appendChild(td5);
-//     tr.appendChild(td6);
-
-//     if(ma == '' || soluong == '' ){
-//         showError("Vui lòng nhập đủ thông tin!")
-//         return false
-//     }
-//     else{
-//         td1.innerHTML = stt
-//         td2.innerHTML = tensp
-//         td3.innerHTML = giabanle
-//         td4.innerHTML = soluong
-//         td5.innerHTML = soluong*giabanle
-//         td6.innerHTML = '<button onclick = "removeProduct(this)" class="btn btn-danger btn-sm">Delete</button>'
-//         stt++
-//     }
-//     showError(null)
-//     let tbody = document.getElementById('tbody') 
-//     tbody.appendChild(tr)
-//     soluong = ''
-//     ma = ''
-//     maspfield.focus()
-//     return true
-//    }
-
-function showError(message,id){
+function annoucement(message,id){
     let error = document.getElementById(id)
 
     if(message == null || message == undefined){
@@ -97,7 +51,9 @@ function showError(message,id){
     }
 }
 
-function removeProduct(element){
+
+
+function removeallProduct(element){
     element.parentElement.parentElement.remove()
 }
 
@@ -113,4 +69,50 @@ function chuyengiaodien(class1,class2){
         box2.classList.add('d-none')
         box1.classList.remove('d-none')
     }
+}
+
+
+var isNew = false;
+var tenv = "";
+var diachiv = "";
+var sdtv = "";
+// Kiểm tra xem đã nhập thông tin khách hàng chưa
+function checkData() {
+    tenv = document.getElementById("enter-name").value;
+    diachiv = document.getElementById("enter-diachi").value;
+    sdtv = document.getElementById("customer-phone").value;
+    document.getElementById("enter-name").focus();
+    if (sdtv === "" || tenv === "" || diachiv === "" ){
+        annoucement("Lỗi. Vui lòng nhập đầy đủ thông tin khách hàng!", 'err-addkh');
+        return;
+    }else{
+        let nhapcustomer = bootstrap.Modal.getInstance(document.getElementById('nhapcustomer'));
+        nhapcustomer.hide(); 
+        isNew = true;
+    } 
+}
+
+// Thêm thông tin khách hàng khi nhấn thanh toán
+function insertData() { 
+    if(isNew){
+        tenv = document.getElementById("enter-name").value;
+        diachiv = document.getElementById("enter-diachi").value;
+        sdtv = document.getElementById("customer-phone").value;
+        if (sdtv === "" || tenv === "" || diachiv === "" ){
+            annoucement("Vui lòng nhập đầy đủ thông tin khách hàng trước khi thanh toán!", 'err-findsdt');
+            return;
+        }
+        $.ajax({
+            
+            url: "func/addcustomer.php",
+            type: "POST",
+            data: { ten: tenv, diachi: diachiv, sdt: sdtv},
+            success: function() {
+                annoucement(null,'err-addkh');
+                annoucement("Đã thêm khách hàng: " + ten + "-"+sdt + "-" + diachi ,'suc-addkh');
+            }
+        });
+        isNew = false;
+    }
+    chuyengiaodien('purchase','bill');
 }

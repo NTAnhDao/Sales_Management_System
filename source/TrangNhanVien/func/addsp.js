@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let sl = $("#soluong").val().trim();
 
         if (name === "" || sl === "") {
-            showError("Vui lòng nhập đủ thông tin!",'err-addsp')
+            annoucement("Vui lòng nhập đủ thông tin!",'err-addsp');
             return;
         }
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json()) // Chuyển đổi kết quả JSON
         .then(product => {
             if (product.error) {
-                showError(product.error,'err-addsp');
+                annoucement(product.error,'err-addsp');
                 return;
             }
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("product_id").focus();
             document.getElementById("total").innerHTML = total;
-            showError(null,'err-addsp');
+            annoucement(null,'err-addsp');
         })
         .catch(error => console.error("Lỗi:", error));
     });
@@ -65,3 +65,11 @@ function removeProduct(element){
     row.remove();
 }
 
+
+
+function removeallProduct(){
+    document.getElementById("tbody").innerHTML = "";
+    total = 0;
+    document.getElementById("total").innerHTML = total;
+
+}

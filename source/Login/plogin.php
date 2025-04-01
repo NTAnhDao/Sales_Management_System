@@ -12,9 +12,15 @@
         if ($info != null) {
             $pass = $info[0]["password"];
             $role = $info[0]["role"];
+            $id_nv = $info[0]["id_nhanvien"];
+            $email = $info[0]["email"];
+
 
             if ($password == $pass) {
                 $_SESSION["role"]= $role;
+                $_SESSION["id"]= $id_nv;
+                $_SESSION["email"]= $email;
+                $_SESSION["username"]= $username;
 
                 if($role == "Admin") {
                     header("Location: ../Product_List_Admin/index.php");

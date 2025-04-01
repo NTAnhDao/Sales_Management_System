@@ -70,31 +70,14 @@
 }
 
 input{
+    display: flex;
     height: 43px;
     border-radius: 10px;
     border: 1px solid #4f454538;
+    flex-grow: 1;
+    width: 100%;
 }
 
-/* .sidebar-user{
-    margin-top: 1rem;
-    text-align: center;
-}
-.sidebar-user img{
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.sidebar-user h3{
-    font-size: 1rem;
-}
-
-.sidebar-user span{
-    font-size: .9rem;
-    margin-top: .9rem;
-    margin-bottom: .9rem;
-} */
 .openclose{
     margin: 0 10px;
 }
@@ -282,10 +265,15 @@ table{
     margin: 5px 0;
 }
 
-.purchase {
+.purchase, .bill {
     display: grid;
     align-items: center;
     justify-content: center;
+}
+.HoaDon{
+    border: 1px solid gray;
+    padding: 30px;
+    width: 500px;
 }
 
 .card-customer{
@@ -318,12 +306,57 @@ table{
     color: rgb(185, 0, 0);
     font-size: 14px;
 }
+.modal-body{
+    margin: 0 20px 20px;
+}
+.successMessage{
+    color: green;
+    font-size: 14px;
+}
+.annouce{
+    color: dimgray;
+}
 
+.modal-header {
+    background-color:#f1f1f1;
+}
 /* khachhang */
 .searchBox{
+    display: flex;
     margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 50px;
     border: 2px solid #f1f1f1;
-    background-color: #ffa5516c;
+    width: 50%;
+}
+.searchBox input{
+    border-radius: 50px;
+    border: none;
+    padding-left: 10px;
+}
+.searchBox input:focus {
+    outline: none; /* Không hiển thị viền khi focus */
+    border: none;
+}
+.search-text{
+    margin-top: 20px;
+}
+
+
+.btn-search:hover {
+    background-color: lightgrey;
+    border-radius: 50%;
+    padding:  6px 7px;
+}
+
+.btn-search{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 7px;
+    transition: 0.2s;
+}
+
+
+.btn-search:hover i {
+    color: #ffa551;
 }
