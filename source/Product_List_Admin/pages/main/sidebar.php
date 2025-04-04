@@ -16,32 +16,21 @@
                     
                 </a>
             </li>
+            
             <li class="item">
-                <a class="link" href="index.php?sidebar=quanlynhanvien">
-                    <span class = "fa fa-user"></span>
-                    <p class="item-sidebar">Quản lý nhân viên</p>
-                    
-                </a>
-            </li>
-            <li class="item">
-                <a class="link" href="index.php?sidebar=quanlykhachhang">
-                    <span class = "fa fa-users"></span>
-                    <p class="item-sidebar">Quản lý khách hàng</p>
-                    
-                </a>
-            </li>
-            <li class="item">
-                <a class="link" href="index.php?sidebar=quanlyspdanhmuc">
+                <a class="link" href="index.php?sidebar=quanlydanhmuc">
                     <span class = "fa fa-tags"></span>
-                    <p class="item-sidebar">Quản lý sản phẩm và danh mục</p>
+                    <p class="item-sidebar">Quản lý danh mục</p>
                 </a>
             </li>
+
             <li class="item">
-                <a class="link" href="index.php?sidebar=baocaophantich">
-                    <span class = "fa fa-line-chart"></span>
-                    <p class="item-sidebar">Báo cáo và phân tích</p>
+                <a class="link" href="index.php?sidebar=quanlysanpham">
+                    <span class = "fa fa-boxes"></span>
+                    <p class="item-sidebar">Quản lý sản phẩm</p> 
                 </a>
             </li>
+            
         </ul>
     </div>
     <div class="logout">

@@ -6,15 +6,11 @@
     if(isset($_GET['sidebar']))
     {
         $side = $_GET['sidebar'];
-        if($side == 'quanlynhanvien'){
-            include("main/content/quanlynhanvien.php");
-        }else if($side == 'quanlykhachhang'){
-            include("main/content/quanlykhachhang.php");
-        }else if($side == 'quanlyspdanhmuc'){
-            include("main/content/quanlyspdanhmuc.php");
-        }else if($side == 'baocaophantich'){
-            include("main/content/baocaophantich.php");
-        }
+        if($side == 'quanlysanpham'){
+            include("main/content/quanlysanpham.php");
+        }else if($side == 'quanlydanhmuc'){
+            include("main/content/quanlydanhmuc.php");
+        }       
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){
             case 'hoso':
