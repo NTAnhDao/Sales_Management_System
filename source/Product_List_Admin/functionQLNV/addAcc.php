@@ -1,11 +1,13 @@
 <?php 
+    header("Content-Type: application/json");
     include "../../database/db.php";
+    include "sendEmail.php";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fullname = $_POST["fullname"];
         $email = $_POST["email"];
-        $gender = $_POST["gender"] ?? "";
-        $sdt = $_POST["SDT"] ?? "";
+        $gender = $_POST["gender"];
+        $sdt = $_POST["SDT"];
 
         if(!empty($gender)) {
             if ($gender == "female") {
@@ -14,7 +16,6 @@
                 $gender = "Nam";
             }
         }
-
 
         if (!empty($fullname) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $temp_pass = "52300048"; // Mật khẩu tạm thời
@@ -31,21 +32,28 @@
                 $result = $query->get_result();
                 $row = $result->fetch_assoc();
                 $id = $row["id"];
-
-                //Tách phần đầu của email
-                $usename = strstr($email, '@', true);
+                
+                //tạo data
+                $usename = strstr($email, '@', true); //Tách phần đầu của email
+                $token = bin2hex(random_bytes(4));
+                $time = time() + 60; //Hiệu lực trong 1 phút
                 //Lưu data vào database bảng tài khoản
-                $query = $conn->prepare("INSERT INTO taikhoan (id_nhanvien, username, password, role) VALUE (?, ?, ?, 'Nhân viên')");
-                $query->bind_param("sss", $id, $usename, $temp_pass);
+                $query = $conn->prepare("INSERT INTO taikhoan (id_nhanvien, username, password, token, role, Thoigianhieuluc, pass_changed) VALUE (?, ?, ?, ?, 'Nhân viên', ?, '1')");
+                $query->bind_param("sssss", $id, $usename, $temp_pass, $token, $time);
                 if($query->execute()) {
-                    echo "<script>alert('Tạo tài khoản thành công!');</script>";
+                    echo json_encode(["success" => true]);
+                    echo "<script>console.log('hello')</script>";
+                    //Gửi mail
+                    $mess = send_email($email, $token);
+                    // echo json_encode(["mail" => $mess]);
                 } else {
-                    echo "<script>alert('Tạo tài khoản thất bại!');</script>";
+                    echo json_encode(["error" => "Lỗi khi thêm tài khoản vào database!"]);
                 }
             } else {
-                echo "<script>alert('Lỗi khi thêm nhân viên vào database!');</script>";
+                echo json_encode(["error" => "Lỗi khi thêm nhân viên vào database!"]);
             }
             
         }
     }
+    $conn->close();
 ?>

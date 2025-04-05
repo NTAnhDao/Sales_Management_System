@@ -6,7 +6,7 @@
         <div class="content">
             <section class="listAccount">
                 <div class="actions">
-                    <button type="button" class="btn btn-success" style="position: absolute; right: 30px;" onclick="chuyengiaodien('listAccount','addAccount')">Tạo tài khoản</button>
+                    <button type="button" class="btn btn-success" style="position: absolute; right: 30px;" onclick="chuyengiaodien('listAccount','addAccount')"><i class="fa fa-plus"></i> Tạo tài khoản</button>
                 </div>
                 <br>
                 <div class="employee">
@@ -28,11 +28,11 @@
                                 <td>600,000 VND</td>
                                 <td>100,000 VND</td>
                                 <td class="action">
-                                    <button class="btn-sendEmail">Gửi email</button>
-                                    <button class="btn-lock">Khóa</button>
-                                    <button class="btn-unlock">Mở khóa</button>
-                                    <button class="btn-detail">chi tiết</button>
-                                    <button class="btn-viewSale">Xem bán hàng</button>
+                                    <button class="btn-sendEmail"><i class="fa fa-paper-plane-o"></i></button>
+                                    <button class="btn-lock"><i class="fa fa-lock"></i></button>
+                                    <button class="btn-unlock"><i class="fa fa-unlock"></i></button>
+                                    <button class="btn-detail"><i class="fa fa-info"></i></button>
+                                    <button class="btn-viewSale"><i class="fa fa-vcard-o"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -44,7 +44,7 @@
             <section class="addAccount d-none">
                 <div class="container">
                     <h4>Tạo tài khoản</h4>
-                    <div class="form">
+                    <form action="" method="POST">
                         <div class="group">
                             <div class="input-box">
                                 <label for="fullname">Họ tên:</label>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="input-box">
                                 <label for="email">Gmail:</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="emailNV" name="email" required>
                             </div>
                         </div>
                         <div class="group">
@@ -68,9 +68,9 @@
                                 <input type="tel" id="SDT" name="SDT" pattern="[0-9]{10}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tạo</button>
+                        <button type="submit" class="btn btn-primary" id="add-account">Tạo</button>
                         <button type="button" class="btn btn-secondary" onclick="chuyengiaodien('addAccount','listAccount')">Quay lại</button>
-                    </div>
+                    </form>
                     
                 </div>
 
@@ -78,3 +78,4 @@
         </div>
     </main>
 </div>
+<script src="functionQLNV/func.js" ></script> 
