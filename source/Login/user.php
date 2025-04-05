@@ -3,7 +3,7 @@
     
     function getInfoUser($username) {
         $conn = connectDB();
-        $sql = "SELECT taikhoan.*, nhanvien.email, nhanvien.id FROM taikhoan, nhanvien WHERE id_nhanvien=nhanvien.id and username = '".$username."'";
+        $sql = "SELECT taikhoan.*, nhanvien.email, nhanvien.id, nhanvien.hoten FROM taikhoan, nhanvien WHERE id_nhanvien=nhanvien.id and username = '".$username."'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $res = $stmt->get_result();

@@ -14,13 +14,14 @@
             $role = $info[0]["role"];
             $id_nv = $info[0]["id_nhanvien"];
             $email = $info[0]["email"];
-
+            $tennv = $info[0]["hoten"];
 
             if ($password == $pass) {
                 $_SESSION["role"]= $role;
                 $_SESSION["id"]= $id_nv;
                 $_SESSION["email"]= $email;
                 $_SESSION["username"]= $username;
+                $_SESSION["tennv"]= $tennv;
 
                 if($role == "Admin") {
                     header("Location: ../Product_List_Admin/index.php");
