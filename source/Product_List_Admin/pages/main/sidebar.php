@@ -26,7 +26,7 @@
 
             <li class="item">
                 <a class="link" href="index.php?sidebar=quanlysanpham">
-                    <span class = "fa fa-boxes"></span>
+                    <span class = "fa fa-list"></span>
                     <p class="item-sidebar">Quản lý sản phẩm</p> 
                 </a>
             </li>
