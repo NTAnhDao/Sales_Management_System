@@ -34,7 +34,7 @@
         </ul>
     </div>
     <div class="logout">
-        <a class="link" href="../Login/login.php">
+        <a class="link" href="../../index.php">
             <span class = "fa fa-sign-out"></span>
         </a>
     </div>

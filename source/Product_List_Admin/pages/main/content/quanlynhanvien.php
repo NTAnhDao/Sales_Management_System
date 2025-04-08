@@ -1,3 +1,6 @@
+<?php 
+    include "functionQLNV/actions.php";
+?>
 <div class = "main-content " id="main">
     <main>
         <div class="page-header">
@@ -22,23 +25,15 @@
                             </tr>
                         </thread>
                         <tbody>
-                            <tr>
-                                <td><img src="image/user.jpg" alt="Avatar" id="avatar"></td>
-                                <td>500,000 VND</td>
-                                <td>600,000 VND</td>
-                                <td>100,000 VND</td>
-                                <td class="action">
-                                    <button class="btn-sendEmail"><i class="fa fa-paper-plane-o"></i></button>
-                                    <button class="btn-lock"><i class="fa fa-lock"></i></button>
-                                    <button class="btn-unlock"><i class="fa fa-unlock"></i></button>
-                                    <button class="btn-detail"><i class="fa fa-info"></i></button>
-                                    <button class="btn-viewSale"><i class="fa fa-vcard-o"></i></button>
-                                </td>
-                            </tr>
+                        <?php 
+                            include "functionQLNV/DsNV.php";
+                            
+                        ?>
                         </tbody>
                         
                     </table>
                 </div>
+                
             </section>
             
             <section class="addAccount d-none">

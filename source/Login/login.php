@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    if(isset($_SESSION["error"])) {
+        $error = $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }
+?>
 <!DOCTYPE html>
 <html lang="vi">
     <head>
@@ -20,7 +26,7 @@
             <div class="container">
                 <div class="col col-1">
                     <img src="Login/buy.png" >
-                    <h4>Chào mừng bạn đến với <br> Quản lý bán hàng Point of Sale</h4>
+                    <h3>Chào mừng bạn đến với <br> Quản lý bán hàng Point of Sale</h3>
                 </div>
                 <div class="col col-2">
                     <div class="login-form">
@@ -35,16 +41,14 @@
                                     <div id="eye">
                                         <i class='fa fa-eye'></i>
                                     </div>
-                                    
                                 </div>
+                                
                                 <input name="login" type="submit" class="button" value="Login">
                                 <?php
                                     if(isset($_GET["e"])) {
                                         $e = $_GET["e"];
                                         if($e=="1"){ ?>
-                                        <p style="color:red; margin: 10px 10px;" ><?php echo "Tên đăng nhập hoặc mật khẩu không chính xác"; ?></p>
-                                        <?php } else if($e== "2"){ ?>
-                                        <p style="color:red; margin: 10px 10px;" ><?php echo "Vui lòng đăng nhập bằng cách nhấp vào liên kết trong email của bạn"; ?></p>
+                                        <p style="color:#FA8A5A; margin: 10px 10px;"><?= $error ?></p>
                                         <?php }
                                     } ?>
                             </form>
