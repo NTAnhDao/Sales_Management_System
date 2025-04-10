@@ -393,8 +393,6 @@ table{
     color: #ffa551;
 }
 
-
-<<<<<<< HEAD
 .cal-parts{
     display: flex;
     justify-content: space-between;
@@ -439,7 +437,6 @@ table{
     background-color: #f1f1f1;
     border: none;
 }
-=======
 .btn-search:hover i {
     color: #ffa551;
 }
@@ -494,4 +491,3 @@ input {
     border-radius: 5px;
 }
 
->>>>>>> 3d0d43a087bc4abfceaaad39b33e86382c0a5779
