@@ -35,7 +35,7 @@
         </ul>
     </div>
     <div class="logout">
-        <a class="link" href="logout.php" data-bs-toggle="tooltip"  title="Đăng xuất">
+        <a class="link" href="../Login/logout.php" data-bs-toggle="tooltip"  title="Đăng xuất">
             <span class = "fa fa-sign-out"></span>
         </a>
     </div>

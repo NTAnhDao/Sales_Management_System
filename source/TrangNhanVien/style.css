@@ -321,6 +321,14 @@ table{
 .modal-header {
     background-color:#f1f1f1;
 }
+.addToCart{
+    color:#ffa551;
+    padding: 20px 5px;
+    font-size: 20px !important;
+    cursor: pointer;
+}
+
+
 
 @media print {
     @page {
@@ -417,7 +425,7 @@ table{
 }
 
 .soluong-input{
-    width: 20px; 
+    width: 28px; 
     height: 20px;
     text-align: center;
 }

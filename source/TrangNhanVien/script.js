@@ -52,11 +52,6 @@ function annoucement(message,id){
 }
 
 
-
-function removeallProduct(element){
-    element.parentElement.parentElement.remove()
-}
-
 function chuyengiaodien(class1,class2){
     let box1 = document.getElementsByClassName(class1) [0]
     let box2 = document.getElementsByClassName(class2) [0]

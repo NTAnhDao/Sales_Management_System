@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="index.php?nav=Dangxuat">
+                            <a class="dropdown-item" href="../Login/logout.php">
                                 <i class = "fa fa-sign-out fa-fw "> </i> 
                                 <span>Đăng xuất </span>
                             </a>

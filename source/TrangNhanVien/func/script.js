@@ -41,8 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 // thêm vào hóa đơn
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("add_product").addEventListener("click", function () {
+function isAddProduct(button){
+    let isIDbtn = button.id;  
+    if (isIDbtn == "") {
+        let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
+        let giaban = parseInt(row.children[2].textContent); // Giá
+        let tensp = row.children[1].textContent;
+        add_sanpham(1, tensp, giaban, giaban);
+    }else{
         let name = $("#product_id").val().trim();
         let sl = $("#soluong").val().trim();
 
@@ -51,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Gửi yêu cầu AJAX đến add.php
         fetch("func/addsptocart.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -63,58 +68,65 @@ document.addEventListener("DOMContentLoaded", function () {
                 annoucement(product.error,'err-addsp');
                 return;
             }
-            tongsp += parseInt(sl);
 
-            let existingRow = null;
-            document.querySelectorAll("#tbody tr").forEach(row => {
-                let productName = row.cells[0].innerText; // Cột Tên sản phẩm
-                if (productName === product.tensp) {
-                    existingRow = row;
-                }
-            });
-
-            if (existingRow) {
-                // Nếu sản phẩm đã tồn tại, cập nhật số lượng và tổng tiền
-                let quantityCell = existingRow.cells[2];
-                let quantity = quantityCell.querySelector('input[name="quantity"]').value;
-                let oldsl= parseInt(quantity); 
-                let newsl = oldsl + product.soluong;
-                quantityCell.querySelector('input[name="quantity"]').value = newsl; // Cập nhật số lượng mới
-                existingRow.cells[3].innerText = newsl * product.giabanle; // Cập nhật tổng tiền
-                total = total + (newsl-oldsl)*product.giabanle;
-            } else {
-                total += product.tongtien;
-            // Thêm dữ liệu vào bảng
-                let tableContent = `<tr>
-                                    <td>${product.tensp}</td>
-                                    <td>${product.giabanle}</td>
-                                    <td>
-                                    <div class="modify-sl">
-                                        <button class="btn-updown" type="button" onclick="decreaseQuantity(this)">-</button>
-                                        <input class = "soluong-input" type="text" name="quantity" value="${product.soluong}" readonly>
-                                        <button class="btn-updown" type="button" onclick="increaseQuantity(this)">+</button>
-                                    </div>
-                                   
-                                    </td>
-                                    <td>${product.tongtien}</td>
-                                    <td><a onclick="removeProduct(this)""><i class="fa fa-trash" style="font-size:20px;color:#ffa551"></i></a></td>
-                                    </tr>`;
-                document.getElementById("tbody").innerHTML += tableContent;
-            }
-            document.getElementById("product_id").focus();
-            document.querySelectorAll(".total").forEach(el => {
-                el.innerHTML = total.toLocaleString('vi-VN');
-            });
+            add_sanpham(sl, product.tensp, product.giabanle, product.tongtien);
             annoucement(null,'err-addsp');
         })
         .catch(error => console.error("Lỗi:", error));
+    }        
+}
+
+// Thêm sản phẩm vào giỏ
+function add_sanpham(sl, tensp, giaban, tongtien) {
+    tongsp += parseInt(sl);
+    let existingRow = null;
+    document.querySelectorAll("#tbody tr").forEach(row => {
+        let productName = row.cells[0].innerText;
+        if (productName === tensp) {
+            existingRow = row;
+        }
     });
-});
+
+    if (existingRow) {
+        let quantityCell = existingRow.cells[2];
+        let quantityInput = quantityCell.querySelector('input[name="quantity"]');
+        let oldsl = parseInt(quantityInput.value);
+        let newsl = oldsl + parseInt(sl);
+        quantityInput.value = newsl;
+        existingRow.cells[3].innerText = (newsl * giaban);
+        total += (newsl - oldsl) * giaban;
+    } else {
+        total += tongtien;
+        let tableContent = `<tr>
+            <td>${tensp}</td>
+            <td>${giaban}</td>
+            <td>
+                <div class="modify-sl">
+                    <button class="btn-updown" type="button" onclick="decreaseQuantity(this)">-</button>
+                    <input class="soluong-input" type="text" name="quantity" value="${sl}" readonly>
+                    <button class="btn-updown" type="button" onclick="increaseQuantity(this)">+</button>
+                </div>
+            </td>
+            <td>${tongtien}</td>
+            <td><a onclick="removeProduct(this)"><i class="fa fa-trash" style="font-size:20px;color:#ffa551;cursor: pointer;"></i></a></td>
+        </tr>`;
+
+        let tbody = document.getElementById("tbody");
+        let newRow = document.createElement("tr");
+        newRow.innerHTML = tableContent;
+        tbody.appendChild(newRow);
+    }
+
+    // Cập nhật tổng tiền hiển thị
+    document.querySelectorAll(".total").forEach(el => {
+        el.innerHTML = total.toLocaleString('vi-VN');
+    });
+}
 
 
 function increaseQuantity(button) {
     let input = button.parentElement.querySelector('input[name="quantity"]');
-    let value = parseInt(input.value) || 1;
+    let value = parseInt(input.value);
     value += 1;
     input.value = value;
     tongsp += 1;
@@ -129,7 +141,7 @@ function increaseQuantity(button) {
 
 function decreaseQuantity(button) {
     let input = button.parentElement.querySelector('input[name="quantity"]');
-    let value = parseInt(input.value) || 1;
+    let value = parseInt(input.value);
     if (value > 1) {
         value -= 1;
         input.value = value;
@@ -171,7 +183,10 @@ function removeallProduct(){
     });
 
 }
-
+// Khi nhấn nút tiếp theo ở trang xử lý giao dịch
+document.getElementById("nextprocess").addEventListener("click", function () {
+    document.getElementById("tongsp").innerHTML = tongsp;
+});
 
 // Khi nhan thanh toan
 document.getElementById("btnthanhtoan").addEventListener("click", function () {
