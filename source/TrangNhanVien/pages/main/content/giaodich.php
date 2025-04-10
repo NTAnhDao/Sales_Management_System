@@ -62,7 +62,7 @@
 
                     <div class="cart-submit">
                         <div>
-                            <h5 >Tổng tiền: <span id = "total">0</span> VNĐ</h5>
+                            <h5 >Tổng tiền:  <span class="total">0</span> VNĐ</h5>
                         </div>
                         <button onclick = " chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
                             <span class = "fa fa-arrow-right"> </span> Tiếp tục
@@ -126,12 +126,12 @@
                     <div class="card-cart">
                         <h5>Thông tin giao dịch </h5>
                         <div class="purchase-item">
-                            <form method="POST" class="search-form">
-                                <label for="customer_phone" style="margin:10px 0;" > Tiền khách đưa: </label>
-                                <input class="sdt" type="text" name="customer_phone" placeholder="Nhập số tiền" required>
-                            </form>
-                            <div class="customer-infor">Tổng tiền :</div>
-                            <div class="customer-infor">Tiền thối : </div>
+                                <label for="tienkhachdua" style="margin:10px 0;" > Tiền khách đưa: </label>
+                                <input id="tienkhachdua" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
+                            <div class="customer-infor">Tổng tiền :
+                                <span class="total"></span>
+                            </div>
+                            <div class="d-none errorMessage" id="err-tien"></div>
                         </div>
                     </div>
                     
@@ -139,57 +139,64 @@
                         <button onclick = "chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
                             <span class = "	fa fa-arrow-left"></span> Quay lại 
                         </button>
-                        <button onclick="insertData()" type="button" id = "btnthanhtoan" class="btn-custom btn btn-success" >
+                        <button type="button" id = "btnthanhtoan" class="btn-custom btn btn-success" >
                             <span class = "fa fa-shopping-cart"></span> Thanh toán
                         </button>
                     </div> 
                 </section>
                          
                 
-                <section class="bill d-none" >
-                    <div class="HoaDon">
-                        <div style="text-align: center;">
-                            <b> HÓA ĐƠN THANH TOÁN </b>
-                            <div> Số HD: </div>
-                            <div class = "hd-inf">
-                                <div>Thu ngân: </div>
-                                <div>Ngày: </div>
+                <section class="bill">
+                    <div id="HoaDon">
+                        <div id="hoadon-print">
+                            <div class="text-center">
+                                <b> HÓA ĐƠN THANH TOÁN </b>
+                                <div> Số HD: <span id="sohd"></span></div>
+                                <div class = "hd-inf">
+                                    <div>Thu ngân: <?=$_SESSION["tennv"] ?> </div>
+                                    <div>Ngày: <span id = "day"></span></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class = "kh-inf">
-                               
-                            <div class=" d-flex">
-                            <div>Tên khách hàng: </div>
-                            <p id ="tenkh"> </p>
+                            <div class = "kh-inf">
+                                <div>Tên khách hàng: 
+                                    <span id ="tenkh"> </span>
+                                </div>
+                                <div>Số điện thoại: 
+                                    <span id ="sdtkh"> </span>
+                                </div>
                             </div>
-                            <div class=" d-flex">
-                            <div>Số điện thoại: </div>
-                            <p id ="sdtkh"> </p>
+                            <table class="cart-table">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                                <tbody id="tbodyhd"> </tbody>
+                            </table>
+                            <div>
+                                <div class="cal-parts" >
+                                <b>Thành tiền: </b>
+                                <p class ="total">0</p>
+                                </div>
+
+                                <div class = "hd-inf">
+                                    <div class="cal-parts">
+                                        <div>Thanh toán(tiền mặt): </div>
+                                        <div class="total"></div>
+                                    </div>
+                                    <div class="cal-parts">
+                                        <div>Tiền khách đưa: </div>
+                                        <div id="tiendua"></div>
+                                    </div>
+                                    <div class="cal-parts">
+                                        <div>Tiền thối:</div>
+                                        <div id="tienthoi"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <table class="cart-table">
-                        <tr>
-                            <th>Sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                        <tbody id="tbodyhd"> </tbody>
-                        </table>
-                        <div>
-                            <div style="display: flex; justify-content: space-between;">
-                            <b>Thành tiền: </b>
-                            <p id ="tong">0</p>
-                            </div>
-                            <div class = "hd-inf d-none">
-                            <div>Thuế VAT(0%)</div>
-                            <div>Thanh toán(chuyển khoản):</div>
-                            </div>
-                            <div class = "hd-inf">
-                            <div>Thuế VAT(0%)</div>
-                            <div>Thanh toán(tiền mặt):</div>
-                            <div>Tiền khách đưa: </div>
-                            <div>Tiền thối:</div>
+                            <div class="thanks">
+                                Cảm ơn và hẹn gặp lại
                             </div>
                         </div>
                     </div>
@@ -197,7 +204,7 @@
                     
               
                     <div class="cart-submit">
-                        <button onclick = " chuyengiaodien('cart','bill')" id = "btninbill" type="button"  class="btn-custom btn btn-success" >
+                        <button onclick="printDiv('HoaDon')" id = "btninbill" type="button"  class="btn-custom btn btn-success" >
                             <span class = "fa fa-print"></span> In hóa đơn
                         </button>
                     </div> 
@@ -205,4 +212,9 @@
         </div>
     </main>
 </div> 
+<script>
+    function printDiv(divId) {
+        window.print(); // Kết hợp với CSS @media print để chỉ in phần được chọn
+    }
+</script>
 <script src="func/script.js" ></script> 

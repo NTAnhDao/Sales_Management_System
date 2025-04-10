@@ -8,15 +8,27 @@
         </div>
         <div class="orders">
             <div class="order-box">
-                <h2>0</h2>
-                <p>Khách hàng </p>
+                <h2>
+                    <?php
+                        echo isset($_COOKIE["newcustomer"]) ? $_COOKIE["newcustomer"] : 0;
+                    ?>
+                </h2>
+                <p>Khách hàng mới</p>
             </div>
             <div class="order-box">
-                <h2>2</h2>
+                <h2>
+                    <?php
+                        echo isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"] : 0;
+                    ?>
+                </h2>
                 <p>Đơn hàng </p>
             </div>
             <div class="order-box">
-                <h2>11</h2>
+                <h2>
+                    <?php
+                        echo isset($_COOKIE["doanhthutoday"]) ? number_format($_COOKIE["doanhthutoday"]) : 0;
+                    ?>
+                </h2>
                 <p>Doanh thu </p>
             </div>
         </div>

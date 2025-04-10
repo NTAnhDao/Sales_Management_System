@@ -1,3 +1,12 @@
+<?php
+ session_start();
+ $expire = strtotime('tomorrow');
+ $_SESSION["1day"]=$expire;
+ $sokhach = isset($_COOKIE["newcustomer"]) ? $_COOKIE["newcustomer"]  : 0;
+ $donhang = isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"]  : 0;
+ $doanhthu = isset($_COOKIE["doanhthutoday"]) ? $_COOKIE["doanhthutoday"]  : 0;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +19,11 @@
     <script src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 </head>
 
 <body>
 <?php
-    session_start();
-// require '../database/db.php'; 
     if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Nhân viên")) {
         // NAVIGATION
         include("pages/nav.php");

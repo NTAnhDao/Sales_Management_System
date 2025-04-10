@@ -7,17 +7,23 @@
     {
         $side = $_GET['sidebar'];
         if($side == 'khachhang'){
-            if(isset($_GET['idlskh']))
-            {
-                $id = $_GET['idlskh'];
-                include("main/content/lichsumua.php");
+            if(isset($_GET['idlskh'])){
+                if(isset($_GET['idctdh'])){
+                    include("main/content/chitietdh.php");
+                }else{
+                    include("main/content/lichsumua.php");
+                }
             }else{
                 include("main/content/khachhang.php");
             }
         }else if($side == 'giaodich'){
             include("main/content/giaodich.php");
         }else if($side == 'donhang'){
-            include("main/content/donhang.php");
+            if(isset($_GET['idctdh'])){
+                include("main/content/ctdh_donhang.php");
+            }else{
+                include("main/content/donhang.php");
+            }
         }else if($side == 'baocao'){
             include("main/content/baocao.php");
         }

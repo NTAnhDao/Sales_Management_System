@@ -71,11 +71,37 @@ function chuyengiaodien(class1,class2){
     }
 }
 
+// Tìm kiếm 
+function filterTable(input, tableId) {
+    const filter = removeVietnameseTones(input.value).toUpperCase();
+    const table = document.getElementById(tableId);
+    const rows = table.getElementsByTagName("tr");
+  
+    for (let i = 0; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      if (cells.length > 1) {
+        const value = cells[1].textContent || cells[1].innerText;
+        const normalizedText = removeVietnameseTones(value.toUpperCase());
+        rows[i].style.display = normalizedText.includes(filter) ? "" : "none";
+      }
+    }
+  }
+// Loại bỏ dấu tiếng việt
+function removeVietnameseTones(str) {
+return str.normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D");
+}
+
 
 var isNew = false;
 var tenv = "";
 var diachiv = "";
 var sdtv = "";
+var tongsp = 0;
+var total = 0;
+var tienkhachdua = 0;
 // Kiểm tra xem đã nhập thông tin khách hàng chưa
 function checkData() {
     tenv = document.getElementById("enter-name").value;
@@ -94,13 +120,31 @@ function checkData() {
 
 // Thêm thông tin khách hàng khi nhấn thanh toán
 function insertData() { 
+    tenv = document.getElementById("enter-name").value;
+    diachiv = document.getElementById("enter-diachi").value;
+    sdtv = document.getElementById("customer-phone").value;
+    tienkhachdua = document.getElementById("tienkhachdua").value;
+    
+    if (tongsp == 0){
+        alert("Vui lòng kiểm tra lại thông tin giỏ hàng trước khi thanh toán!");
+        return false;
+    }
+    if (sdtv === ""){
+        annoucement("Vui lòng nhập số điện thoại!", 'err-findsdt');
+        return false;
+    }
+    if (tienkhachdua == 0){
+        annoucement("Vui lòng nhập tiền khách đưa!", 'err-tien');
+        return false;
+    }
+    if (tienkhachdua < total){
+        annoucement("Lỗi. Số tiền khách đưa phải nhiều hơn tổng tiền!", 'err-tien');
+        return false;
+    }
     if(isNew){
-        tenv = document.getElementById("enter-name").value;
-        diachiv = document.getElementById("enter-diachi").value;
-        sdtv = document.getElementById("customer-phone").value;
-        if (sdtv === "" || tenv === "" || diachiv === "" ){
-            annoucement("Vui lòng nhập đầy đủ thông tin khách hàng trước khi thanh toán!", 'err-findsdt');
-            return;
+        if (sdtv === "" || tenv === "" || diachiv === ""){
+            alert("Vui lòng kiểm tra lại thông tin khách hàng trước khi thanh toán!");
+            return false;
         }
         $.ajax({
             
@@ -109,11 +153,12 @@ function insertData() {
             data: { ten: tenv, diachi: diachiv, sdt: sdtv},
             success: function() {
                 annoucement(null,'err-addkh');
-                annoucement("Đã thêm khách hàng: " + ten + "-"+sdt + "-" + diachi ,'suc-addkh');
             }
         });
         isNew = false;
     }
-    chuyengiaodien('purchase','bill');
+    annoucement(null, 'err-tien');
+
+    return true;
 }
 
