@@ -10,7 +10,9 @@
             include("main/content/quanlysanpham.php");
         }else if($side == 'quanlydanhmuc'){
             include("main/content/quanlydanhmuc.php");
-        }       
+        }else if($side == 'quanlynhanvien'){
+            include("main/content/quanlynhanvien.php");
+        }
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){
             case 'hoso':

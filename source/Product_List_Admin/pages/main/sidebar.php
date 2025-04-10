@@ -30,6 +30,13 @@
                     <p class="item-sidebar">Quản lý sản phẩm</p> 
                 </a>
             </li>
+
+            <li class="item">
+                <a class="link" href="index.php?sidebar=quanlynhanvien">
+                    <span class = "fa fa-users"></span>
+                    <p class="item-sidebar">Quản lý nhân viên</p> 
+                </a>
+            </li>
             
         </ul>
     </div>
