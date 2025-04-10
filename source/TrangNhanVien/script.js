@@ -25,7 +25,7 @@ function changeWebsize() {
             sidebar.style.width = "65px";
             main.style.marginLeft = "65px";
         }
-        else{
+        else if(sidebar){
             sidebar.style.width = "220px";
             main.style.marginLeft = "220px";
         }
