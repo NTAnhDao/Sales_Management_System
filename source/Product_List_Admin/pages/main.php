@@ -18,6 +18,9 @@
             case 'hoso':
                 include("main/content/hoso.php");
                 break;
+            case 'changepass':
+                include("../TrangNhanVien/pages/main/content/changePass.php");
+                break;
             case 'Dangxuat':
                 if (isset($_SESSION['role'])) {
                     unset($_SESSION['role']);

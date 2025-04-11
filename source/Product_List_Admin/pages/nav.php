@@ -36,6 +36,12 @@
                             </a>
                         </li>
                         <li>
+                            <a class="dropdown-item" href="index.php?nav=changepass">
+                                <i class = "fa fa-lock fa-fw "> </i> 
+                                <span>Đổi mật khẩu </span>
+                            </a>
+                        </li>
+                        <li>
                             <a class="dropdown-item" href="../Login/logout.php">
                                 <i class = "fa fa-sign-out fa-fw "> </i> 
                                 <span>Đăng xuất </span>

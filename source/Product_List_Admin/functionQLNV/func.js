@@ -19,10 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        
-
-        console.log("Body:", params.toString());
-        
+            
         fetch("functionQLNV/addAcc.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -35,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return JSON.parse(text);
         })
         .then(result => {
+
             if(result.success) {
                 alert("Tạo tài khoản thành công!");
                 alert(result.mail);

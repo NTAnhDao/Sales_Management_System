@@ -30,6 +30,8 @@
     }else if(isset($_GET['nav'])){
         if($_GET['nav']== 'hoso'){
             include("main/content/hoso.php");
+        }else if($_GET['nav']== 'changepass'){
+            include("main/content/changePass.php");
         }
     } else {
         include("main/content/trangchu.php");
