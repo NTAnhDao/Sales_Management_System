@@ -60,11 +60,7 @@ INSERT INTO `chitietdonhang` (`id_donhang`, `id_sanpham`, `soluong`, `tongtien`,
 (2, '12348', 1, 2500000, 2500000),
 (3, '12346', 2, 11380000, 5690000),
 (4, '12354', 1, 160000, 160000),
-(4, '12356', 2, 660000, 330000),
-(5, '12347', 2, 1100000, 550000),
-(5, '12348', 1, 2500000, 2500000),
-(5, '12349', 1, 45990000, 45990000);
-
+(4, '12356', 2, 660000, 330000);
 -- --------------------------------------------------------
 
 --
@@ -113,10 +109,8 @@ CREATE TABLE `donhang` (
 INSERT INTO `donhang` (`id`, `id_khachhang`, `id_nhanvien`, `tongtien`, `tienkhachdua`, `tientra`, `ngaymua`, `soluongsp`) VALUES
 (1, 1, 2, 900000, 1000000, 100000, '2025-03-12 14:29:32', 2),
 (2, 1, 3, 3050000, 3100000, 50000, '2025-04-04 12:16:55', 2),
-(3, 5, 3, 11380000, 12000000, 620000, '2025-04-04 12:19:11', 2),
-(4, 1, 2, 820000, 1000000, 180000, '2025-04-12 13:01:53', 3),
-(5, 5, 2, 49590000, 50000000, 410000, '2025-04-12 13:05:09', 4);
-
+(3, 3, 3, 11380000, 12000000, 620000, '2025-04-04 12:19:11', 2),
+(4, 1, 2, 820000, 1000000, 180000, '2025-04-12 13:01:53', 3);
 -- --------------------------------------------------------
 
 --
@@ -228,7 +222,7 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `activate_token`, `expire_time`, `pass_changed`, `trangthai_khoa`) VALUES
 (1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0),
 (2, 2, '52300048', '52300048', 'Nhân viên', 1, 'e58d174b', 1744346223, 1, 0),
-(3, 7, 'trannuu2005', '123456', 'Nhân viên', 1, 'e58d194a', 1744038659, 1, 1);
+(3, 4, 'trannuu2005', '123456', 'Nhân viên', 1, 'e58d194a', 1744038659, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -311,7 +305,7 @@ ALTER TABLE `danhmucsp`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
