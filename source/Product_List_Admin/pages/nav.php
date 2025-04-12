@@ -21,7 +21,7 @@
                 <li class="nav-item dropdown">
                         <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
 
-                            <img id="nav-avatar" src = "images/user.jpg" height = "30px"  width = "30px" alt = "Employee">
+                            <img id="nav-avatar" src = "image/user.jpg" height = "30px"  width = "30px" alt = "Employee">
                             <div class="infor">
                                 <p id ="user"><?= $_SESSION["username"]?></p>
                                 <p id="email"><?= $_SESSION["email"]?></p>
