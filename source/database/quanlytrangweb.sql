@@ -166,7 +166,7 @@ INSERT INTO `nhanvien` (`id`, `hoten`, `email`, `gioitinh`, `sdt`, `ngaysinh`, `
 (1, 'Lee Min Hoo', 'admin@gmail.com', 'Nam', '828828176', NULL, NULL, 'user.jpg'),
 (2, 'Trần Thị Mỹ Nữ', '52300048@student.tdtu.edu.vn', 'Nữ', NULL, NULL, NULL, 'user.jpg'),
 (3, 'Nguyễn Thị Anh Đào', '52300014@student.tdtu.edu.vn', 'Nữ', NULL, NULL, NULL, 'user.jpg'),
-(4, 'Trần Thị A', 'trannuu2005@gmail.com', 'Nam', '0', NULL, NULL, 'user.jpg'),
+(4, 'Trần Thị A', 'trannuu2005@gmail.com', 'Nam', NULL, NULL, NULL, 'user.jpg');
 
 -- --------------------------------------------------------
 
@@ -228,7 +228,7 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `activate_token`, `expire_time`, `pass_changed`, `trangthai_khoa`) VALUES
 (1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0),
 (2, 2, '52300048', '52300048', 'Nhân viên', 1, 'e58d174b', 1744346223, 1, 0),
-(3, 7, 'trannuu2005', '123456', 'Nhân viên', 1, 'e58d194a', 1744038659, 1, 1),
+(3, 7, 'trannuu2005', '123456', 'Nhân viên', 1, 'e58d194a', 1744038659, 1, 1);
 
 --
 -- Indexes for dumped tables
