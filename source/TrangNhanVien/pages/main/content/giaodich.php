@@ -213,7 +213,7 @@
                 
                 
             
-                <div class="cart-submit">
+                <div class="cart-submit right-actions">
                     <button onclick="printDiv('HoaDon')" id = "btninbill" type="button"  class="btn-custom btn btn-success" >
                         <span class = "fa fa-print"></span> In hóa đơn
                     </button>
