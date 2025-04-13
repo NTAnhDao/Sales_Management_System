@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let sdt = $("#customer-phone").val().trim();
 
         if (sdt === "") {
-            annoucement("Vui lòng nhập số điện thoại!",'err-findsdt')
+            errormessage("Vui lòng nhập số điện thoại!",'err-findsdt')
             return;  
         }
 
-        fetch("func/findsdt.php", {
+        fetch("modules/xulygiaodich/findsdt.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `sdt=${sdt}`
@@ -32,32 +32,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 idkh = product.id;
                 hoten.innerHTML = "Khách hàng: " + product.name + " - " + sdt;
                 diachi.innerHTML = "Địa chỉ: " + product.address;
-                annoucement(null,'err-findsdt');
-                annoucement(null ,'suc-addkh');
+                errormessage(null,'err-findsdt');
+                errormessage(null ,'suc-addkh');
             }
 
         })
         .catch(error => console.error("Lỗi:", error));
     });
 });
-// thêm vào hóa đơn
+
+// thêm vào giỏ hàng
 function isAddProduct(button){
     let isIDbtn = button.id;  
+    // Nếu thêm bằng cách chọn sản phẩm trong danh sách
     if (isIDbtn == "") {
         let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
         let giaban = parseInt(row.children[2].textContent); // Giá
         let tensp = row.children[1].textContent;
         add_sanpham(1, tensp, giaban, giaban);
-    }else{
+    }else{ // Thêm bằng cách nhập mã vạch
         let name = $("#product_id").val().trim();
         let sl = $("#soluong").val().trim();
 
         if (name === "" || sl === "") {
-            annoucement("Vui lòng nhập đủ thông tin!",'err-addsp');
+            errormessage("Vui lòng nhập đủ thông tin!",'err-addsp');
             return;
         }
 
-        fetch("func/addsptocart.php", {
+        fetch("modules/xulygiaodich/addsptocart.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `name=${name}&sl=${sl}`
@@ -65,12 +67,12 @@ function isAddProduct(button){
         .then(response => response.json()) // Chuyển đổi kết quả JSON
         .then(product => {
             if (product.error) {
-                annoucement(product.error,'err-addsp');
+                errormessage(product.error,'err-addsp');
                 return;
             }
 
             add_sanpham(sl, product.tensp, product.giabanle, product.tongtien);
-            annoucement(null,'err-addsp');
+            errormessage(null,'err-addsp');
         })
         .catch(error => console.error("Lỗi:", error));
     }        
@@ -123,7 +125,7 @@ function add_sanpham(sl, tensp, giaban, tongtien) {
     });
 }
 
-
+// Tăng số lượng sản phẩm
 function increaseQuantity(button) {
     let input = button.parentElement.querySelector('input[name="quantity"]');
     let value = parseInt(input.value);
@@ -139,6 +141,7 @@ function increaseQuantity(button) {
     });
 }
 
+// Giảm số lượng sản phẩm
 function decreaseQuantity(button) {
     let input = button.parentElement.querySelector('input[name="quantity"]');
     let value = parseInt(input.value);
@@ -158,6 +161,7 @@ function decreaseQuantity(button) {
     }
 }
 
+// Xóa sản phẩm
 function removeProduct(element){
     let row = element.closest("tr"); // Tìm thẻ <tr> chứa nút
     let td_tongtien = parseInt(row.children[3].textContent); // Tổng tiền của dòng chọn xóa
@@ -174,7 +178,7 @@ function removeProduct(element){
 }
 
 
-
+// Xóa tất cả sản phẩm trong giỏ hàng
 function removeallProduct(){
     document.getElementById("tbody").innerHTML = "";
     total = tongsp = 0;
@@ -183,12 +187,13 @@ function removeallProduct(){
     });
 
 }
-// Khi nhấn nút tiếp theo ở trang xử lý giao dịch
+
+// Khi nhấn nút tiếp theo ở trang xử lý giao dịch sẽ hiển thị tổng sản phẩm đã chọn
 document.getElementById("nextprocess").addEventListener("click", function () {
     document.getElementById("tongsp").innerHTML = tongsp;
 });
 
-// Khi nhan thanh toan
+// Khi nhấn nút thanh toán
 document.getElementById("btnthanhtoan").addEventListener("click", function () {
     let sourceTable = document.getElementById("tbody");
     let destinationTable = document.getElementById("tbodyhd");
@@ -199,6 +204,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
 
     let selectedCols = [0, 1, 2, 3]; 
 
+    // Lấy dữ liệu từ giỏ hàng
     let cartData = [];
     for (let row of sourceTable.rows) {
         let newRow = destinationTable.insertRow();
@@ -224,7 +230,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
 
     if(insertData()){
         // đưa dữ liệu vào taoHD.php để tạo hóa đơn(đơn hàng)
-        fetch("func/taoHD.php", {
+        fetch("modules/xulygiaodich/taoHD.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `tienkhachdua=${tienkhachdua}&slsp=${tongsp}&tong=${total}&sdt=${sdtv}`
@@ -235,8 +241,8 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
                 alert(product.error);
                 return;
             }
-                // Gửi cartData tạo chi tiết hóa đơn
-            fetch("func/taoCTHD.php", {
+            // Gửi cartData tạo chi tiết hóa đơn
+            fetch("modules/xulygiaodich/taoCTHD.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -245,8 +251,8 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
             })
             .then(response => response.text())
             .then(data => {
+                // Thông báo hoàn tất
                 alert(data);
-                // Chuyển giao diện hoặc thông báo hoàn tất
             });
             const now = dayjs();
            
@@ -256,14 +262,12 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
             document.getElementById("sohd").innerHTML = product.idhd;
             document.getElementById("tiendua").innerHTML = parseInt(tienkhachdua).toLocaleString('vi-VN');
             document.getElementById("tienthoi").innerHTML = product.tienthoi.toLocaleString('vi-VN');
+
+            // Chuyển giao diện 
             chuyengiaodien('purchase','bill');
 
         })
-
-        
-    
     }
-
 });
 
 

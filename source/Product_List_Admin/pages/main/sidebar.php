@@ -1,9 +1,9 @@
 <div class="sidebar"  id="mySidebar" >
     <div class="sidebar-user">
-        <img src = "image/user.jpg" height = "70px"  width = "70px" alt = "">
+        <img src="quanlyhoso/<?=$profile_img?>" height = "70px"  width = "70px" alt = "">
             <div>
-                <h3>Admin</h3>
-                <span>admin123@gmail.com</span>
+                <h3><?=$profile_name?></h3>
+                <span><?=$_SESSION['role']?></span>
         </div>
     </div>
 

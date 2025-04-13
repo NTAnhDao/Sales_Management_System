@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="leftnav justify-content-start">
             <a class="logo navbar-brand" href="index.php" data-bs-toggle="tooltip"  title="Về trang chủ">
-                <img src="images/logo.png" alt="Avatar Logo" style="width:40px;" > 
+                <img src="../images/logo.ico" alt="Logo" style="width:40px;" > 
                 <h4>Point of Sale</h4>
             </a>
             <div class="openclose"><span class="navbar-toggler-icon" style="font-size:30px;cursor:pointer" onclick="open_closeNav() " class = "las la-bars"></span>  </div>
@@ -21,8 +21,14 @@
                     </a></li>
                 <li class="nav-item dropdown">
                         <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-
-                            <img id="nav-avatar" src = "images/trai_tre.jpeg" height = "30px"  width = "30px" alt = "Employee">
+                            <?php 
+                            if (empty($profile_img) || $profile_img == "") {
+                                $avtPath = "../images/user.jpg";
+                            } else {
+                                $avtPath = "modules/quanlyhoso/" . $profile_img;
+                            }
+                            ?>
+                            <img id="nav-avatar" src = "<?=$avtPath?>" height = "30px"  width = "30px" alt = "Avatar">
                             <div class="infor">
                                 <p id ="user"><?= $_SESSION["username"]?></p>
                                 <p id="email"><?= $_SESSION["email"]?></p>

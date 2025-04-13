@@ -28,7 +28,7 @@
                                     <th>Hành động</th>
                                 </tr>
                                 <tbody id ="danhsachSP">
-                                    <?php include 'func/showdssp.php'; ?>
+                                    <?php include 'modules/xulygiaodich/showdssp.php'; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -86,9 +86,9 @@
                     <h5>Thông tin khách hàng</h5>
                     <div class="purchase-item">
                         <div class="form-product row">
-                                <label for="customer-phone" style="margin:10px 0;" > Số điện thoại: </label>
-                                <input class="sdt" type="text" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
-                                <button id="search-sdt"  class="btn-custom btn btn-secondary" >Tìm kiếm</button>
+                            <label for="customer-phone" style="margin:10px 0;" > Số điện thoại: </label>
+                            <input class="sdt"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
+                            <button id="search-sdt"  class="btn-custom btn btn-secondary" >Tìm kiếm</button>
                         </div>
                         <div class="customer-infor" id="hoten"> </div>
                         <div class="customer-infor" id="diachi"> </div>
@@ -134,7 +134,7 @@
                     <h5>Thông tin giao dịch </h5>
                     <div class="purchase-item">
                         <label for="tienkhachdua" style="margin:10px 0;" > Tiền khách đưa: </label>
-                        <input id="tienkhachdua" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
+                        <input id="tienkhachdua" oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
                         <div class="customer-infor">Tổng sản phẩm :
                             <span id="tongsp"></span>
                         </div>
@@ -227,4 +227,4 @@
         window.print(); // Kết hợp với CSS @media print để chỉ in phần được chọn
     }
 </script>
-<script src="func/script.js" ></script> 
+<script src="modules/xulygiaodich/script.js" ></script> 

@@ -5,7 +5,7 @@
  $sokhach = isset($_COOKIE["newcustomer"]) ? $_COOKIE["newcustomer"]  : 0;
  $donhang = isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"]  : 0;
  $doanhthu = isset($_COOKIE["doanhthutoday"]) ? $_COOKIE["doanhthutoday"]  : 0;
-
+ include 'modules/quanlyhoso/getProfileNV.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

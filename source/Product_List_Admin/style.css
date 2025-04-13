@@ -21,6 +21,7 @@
 
 .logo h4{
     color: #ffffffd6;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .leftnav{
@@ -560,36 +561,36 @@ table {
     margin-top: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+}
     
-    h2 {
+h2 {
     text-align: center;
     margin-bottom: 20px;
-    }
-    
-    .form-group {
+}
+
+.form-group {
     margin-bottom: 15px;
-    }
-    
-    .form-group label {
+}
+
+.form-group label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
-    }
-    
-    .form-group input,
-    .form-group select {
+}
+
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    }
-    
-    .avatar-group input[type="file"] {
+}
+
+.avatar-group input[type="file"] {
     margin-top: 5px;
-    }
-    
-    #avatarPreview {
+}
+
+#avatarPreview {
     display: block;
     margin-top: 10px;
     width: 100px;
@@ -597,47 +598,47 @@ table {
     object-fit: cover;
     border: 1px solid #ccc;
     border-radius: 50%;
-    }
-    
-    .profile-card {
+}
+
+.profile-card {
     max-width: 500px;
     margin: auto;
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     overflow: hidden;
-    }
-    
-    .profile-header {
+}
+
+.profile-header {
     text-align: center;
     padding: 5px 10px 20px;
     background-color: #e9f6f3;
-    }
-    
-    .avatar {
+}
+
+.avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid white;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    
-    .name {
+}
+
+.name {
     margin-top: 15px;
     font-size: 20px;
     font-weight: 600;
     color: #333;
-    }
-    
-    .position {
+}
+
+.position {
     font-size: 14px;
     color: #666;
     margin: 5px 0;
     line-height: 1.4;
-    }
-    
-    .status {
+}
+
+.status {
     display: inline-block;
     background-color: #d1f7e7;
     color: #2e9c6a;
@@ -645,45 +646,54 @@ table {
     border-radius: 20px;
     font-size: 13px;
     margin-top: 10px;
-    }
-    
-    .profile-info {
+}
+
+.profile-info {
     padding: 20px 30px;
-    }
-    
-    .profile-info h3 {
+}
+
+.profile-info h3 {
     font-size: 16px;
     color: #444;
     margin-bottom: 15px;
-    }
-    
-    .info-item {
+}
+
+.info-item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    }
-    
-    .icon {
+}
+
+.icon {
     font-size: 18px;
-    
     padding: 10px;
     width:40px;
-    }
-    .right-actions{
+}
+.right-actions{
     display:flex;
     justify-content: end;
-    }
-    .label {
+}
+.label {
     font-weight: 600;
     width: 90px;
     color: #555;
-    }
-    
-    .value {
+}
+
+.value {
     color: #333;
-    }
-    
-    .edit-btn{
+}
+
+.edit-btn{
     margin: 10px;
     width: 100px;
-    }
+}
+
+/* Chỉnh sửa hồ sơ */
+.avatar-edit{
+    height: auto;
+    padding: 20px;
+}
+
+.right-actions .fa-edit{
+    color: black;
+}

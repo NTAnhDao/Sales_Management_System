@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include 'quanlyhoso/getProfileNV.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,7 @@
 
 <body>
 <?php
-    session_start();
+
 // require '../database/db.php'; 
     if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Admin")) {
         // NAVIGATION

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="leftnav justify-content-start">
             <a class="logo navbar-brand" href="index.php">
-                <img src="image/logo.jpg" alt="Avatar Logo" style="width:40px;" > 
+                <img src="../images/logo.ico" alt="Logo" style="width:40px;" > 
                 <h4>Point of Sale</h4>
             </a>
             <div class="openclose"><span class="navbar-toggler-icon" style="font-size:30px;cursor:pointer" onclick="open_closeNav() " class = "las la-bars"></span></div>   
@@ -19,14 +19,20 @@
                     <span class = "fa fa-bell"></span> 
                     </a></li>
                 <li class="nav-item dropdown">
-                        <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-
-                            <img id="nav-avatar" src = "image/user.jpg" height = "30px"  width = "30px" alt = "Employee">
-                            <div class="infor">
-                                <p id ="user"><?= $_SESSION["username"]?></p>
-                                <p id="email"><?= $_SESSION["email"]?></p>
-                            </div>
-                        </a>
+                    <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    <?php 
+                        if (empty($profile_img) || $profile_img == "") {
+                            $avtPath = "../images/user.jpg";
+                        } else {
+                            $avtPath = "quanlyhoso/" . $profile_img;
+                        }
+                    ?>
+                    <img id="nav-avatar" src = "<?=$avtPath?>" height = "30px"  width = "30px" alt = "Avatar">
+                        <div class="infor">
+                            <p id ="user"><?= $_SESSION["username"]?></p>
+                            <p id="email"><?= $_SESSION["email"]?></p>
+                        </div>
+                    </a>
             
                     <ul class="dropdown-menu">
                         <li>

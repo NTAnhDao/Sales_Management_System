@@ -16,7 +16,7 @@
             </div>
             <section class="history-customer">
                 <div class="customer">
-                    <?php include("func/hienthikh.php"); ?>
+                    <?php include("modules/khachhang/hienthikh.php"); ?>
                 </div>
                 <div class="card-customer">
                     <h5>Lịch sử mua hàng</h5>
@@ -32,7 +32,7 @@
                         </tr>
                         <tbody id = "lichsumua">
             
-                            <?php include 'func/xemlichsu.php'; ?>
+                            <?php include 'modules/khachhang/xemlichsu.php'; ?>
 
                         </tbody>
                     </table>

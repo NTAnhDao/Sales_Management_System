@@ -7,6 +7,27 @@
     margin: 0;
 }
 
+.sidebar-user{
+    margin-top: 1rem;
+    text-align: center;
+}
+.sidebar-user img{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar-user h3{
+    font-size: 1rem;
+}
+
+.sidebar-user span{
+    font-size: .9rem;
+    margin-top: .9rem;
+    margin-bottom: .9rem;
+}
+
 #nav{
     position: fixed;
 }
@@ -21,14 +42,12 @@
 
 .logo h4{
     color: #ffffffd6;
+    margin: 10px 10px 0 10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .leftnav{
     display: flex;
-}
-
-.logo>h4{
-    margin: 10px 10px 0 10px;
 }
 
 .sidebar{
@@ -501,137 +520,200 @@ input {
 
 /* Giao dien ho so */
 .profile-container{
-background-color: white;
-padding: 30px;
-max-width: 800px;
-margin: auto;
-margin-top: 30px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-text-align: center;
-margin-bottom: 20px;
+    background-color: white;
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .form-group {
-margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-display: block;
-margin-bottom: 6px;
-font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
 }
 
 .form-group input,
 .form-group select {
-width: 100%;
-padding: 8px 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .avatar-group input[type="file"] {
-margin-top: 5px;
+    margin-top: 5px;
 }
 
 #avatarPreview {
-display: block;
-margin-top: 10px;
-width: 100px;
-height: 100px;
-object-fit: cover;
-border: 1px solid #ccc;
-border-radius: 50%;
+    display: block;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 50%;
 }
 
 .profile-card {
-max-width: 500px;
-margin: auto;
-background: white;
-border-radius: 15px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-overflow: hidden;
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .profile-header {
-text-align: center;
-padding: 5px 10px 20px;
-background-color: #e9f6f3;
+    text-align: center;
+    padding: 5px 10px 20px;
+    background-color: #e9f6f3;
+    height: auto;
 }
 
 .avatar {
-width: 100px;
-height: 100px;
-border-radius: 50%;
-object-fit: cover;
-border: 4px solid white;
-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .name {
-margin-top: 15px;
-font-size: 20px;
-font-weight: 600;
-color: #333;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
 }
 
 .position {
-font-size: 14px;
-color: #666;
-margin: 5px 0;
-line-height: 1.4;
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+    line-height: 1.4;
 }
 
 .status {
-display: inline-block;
-background-color: #d1f7e7;
-color: #2e9c6a;
-padding: 5px 12px;
-border-radius: 20px;
-font-size: 13px;
-margin-top: 10px;
+    display: inline-block;
+    background-color: #d1f7e7;
+    color: #2e9c6a;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 10px;
 }
 
 .profile-info {
-padding: 20px 30px;
+    padding: 20px 30px;
 }
 
 .profile-info h3 {
-font-size: 16px;
-color: #444;
-margin-bottom: 15px;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
 }
 
 .info-item {
-display: flex;
-align-items: center;
-margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .icon {
-font-size: 18px;
+    font-size: 18px;
+    padding: 10px;
+    width:40px;
+}
 
-padding: 10px;
-width:40px;
-}
-.right-actions{
-display:flex;
-justify-content: end;
-}
 .label {
-font-weight: 600;
-width: 90px;
-color: #555;
+    font-weight: 600;
+    width: 90px;
+    color: #555;
 }
 
 .value {
-color: #333;
+    color: #333;
 }
 
 .edit-btn{
-margin: 10px;
-width: 100px;
+    margin: 10px;
+    width: 100px;
+}
+
+/* Upload Area */
+.upload-area {
+    text-align: center;
+    margin-left: 20px; /* Move the upload area slightly to the right */
+}
+
+.drop-zone {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #cccccc;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.drop-zone.drag-over {
+    background-color: #e0f7fa;
+    border-color: #00acc1;
+}
+
+.file-info {
+    margin-top: 15px;
+    color: #333;
+    display: none;
+    text-align: left;
+}
+
+.file-actions {
+    margin-top: 15px; /* Khoảng cách trên */
+    display: flex;
+    justify-content: center; /* Căn giữa các nút */
+    gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-left, .form-right {
+        width: 100%;
+        padding: 0 !important;
+    }
+    .drop-zone {
+        height: 150px;
+    }
+    .upload-area {
+        margin-left: 0; /* Reset margin on smaller screens */
+    }
+}
+/* Chỉnh sửa hồ sơ */
+.avatar-edit{
+    height: auto;
+    padding: 20px;
+}
+
+.right-actions .fa-edit{
+    color: black;
+}
+
+.right-actions{
+    display:flex;
+    justify-content: end;
+}
+
+tr:hover{
+    background-color: rgb(255, 243, 223);
 }

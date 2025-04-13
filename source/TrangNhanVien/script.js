@@ -37,7 +37,7 @@ setInterval(changeWebsize, 100);
 
 
 
-function annoucement(message,id){
+function errormessage(message,id){
     let error = document.getElementById(id)
 
     if(message == null || message == undefined){
@@ -104,7 +104,7 @@ function checkData() {
     sdtv = document.getElementById("customer-phone").value;
     document.getElementById("enter-name").focus();
     if (sdtv === "" || tenv === "" || diachiv === "" ){
-        annoucement("Lỗi. Vui lòng nhập đầy đủ thông tin khách hàng!", 'err-addkh');
+        errormessage("Lỗi. Vui lòng nhập đầy đủ thông tin khách hàng!", 'err-addkh');
         return;
     }else{
         let nhapcustomer = bootstrap.Modal.getInstance(document.getElementById('nhapcustomer'));
@@ -125,15 +125,15 @@ function insertData() {
         return false;
     }
     if (sdtv === ""){
-        annoucement("Vui lòng nhập số điện thoại!", 'err-findsdt');
+        errormessage("Vui lòng nhập số điện thoại!", 'err-findsdt');
         return false;
     }
     if (tienkhachdua == 0){
-        annoucement("Vui lòng nhập tiền khách đưa!", 'err-tien');
+        errormessage("Vui lòng nhập tiền khách đưa!", 'err-tien');
         return false;
     }
     if (tienkhachdua < total){
-        annoucement("Lỗi. Số tiền khách đưa phải nhiều hơn tổng tiền!", 'err-tien');
+        errormessage("Lỗi. Số tiền khách đưa phải nhiều hơn tổng tiền!", 'err-tien');
         return false;
     }
     if(isNew){
@@ -142,17 +142,16 @@ function insertData() {
             return false;
         }
         $.ajax({
-            
-            url: "func/addcustomer.php",
+            url: "modules/xulygiaodich//addcustomer.php",
             type: "POST",
             data: { ten: tenv, diachi: diachiv, sdt: sdtv},
             success: function() {
-                annoucement(null,'err-addkh');
+                errormessage(null,'err-addkh');
             }
         });
         isNew = false;
     }
-    annoucement(null, 'err-tien');
+    errormessage(null, 'err-tien');
 
     return true;
 }

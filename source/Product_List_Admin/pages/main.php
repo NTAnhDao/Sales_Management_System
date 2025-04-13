@@ -16,7 +16,11 @@
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){
             case 'hoso':
-                include("main/content/hoso.php");
+                if (isset($_GET['query'])) {
+                    include("main/content/suahoso.php");
+                }else{
+                    include("main/content/hoso.php");
+                }
                 break;
             case 'changepass':
                 include("../TrangNhanVien/pages/main/content/changePass.php");

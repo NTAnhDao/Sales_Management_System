@@ -23,7 +23,7 @@
 
             <section class="detail-bill">
                 <div class=" customer">
-                    <?php include("func/hienthikh.php"); ?>
+                    <?php include("modules/khachhang/hienthikh.php"); ?>
                 </div>
                 
                 <?php include("bangCTDH.php"); ?>

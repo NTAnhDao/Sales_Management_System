@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody id = "customers-info">
-                           <?php include 'func/showkhach.php'; ?>
+                           <?php include 'modules/khachhang/showkhach.php'; ?>
                         </tbody>
                     </table>
                 </div>

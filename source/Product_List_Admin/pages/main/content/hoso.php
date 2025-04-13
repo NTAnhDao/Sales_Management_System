@@ -1,4 +1,5 @@
-<?php include 'func/showprofile.php'; ?>
+<?php include 'quanlyhoso/editprofile.php'; ?>
+
 <div class = "main-content " id="main">
     <main>
         <div class = "page-header">
@@ -10,11 +11,10 @@
             <div class="profile-container">
                 <div class="profile-header">
                     <div class="right-actions">
-                        <a  onclick = "chuyengiaodien('profife-view','profile-edit')"><i class='fa fa-edit'></i></a>
+                        <a href="index.php?nav=hoso&query=sua"><i class='fa fa-edit'></i></a>
                     </div>
                     <div>
-                        
-                        <img src="image/<?=$profile_img?>" alt="Avatar" class="avatar">
+                        <img src="quanlyhoso/<?=$profile_img?>" alt="Avatar" class="avatar">
                         <h2 class="name"><?=$profile_name?></h2>
                         <p class="position"><?=$_SESSION['role']?></p>
                         <span class="status">Đang làm việc</span>
@@ -24,64 +24,31 @@
                 <div class="profile-info">
                 <h3>Thông tin nhân sự</h3>
                 <div class="info-item">
-                    <span class="fa fa-envelope icon"></span>
+                    <i class="fa fa-envelope icon"></i>
                     <span class="label">Email:</span>
                     <span class="value"><?=$profile_email?></span>
                 </div>
                 <div class="info-item">
-                    <span class="fa fa-phone icon"></span>
+                    <i class="fa fa-phone icon"></i>
                     <span class="label">Điện thoại:</span>
-                    <span class="value"><?=$profile_sdt?></span>
+                    <span class="value"><?= $profile_sdt ?: "Chưa có dữ liệu" ?></span>
                 </div>
                 <div class="info-item">
-                    <span class="fa fa-venus-mars icon"></span>
+                    <i class="fa fa-venus-mars icon"></i>
                     <span class="label">Giới tính:</span>
-                    <span class="value"><?=$profile_gender?></span>
+                    <span class="value"><?=$profile_gender ?: "Chưa có dữ liệu" ?></span>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-birthday-cake icon"></i>
+                    <span class="label">Ngày sinh:</span>
+                    <span class="value"><?= $profile_ngaysinh ?: "Chưa có dữ liệu" ?></span>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-calendar icon"></i>
+                    <span class="label">Địa chỉ:</span>
+                    <span class="value"><?= $profile_diachi ?: "Chưa có dữ liệu" ?></span>
                 </div>
                 </div>
-                            
-                </div>
-        </section>
-        <section class="profile-edit d-none">
-            <div class="profile-container">
-                <form action="func/editprofile.php" method="post">
-                    <div class="form-group avatar-group">
-                        <label>Ảnh đại diện:</label>
-                        <input type="file" id="avatarInput" accept="image/*">
-                        <img id="avatarPreview" src="" alt="Ảnh đại diện" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Họ tên:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại:</label>
-                        <input type="text" id="phone" name="phone">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="gender">Giới tính:</label>
-                        <select id="gender" name="gender">
-                        <option value="">-- Chọn --</option>
-                        <option value="nam">Nam</option>
-                        <option value="nu">Nữ</option>
-                        <option value="khac">Khác</option>
-                        </select>
-                    </div>
-
-                    <div class="right-actions">
-                        <button type="submit" class="btn btn-primary edit-btn" id="edit-profile">Sửa</button>
-                        <button type="button" class="btn btn-secondary edit-btn" onclick="chuyengiaodien('profile-edit','profife-view')">Hủy</button>
-                    </div>
-                </form>
-
             </div>
         </section>
     </main>

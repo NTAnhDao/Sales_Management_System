@@ -1,4 +1,11 @@
 <div class="sidebar"  id="mySidebar" >
+    <div class="sidebar-user">
+        <img src="<?=$avtPath?>" height = "70px"  width = "70px" alt = "">
+            <div>
+                <h3><?=$profile_name?></h3>
+                <span><?=$_SESSION['role']?></span>
+        </div>
+    </div>
     <div class="sidebar-menu">
         <ul >
             <li class="item">

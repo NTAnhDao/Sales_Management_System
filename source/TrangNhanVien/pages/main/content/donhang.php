@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody id = "donhang">
-                            <?php include("func/donhangdatao.php"); ?>
+                            <?php include("modules/donhang/donhangdatao.php"); ?>
                         </tbody>
                     </table>
                 </div>
