@@ -22,7 +22,7 @@
                     <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                     <?php 
                         if (empty($profile_img) || $profile_img == "") {
-                            $avtPath = "../images/user.jpg";
+                            $avtPath = "../image/user.jpg";
                         } else {
                             $avtPath = "quanlyhoso/imagesNV/" . $profile_img;
                         }

@@ -183,18 +183,18 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`mavach`, `tensp`, `giagoc`, `giabanle`, `img`, `id_danhmuc`, `ngaytao`) VALUES
-('12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, NULL, 1, '2025-03-09 15:00:16'),
-('12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, NULL, 2, '2025-03-09 15:00:16'),
-('12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, NULL, 2, '2025-03-09 15:04:00'),
-('12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, NULL, 2, '2025-03-09 15:04:00'),
-('12349', 'OPPO Find N5', 40000000, 45990000, NULL, 1, '2025-03-29 15:24:40'),
-('12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, NULL, 1, '2025-03-29 15:24:40'),
-('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, NULL, 3, '2025-03-29 16:08:36'),
-('12352', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, NULL, 3, '2025-03-29 16:08:36'),
-('12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, NULL, 4, '2025-03-29 16:10:55'),
-('12354', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, NULL, 4, '2025-03-29 16:10:55'),
-('12355', 'Ốp lưng Galaxy S24 Ultra Nhựa cứng viền dẻo Samsung kèm dây đứng Chính hãng', 650000, 833000, NULL, 4, '2025-03-29 16:13:27'),
-('12356', 'Ốp lưng Galaxy A26 TPU có khe đựng thẻ Samsung Chính hãng', 250000, 330000, NULL, 4, '2025-03-29 16:13:27');
+('12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, 'reno12-5g-3.png', 1, '2025-03-09 15:00:16'),
+('12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, 'airpods-pro-2nd.jpg', 2, '2025-03-09 15:00:16'),
+('12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, 'tai-nghe-bluetooth-chup-tai-baseus-bass-35-max-kem-5.jpg', 2, '2025-03-09 15:04:00'),
+('12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, 'tai-nghe-bluetooth-chup-tai-sony.jpgjpg', 2, '2025-03-09 15:04:00'),
+('12349', 'OPPO Find N5', 40000000, 45990000, 'oppo_find_n3_oppo.png', 1, '2025-03-29 15:24:40'),
+('12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, 'dien_thoai_apple_iphone_16_plus_hong_3.jpg', 1, '2025-03-29 15:24:40'),
+('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, 'pin-sac-du-phong_Ava.jpg'L, 3, '2025-03-29 16:08:36'),
+('12352', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, 'pinscduphongAnkerZolo.jpg', 3, '2025-03-29 16:08:36'),
+('12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, 'pinscduphongAnkerZolo.jpg', 4, '2025-03-29 16:10:55'),
+('12354', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, 'op-lung-galaxy-s24-fe-nhua-cung-vien-deo.jpg' , 4, '2025-03-29 16:10:55'),
+('12355', 'Ốp lưng Galaxy S24 Ultra Nhựa cứng viền dẻo Samsung kèm dây đứng Chính hãng', 650000, 833000, 'op_lung_cung_s24ultra.jpg', 4, '2025-03-29 16:13:27'),
+('12356', 'Ốp lưng Galaxy A26 TPU có khe đựng thẻ Samsung Chính hãng', 250000, 330000, 'op_lung_a26_co_khe_dung_the.jpg', 4, '2025-03-29 16:13:27');
 
 -- --------------------------------------------------------
 
