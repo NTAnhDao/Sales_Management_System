@@ -3,7 +3,7 @@
     
     function login($username, $pass) {
         $conn = connectDB();
-        $sql = "SELECT taikhoan.*, nhanvien.email, nhanvien.id, nhanvien.hoten FROM taikhoan, nhanvien WHERE id_nhanvien=nhanvien.id and username = ?";
+        $sql = "SELECT * FROM taikhoan, nhanvien WHERE id_nhanvien=nhanvien.id and username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
         

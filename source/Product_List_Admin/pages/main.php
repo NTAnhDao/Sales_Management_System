@@ -11,7 +11,13 @@
         }else if($side == 'quanlydanhmuc'){
             include("main/content/quanlydanhmuc.php");
         }else if($side == 'quanlynhanvien'){
-            include("main/content/quanlynhanvien.php");
+            if(isset($_GET['id_view'])) {
+                include("main/content/thongtinbanhang.php");
+            } else {
+                include("main/content/quanlynhanvien.php");
+            }
+        }else if ($side == 'baocao'){
+            include("main/content/baocao.php");
         }
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){

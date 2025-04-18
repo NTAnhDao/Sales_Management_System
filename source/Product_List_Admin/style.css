@@ -343,20 +343,12 @@ table{
     border-radius: 5px;
 }
 
-.employee{
-    border-radius: 5px;
-    border: 2px solid orange;
-    padding: 15px;
-    background-color:white;
-    margin: 30px 20px 0 20px;
-}
-
 .cart-table th, .cart-table tbody td{
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-size: small;
     border-bottom: 1px solid #ffa551;
-
 }
+
 
 #avatar {
     width: 60px;
@@ -435,7 +427,7 @@ table {
     border-radius: 5px;
 }
 
-.card-product, .card-catalog {
+.card-product, .card-catalog, .history-sale, .employee{
     border-radius: 10px;
     border: 2px solid #ff9800;
     padding: 20px;
@@ -694,6 +686,76 @@ h2 {
     padding: 20px;
 }
 
-.right-actions .fa-edit{
+.right-actions .fa-edit, .fa-long-arrow-left{
     color: black;
 }
+
+/* giao diện đổi mật khẩu */
+.main-pass {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    margin: auto;
+}
+
+.header-pass {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: lightgray;
+}
+
+.header-name h3{
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.changePass {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.group{
+    display: flex;
+    gap: 50px; 
+}
+
+.input-box{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    max-width: 300px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* css báo cáo */
+.date-time {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    width: fit-content;
+}
+  
+.date-type {
+    padding: 5px;
+    margin: 5px;
+    width: 130px;
+    height: 30px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+  

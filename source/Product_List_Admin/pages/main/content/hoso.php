@@ -1,4 +1,7 @@
-<?php include 'quanlyhoso/editprofile.php'; ?>
+<?php 
+    include 'quanlyhoso/editprofile.php';
+    include 'quanlyhoso/getProfileNV.php';
+?>
 
 <div class = "main-content " id="main">
     <main>
@@ -10,14 +13,28 @@
         <section class="profife-view">
             <div class="profile-container">
                 <div class="profile-header">
-                    <div class="right-actions">
-                        <a href="index.php?nav=hoso&query=sua"><i class='fa fa-edit'></i></a>
-                    </div>
+                    <?php 
+                    if (isset($_GET["id_detail"])) {
+                        ?>
+                        <div class="right-actions">
+                            <a href="index.php?sidebar=quanlynhanvien"><i class='fa fa-long-arrow-left'></i></a>
+                        </div>   
+                        
+                        <?php
+                    } else {
+                        ?>
+                        <div class="right-actions">
+                            <a href="index.php?nav=hoso&query=sua"><i class='fa fa-edit'></i></a>
+                        </div> 
+                        <?php
+                    }
+                    ?>
+                    
                     <div>
-                        <img src="quanlyhoso/<?=$profile_img?>" alt="Avatar" class="avatar">
+                        <img src="../images/<?=$profile_img?>" alt="Avatar" class="avatar">
                         <h2 class="name"><?=$profile_name?></h2>
-                        <p class="position"><?=$_SESSION['role']?></p>
-                        <span class="status">Đang làm việc</span>
+                        <p class="position"><?=$profile_role?></p>
+                        <span class="status"><?=$profile_status?></span>
                     </div>
                 </div>
 

@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    include 'quanlyhoso/getProfileNV.php';
 ?>
 
 <!DOCTYPE html>

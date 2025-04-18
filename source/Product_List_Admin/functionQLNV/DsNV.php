@@ -25,7 +25,7 @@
             }
             
             echo "<tr>";
-            echo "<td><img src='image/" .$img. "' alt='Avatar' id='avatar'></td>";
+            echo "<td><img src='../images/" .$img. "' alt='Avatar' id='avatar'></td>";
             echo "<td>" .$name. "</td>";
             echo "<td>" .$activated. "</td>";
             echo "<td>" .$status_lock. "</td>";
@@ -33,8 +33,8 @@
                 <a class='btn btn-sendEmail' href='index.php?sidebar=quanlynhanvien&token_send=" .$row['activate_token']. "'><i class='fa fa-paper-plane-o'> Gửi mail</i></a>
                 <a class='btn btn-lock' href='index.php?sidebar=quanlynhanvien&token_lock=" .$row['activate_token']. "'><i class='fa fa-lock'> Khóa</i></a>
                 <a class='btn btn-unlock' href='index.php?sidebar=quanlynhanvien&token_unlock=" .$row['activate_token']. "'><i class='fa fa-unlock'> Mở khóa</i></a>
-                <a class='btn btn-detail' href='index.php?sidebar=quanlynhanvien&token_detail=" .$row['activate_token']. "'><i class='fa fa-info'> Chi tiết</i></a>
-                <a class='btn btn-viewSale' href='index.php?sidebar=quanlynhanvien&token_view=" .$row['activate_token']. "'><i class='fa fa-vcard-o'> Lịch sử bán hàng</i></a>
+                <a class='btn btn-detail' href='index.php?nav=hoso&id_detail=" .$row['id_nhanvien']. "'><i class='fa fa-info'> Chi tiết</i></a>
+                <a class='btn btn-viewSale' href='index.php?sidebar=quanlynhanvien&id_view=" .$row['id_nhanvien']. "'><i class='fa fa-vcard-o'> Thông tin bán hàng</i></a>
             </td>
             </tr>";
         }

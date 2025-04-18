@@ -17,13 +17,13 @@
             $_SESSION["username"]= $username;
             $_SESSION["tennv"] = $result["hoten"];
             $_SESSION["pass_changed"] = $result["pass_changed"];
+            $_SESSION["img"] = $result["img"];
             
 
             if($role == "Admin") {
                 header("Location: ../Product_List_Admin/index.php");
                 exit();
             } else if($role == "Nhân viên") {
-                $_SESSION["pass_changed"] = $result["pass_changed"];
                 header("Location: ../TrangNhanVien/index.php");
                 exit();
             }
