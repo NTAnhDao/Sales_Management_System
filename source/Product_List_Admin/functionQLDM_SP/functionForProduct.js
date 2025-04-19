@@ -1,7 +1,22 @@
 let isEditModeProduct = false;
-let uploadedImage = null;
 
-// Hàm xử lý thông báo
+// Lấy vai trò người dùng từ server
+let userRole = 'Nhân viên';
+$.ajax({
+    url: 'getUserRole.php',
+    type: 'GET',
+    dataType: 'json',
+    async: false,
+    success: function(response) {
+        if (response.success) {
+            userRole = response.role;
+        }
+    },
+    error: function() {
+        console.error('Không thể lấy vai trò người dùng');
+    }
+});
+
 function announcement(message, type) {
     const successDiv = document.getElementById('success-message');
     const errorDiv = document.getElementById('error-message');
@@ -22,231 +37,13 @@ function announcement(message, type) {
     }, 3000);
 }
 
-// Xử lý upload hình ảnh
-document.addEventListener('DOMContentLoaded', function() {
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file-upload');
-    const fileName = document.getElementById('file-name');
-    const fileType = document.getElementById('file-type');
-    const fileSize = document.getElementById('file-size');
-    const saveFileBtn = document.getElementById('save-file-btn');
-    const cancelFileBtn = document.getElementById('cancel-file-btn');
-
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            handleFile(files[0]);
-        }
-    });
-
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-            handleFile(fileInput.files[0]);
-        }
-    });
-
-    saveFileBtn.addEventListener('click', () => {
-        if (fileInput.files.length > 0) {
-            uploadedImage = fileInput.files[0].name; // Lưu tên file
-            announcement("File đã được lưu!", 'success-message');
-        } else {
-            announcement("Vui lòng chọn một file trước!", 'error-message');
-        }
-    });
-
-    cancelFileBtn.addEventListener('click', () => {
-        fileInput.value = '';
-        fileName.textContent = '';
-        fileType.textContent = '';
-        fileSize.textContent = '';
-        uploadedImage = null;
-        announcement("File đã được hủy!", 'success-message');
-    });
-
-    function handleFile(file) {
-        fileName.textContent = file.name;
-        fileType.textContent = file.type;
-        fileSize.textContent = file.size;
-    }
-});
-
-// Hàm thêm hoặc cập nhật sản phẩm
-function addProduct(event) {
-    event.preventDefault();
-
-    let mavach_old = document.getElementById('edit-mavach-old').value;
-    let mavach = document.getElementById('mavach').value;
-    let tensp = document.getElementById('name').value;
-    let giagoc = parseFloat(document.getElementById('import-price').value);
-    let giabanle = parseFloat(document.getElementById('retail-price').value);
-    let id_danhmuc = document.getElementById('type').value;
-    let ngaytao = document.getElementById('date').value;
-    let fileInput = document.getElementById('file-upload');
-
-    if (!mavach || !tensp || giagoc <= 0 || giabanle <= 0 || !id_danhmuc) {
-        announcement("Vui lòng nhập đầy đủ thông tin sản phẩm, bao gồm mã vạch!", 'error-message');
-        return;
-    }
-
-    let url = isEditModeProduct ? "functionQLDM_SP/editProduct.php" : "functionQLDM_SP/addProduct.php";
-    let formData = new FormData();
-    formData.append('mavach', mavach);
-    formData.append('mavach_old', mavach_old);
-    formData.append('tensp', tensp);
-    formData.append('giagoc', giagoc);
-    formData.append('giabanle', giabanle);
-    formData.append('id_danhmuc', id_danhmuc);
-    formData.append('ngaytao', ngaytao);
-    if (fileInput.files.length > 0) {
-        formData.append('file-upload', fileInput.files[0]);
-    }
-
-    $.ajax({
-        url: url,
-        type: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: "json",
-        success: function(response) {
-            console.log("Phản hồi từ server:", response);
-            if (response.success) {
-                announcement(response.message, 'success-message');
-
-                let tbody = document.getElementById('product-infor');
-                if (!tbody) {
-                    console.error("Không tìm thấy tbody với id 'product-infor'");
-                    return;
-                }
-
-                if (isEditModeProduct) {
-                    let row = Array.from(tbody.children).find(tr => tr.getAttribute('data-mavach') === mavach_old);
-                    if (row) {
-                        row.setAttribute('data-mavach', response.mavach);
-                        row.cells[0].innerText = response.mavach;
-                        row.cells[1].innerHTML = response.img ? `<img src="source/image/${response.img}" width="80" height="80" onerror="this.src='source/image/placeholder.jpg'">` : row.cells[1].innerHTML;
-                        row.cells[2].innerText = tensp;
-                        row.cells[3].innerText = new Intl.NumberFormat('vi-VN').format(giagoc);
-                        row.cells[4].innerText = new Intl.NumberFormat('vi-VN').format(giabanle);
-                        row.cells[5].innerText = document.querySelector(`#type option[value="${id_danhmuc}"]`).text;
-                        row.cells[6].innerText = ngaytao || new Date().toISOString().split('T')[0];
-                    } else {
-                        console.error("Không tìm thấy hàng để cập nhật với mã vạch:", mavach_old);
-                    }
-                } else {
-                    let tr = document.createElement('tr');
-                    tr.setAttribute('data-mavach', response.mavach);
-                    let td1 = document.createElement('td');
-                    let td2 = document.createElement('td');
-                    let td3 = document.createElement('td');
-                    let td4 = document.createElement('td');
-                    let td5 = document.createElement('td');
-                    let td6 = document.createElement('td');
-                    let td7 = document.createElement('td');
-                    let td8 = document.createElement('td');
-
-                    td1.innerHTML = response.mavach;
-                    td2.innerHTML = response.img ? `<img src="source/image/${response.img}" width="80" height="80" onerror="this.src='source/image/placeholder.jpg'">` : '';
-                    td3.innerHTML = tensp;
-                    td4.innerHTML = new Intl.NumberFormat('vi-VN').format(giagoc);
-                    td5.innerHTML = new Intl.NumberFormat('vi-VN').format(giabanle);
-                    // Sửa cột "Danh mục": Chỉ lấy text của <option>, không thêm (ID: ${id_danhmuc}) nữa
-                    td6.innerHTML = document.querySelector(`#type option[value="${id_danhmuc}"]`).text;
-                    td7.innerHTML = ngaytao || new Date().toISOString().split('T')[0];
-                    td8.innerHTML = `
-                        <a href="#" class="btn btn-sm btn-primary mr-1 edit-btn">Chỉnh sửa</a>
-                        <a href="#" class="btn btn-sm btn-danger delete-btn">Xóa</a>
-                    `;
-
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-                    tr.appendChild(td3);
-                    tr.appendChild(td4);
-                    tr.appendChild(td5);
-                    tr.appendChild(td6);
-                    tr.appendChild(td7);
-                    tr.appendChild(td8);
-
-                    tbody.appendChild(tr);
-                }
-
-                // Reset form
-                document.getElementById('edit-mavach-old').value = '';
-                document.getElementById('mavach').value = '';
-                document.getElementById('name').value = '';
-                document.getElementById('import-price').value = '';
-                document.getElementById('retail-price').value = '';
-                document.getElementById('date').value = '';
-                document.getElementById('type').selectedIndex = 0;
-                document.getElementById('file-upload').value = '';
-                document.getElementById('file-name').textContent = '';
-                document.getElementById('file-type').textContent = '';
-                document.getElementById('file-size').textContent = '';
-                uploadedImage = null;
-                isEditModeProduct = false;
-                document.getElementById('form-title').innerText = "Thêm sản phẩm";
-                document.getElementById('save-btn').innerText = "Lưu";
-
-                chuyengiaodien('add-product', 'list-product');
-            } else {
-                announcement(response.message, 'error-message');
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log("Lỗi AJAX:", status, error);
-            console.log("Phản hồi từ server:", xhr.responseText);
-            announcement("Lỗi khi gửi yêu cầu đến server: " + error, 'error-message');
-        }
-    });
-}
-// Hàm chỉnh sửa sản phẩm
-function editProduct(row) {
-    const mavach = row.getAttribute('data-mavach');
-    if (!mavach) {
-        announcement("Không tìm thấy mã vạch của sản phẩm!", 'error-message');
-        return;
-    }
-
-    const cells = row.getElementsByTagName('td');
-    const tensp = cells[2].innerText;
-    const giagoc = parseFloat(cells[3].innerText.replace(/[^0-9.-]+/g,""));
-    const giabanle = parseFloat(cells[4].innerText.replace(/[^0-9.-]+/g,""));
-    const id_danhmuc = cells[5].innerText.match(/\(ID: (\d+)\)/)?.[1]
-    let ngaytao = cells[6].innerText;
-
-    if (ngaytao) {
-        ngaytao = new Date(ngaytao).toISOString().split('T')[0];
-    }
-
-    document.getElementById('edit-mavach-old').value = mavach;
-    document.getElementById('mavach').value = mavach;
-    document.getElementById('name').value = tensp;
-    document.getElementById('import-price').value = giagoc;
-    document.getElementById('retail-price').value = giabanle;
-    document.getElementById('date').value = ngaytao;
-    document.getElementById('type').value = id_danhmuc;
-
-    isEditModeProduct = true;
-    document.getElementById('form-title').innerText = "Chỉnh sửa sản phẩm";
-    document.getElementById('save-btn').innerText = "Cập nhật";
-
-    chuyengiaodien('list-product', 'add-product');
-}
-
-// Hàm xóa sản phẩm
 function deleteProduct(row) {
-    const mavach = row.getAttribute('data-mavach');
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền xóa sản phẩm!", 'error-message');
+        return;
+    }
+
+    const mavach = row.getAttribute('data-mavach') || row.querySelector('.delete-btn')?.getAttribute('data-mavach');
     if (!mavach) {
         announcement("Không tìm thấy mã vạch của sản phẩm!", 'error-message');
         return;
@@ -254,15 +51,15 @@ function deleteProduct(row) {
 
     if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
         $.ajax({
-            url: "functionQLDM_SP/deleteProduct.php",
+            url: "deleteProduct.php",
             type: "POST",
             data: { mavach: mavach },
             dataType: "json",
             success: function(response) {
                 console.log("Phản hồi từ server:", response);
                 if (response.success) {
-                    row.remove();
                     announcement(response.message, 'success-message');
+                    window.location.reload(); // Tải lại trang sau khi xóa thành công
                 } else {
                     announcement(response.message, 'error-message');
                 }
@@ -276,28 +73,177 @@ function deleteProduct(row) {
     }
 }
 
-
-// Gắn sự kiện
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('add-product');
-    if (form) {
-        form.addEventListener('submit', addProduct);
-    } else {
-        console.log("Không tìm thấy form với id 'add-product'");
+function editProduct(row) {
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền chỉnh sửa sản phẩm!", 'error-message');
+        return;
     }
 
-    document.getElementById('product-infor').addEventListener('click', function(e) {
-        if (e.target.classList.contains('edit-btn')) {
-            e.preventDefault();
-            const row = e.target.closest('tr');
-            editProduct(row);
+    const mavach = row.getAttribute('data-mavach');
+    if (!mavach) {
+        announcement("Không tìm thấy mã vạch của sản phẩm!", 'error-message');
+        return;
+    }
+
+    const cells = row.getElementsByTagName('td');
+    if (cells.length < 6) {
+        announcement("Dữ liệu bảng không đúng định dạng!", 'error-message');
+        return;
+    }
+
+    const tensp = cells[2].innerText;
+    const giagoc = cells[3].innerText.replace(/[^0-9.-]+/g, '');
+    const giabanle = cells[4].innerText.replace(/[^0-9.-]+/g, '');
+    const id_danhmuc = row.querySelector('.edit-btn').getAttribute('data-id_danhmuc');
+    const img = row.querySelector('.edit-btn').getAttribute('data-img') || '';
+
+    document.getElementById('edit-mavach-old').value = mavach;
+    document.getElementById('mavach').value = mavach;
+    document.getElementById('name').value = tensp;
+    document.getElementById('import-price').value = giagoc;
+    document.getElementById('retail-price').value = giabanle;
+    document.getElementById('type').value = id_danhmuc;
+    document.getElementById('file-name').textContent = img || 'Không có hình ảnh';
+    document.getElementById('file-type').textContent = img ? 'image' : '';
+    document.getElementById('file-size').textContent = '';
+    document.getElementById('preview-img').src = img ? '../images/' + img : '';
+    document.getElementById('preview-img').style.display = img ? 'block' : 'none';
+
+    isEditModeProduct = true;
+    document.getElementById('form-title').innerText = "Chỉnh sửa sản phẩm";
+    document.getElementById('save-btn').innerText = "Cập nhật";
+    chuyengiaodien('list-product', 'add-product');
+}
+
+function addProduct(event) {
+    event.preventDefault();
+
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền thêm sản phẩm!", 'error-message');
+        return;
+    }
+
+    let mavach_old = document.getElementById('edit-mavach-old').value;
+    let mavach = document.getElementById('mavach').value;
+    let tensp = document.getElementById('name').value;
+    let giagoc = document.getElementById('import-price').value;
+    let giabanle = document.getElementById('retail-price').value;
+    let id_danhmuc = document.getElementById('type').value;
+    let fileInput = document.getElementById('file-upload');
+
+    if (!mavach || !tensp || !giagoc || !giabanle || !id_danhmuc) {
+        announcement("Vui lòng nhập đầy đủ thông tin!", 'error-message');
+        return;
+    }
+
+    let url = isEditModeProduct ? "editProduct.php" : "addProduct.php";
+    let formData = new FormData();
+    formData.append('mavach_old', mavach_old);
+    formData.append('mavach', mavach);
+    formData.append('tensp', tensp);
+    formData.append('giagoc', giagoc);
+    formData.append('giabanle', giabanle);
+    formData.append('id_danhmuc', id_danhmuc);
+    if (fileInput.files.length > 0) {
+        formData.append('file', fileInput.files[0]);
+    }
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+            console.log("Phản hồi từ server:", response);
+            if (response.success) {
+                announcement(response.message, 'success-message');
+                window.location.reload(); // Tải lại trang sau khi thêm/sửa thành công
+            } else {
+                announcement(response.message, 'error-message');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("Lỗi AJAX:", status, error);
+            console.log("Phản hồi từ server:", xhr.responseText);
+            announcement("Lỗi khi gửi yêu cầu đến server: " + error, 'error-message');
         }
-        if (e.target.classList.contains('delete-btn')) {
-            e.preventDefault();
-            const row = e.target.closest('tr');
-            deleteProduct(row);
+    });
+}
+
+// Xử lý upload file (hiển thị preview)
+document.addEventListener('DOMContentLoaded', function() {
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-upload');
+    const fileName = document.getElementById('file-name');
+    const fileType = document.getElementById('file-type');
+    const fileSize = document.getElementById('file-size');
+    const previewImg = document.getElementById('preview-img');
+    const cancelFileBtn = document.getElementById('cancel-file-btn');
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#007bff';
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.style.borderColor = '#ccc';
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#ccc';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            handleFile(files[0]);
         }
     });
 
-    
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            handleFile(fileInput.files[0]);
+        }
+    });
+
+    function handleFile(file) {
+        fileName.textContent = file.name;
+        fileType.textContent = file.type;
+        fileSize.textContent = file.size;
+        previewImg.src = URL.createObjectURL(file);
+        previewImg.style.display = 'block';
+    }
+
+    cancelFileBtn.addEventListener('click', () => {
+        fileInput.value = '';
+        fileName.textContent = 'Không có hình ảnh';
+        fileType.textContent = '';
+        fileSize.textContent = '';
+        previewImg.src = '';
+        previewImg.style.display = 'none';
+    });
+
+    const productForm = document.getElementById('add-product');
+    if (productForm && userRole === 'Admin') {
+        productForm.addEventListener('submit', addProduct);
+    } else if (productForm) {
+        productForm.style.display = 'none'; // Ẩn form thêm sản phẩm cho nhân viên
+    }
+
+    const productTable = document.getElementById('product-infor');
+    if (productTable) {
+        productTable.addEventListener('click', function(e) {
+            const row = e.target.closest('tr');
+            if (!row) return;
+
+            if (e.target.classList.contains('edit-btn') && userRole === 'Admin') {
+                e.preventDefault();
+                editProduct(row);
+            }
+            if (e.target.classList.contains('delete-btn') && userRole === 'Admin') {
+                e.preventDefault();
+                deleteProduct(row);
+            }
+        });
+    }
 });

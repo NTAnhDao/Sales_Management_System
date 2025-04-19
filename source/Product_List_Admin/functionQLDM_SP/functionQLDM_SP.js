@@ -1,4 +1,22 @@
-// Biến để kiểm tra chế độ (thêm hoặc chỉnh sửa)
+let isEditMode = false;
+
+// Lấy vai trò người dùng từ server
+let userRole = 'Nhân viên';
+$.ajax({
+    url: 'getUserRole.php',
+    type: 'GET',
+    dataType: 'json',
+    async: false,
+    success: function(response) {
+        if (response.success) {
+            userRole = response.role;
+        }
+    },
+    error: function() {
+        console.error('Không thể lấy vai trò người dùng');
+    }
+});
+
 function announcement(message, type) {
     const successDiv = document.getElementById('success-message');
     const errorDiv = document.getElementById('error-message');
@@ -17,23 +35,23 @@ function announcement(message, type) {
         successDiv.classList.add('d-none');
         errorDiv.classList.add('d-none');
     }, 3000);
-
-    
 }
 
-let isEditMode = false;
-
-
-
-
-// Hàm xóa từng danh mục
 function deleteCategory(row) {
-    const id = row.getAttribute('data-id') || row.querySelector('.delete-btn').getAttribute('data-id');
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền xóa danh mục!", 'error-message');
+        return;
+    }
 
+    const id = row.getAttribute('data-id') || row.querySelector('.delete-btn')?.getAttribute('data-id');
+    if (!id) {
+        announcement("Không tìm thấy ID của danh mục!", 'error-message');
+        return;
+    }
 
     if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
         $.ajax({
-            url: "functionQLDM_SP/deleteCatalog.php",
+            url: "deleteCatalog.php",
             type: "POST",
             data: { id: id },
             dataType: "json",
@@ -48,60 +66,63 @@ function deleteCategory(row) {
             },
             error: function(xhr, status, error) {
                 console.log("Lỗi AJAX:", status, error);
+                console.log("Phản hồi từ server:", xhr.responseText);
                 announcement("Lỗi khi gửi yêu cầu đến server: " + error, 'error-message');
             }
         });
     }
 }
 
-// Hàm điền dữ liệu vào form để chỉnh sửa
 function editCategory(row) {
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền chỉnh sửa danh mục!", 'error-message');
+        return;
+    }
+
     const id = row.getAttribute('data-id');
+    if (!id) {
+        announcement("Không tìm thấy ID của danh mục!", 'error-message');
+        return;
+    }
+
     const cells = row.getElementsByTagName('td');
+    if (cells.length < 5) {
+        announcement("Dữ liệu bảng không đúng định dạng!", 'error-message');
+        return;
+    }
+
     const tendm = cells[1].innerText;
-    const mota = cells[2].innerText;
-    const ngaytao = cells[3].innerText;
-    const id_nguoitao = cells[4].innerText;
+    const mota = cells[2].innerText === 'Không có mô tả' ? '' : cells[2].innerText;
 
     document.getElementById('edit-id').value = id;
     document.getElementById('name').value = tendm;
     document.getElementById('description').value = mota;
-    document.getElementById('date').value = ngaytao;
-    document.getElementById('people').value = id_nguoitao;
 
     isEditMode = true;
     document.getElementById('form-title').innerText = "Chỉnh sửa danh mục";
     document.getElementById('save-btn').innerText = "Cập nhật";
-
     chuyengiaodien('list-catalog', 'add-catalog');
 }
 
-// Hàm thêm hoặc cập nhật danh mục
 function addCategory(event) {
     event.preventDefault();
+
+    if (userRole !== 'Admin') {
+        announcement("Bạn không có quyền thêm danh mục!", 'error-message');
+        return;
+    }
 
     let id = document.getElementById('edit-id').value;
     let tendm = document.getElementById('name').value;
     let mota = document.getElementById('description').value;
-    let id_nguoitao = document.getElementById('people').value;
-    let ngaytao = document.getElementById('date').value;
 
-    if (tendm === '' || id_nguoitao === '') {
-        announcement("Vui lòng nhập đầy đủ thông tin!", 'error-message');
+    if (!tendm) {
+        announcement("Vui lòng nhập tên danh mục!", 'error-message');
         return;
     }
 
-    let url = isEditMode ? "functionQLDM_SP/editCatalog.php" : "functionQLDM_SP/addCatalog.php";
-    let data = {
-        tendm: tendm,
-        mota: mota,
-        ngaytao: ngaytao,
-        id_nguoitao: id_nguoitao
-
-    };
-    if (isEditMode) {
-        data.id = id;
-    }
+    let url = isEditMode ? "editCatalog.php" : "addCatalog.php";
+    let data = { id: id, tendm: tendm, mota: mota };
 
     $.ajax({
         url: url,
@@ -112,56 +133,7 @@ function addCategory(event) {
             console.log("Phản hồi từ server:", response);
             if (response.success) {
                 announcement(response.message, 'success-message');
-
-                let tbody = document.getElementById('catalog-infor');
-                if (isEditMode) {
-                    let row = Array.from(tbody.children).find(tr => tr.getAttribute('data-id') === id);
-                    if (row) {
-                        row.cells[0].innerText = id;
-                        row.cells[1].innerText = tendm;
-                        row.cells[2].innerText = mota || '';
-                        row.cells[3].innerText = ngaytao || new Date().toISOString().split('T')[0];
-                        row.cells[4].innerText = id_nguoitao;
-                    }
-                } else {
-                    let tr = document.createElement('tr');
-                    tr.setAttribute('data-id', response.id);
-                    let td1 = document.createElement('td');
-                    let td2 = document.createElement('td');
-                    let td3 = document.createElement('td');
-                    let td4 = document.createElement('td');
-                    let td5 = document.createElement('td');
-                    let td6 = document.createElement('td');
-
-                    td1.innerHTML = response.id;
-                    td2.innerHTML = tendm;
-                    td3.innerHTML = mota || '';
-                    td4.innerHTML = ngaytao || new Date().toISOString().split('T')[0];
-                    td5.innerHTML = id_nguoitao;
-                    td6.innerHTML = `
-                        <a href="#" class="btn btn-sm btn-primary mr-1 edit-btn">Chỉnh sửa</a>
-                        <a href="#" class="btn btn-sm btn-danger delete-btn">Xóa</a>
-                    `;
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-                    tr.appendChild(td3);
-                    tr.appendChild(td4);
-                    tr.appendChild(td5);
-                    tr.appendChild(td6);
-
-                    tbody.appendChild(tr);
-                }
-
-                document.getElementById('edit-id').value = '';
-                document.getElementById('name').value = '';
-                document.getElementById('description').value = '';
-                document.getElementById('people').value = '';
-                document.getElementById('date').value = '';
-                isEditMode = false;
-                document.getElementById('form-title').innerText = "Thêm danh mục";
-                document.getElementById('save-btn').innerText = "Lưu";
-
-                chuyengiaodien('add-catalog', 'list-catalog');
+                window.location.reload(); // Tải lại trang để hiển thị người tạo mới
             } else {
                 announcement(response.message, 'error-message');
             }
@@ -174,30 +146,59 @@ function addCategory(event) {
     });
 }
 
-// Gắn sự kiện
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('add-catalog');
-    if (form) {
-        form.addEventListener('submit', addCategory);
+    const catalogForm = document.getElementById('add-catalog');
+    const catalogTable = document.getElementById('catalog-infor');
+    const addCatalogButton = document.querySelector('.actions .btn-success'); // Nút thêm danh mục
+
+    // Ẩn form thêm danh mục và nút thêm nếu không phải admin
+    if (userRole !== 'Admin') {
+        if (catalogForm) {
+            catalogForm.style.display = 'none';
+        }
+        if (addCatalogButton) {
+            addCatalogButton.style.display = 'none';
+        }
+        // Ẩn các nút chỉnh sửa và xóa trong bảng nếu không phải admin
+        if (catalogTable) {
+            catalogTable.addEventListener('click', function(e) {
+                if (e.target.classList.contains('edit-btn') || e.target.classList.contains('delete-btn')) {
+                    e.preventDefault();
+                    announcement("Bạn không có quyền thực hiện thao tác này!", 'error-message');
+                }
+            });
+        }
     } else {
-        console.log("Không tìm thấy form với id 'add-catalog'");
+        // Chỉ thêm event listener cho form và bảng nếu là admin
+        if (catalogForm) {
+            catalogForm.addEventListener('submit', addCategory);
+        }
+        if (catalogTable) {
+            catalogTable.addEventListener('click', function(e) {
+                const row = e.target.closest('tr');
+                if (!row) return;
+
+                if (e.target.classList.contains('edit-btn')) {
+                    e.preventDefault();
+                    editCategory(row);
+                }
+                if (e.target.classList.contains('delete-btn')) {
+                    e.preventDefault();
+                    deleteCategory(row);
+                }
+            });
+        }
     }
 
-    document.getElementById('catalog-infor').addEventListener('click', function(e) {
-        if (e.target.classList.contains('edit-btn')) {
+    // Loại bỏ hoặc điều kiện hóa event listener cho nút xóa tất cả nếu cần
+    const deleteAllButton = document.querySelector('.btn-danger');
+    if (deleteAllButton && userRole === 'Admin') {
+        deleteAllButton.addEventListener('click', function(e) {
             e.preventDefault();
-            const row = e.target.closest('tr');
-            editCategory(row);
-        }
-        if (e.target.classList.contains('delete-btn')) {
-            e.preventDefault();
-            const row = e.target.closest('tr');
-            deleteCategory(row);
-        }
-    });
-
-    document.querySelector('.btn-danger').addEventListener('click', function(e) {
-        e.preventDefault();
-        deleteAllCategories();
-    });
+            // Thêm logic xóa tất cả danh mục ở đây nếu cần
+            alert("Chức năng xóa tất cả chưa được triển khai!");
+        });
+    } else if (deleteAllButton) {
+        deleteAllButton.style.display = 'none'; // Ẩn nút xóa tất cả nếu không phải admin
+    }
 });

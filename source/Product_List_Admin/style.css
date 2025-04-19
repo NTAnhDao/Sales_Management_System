@@ -504,7 +504,115 @@ table {
     }
 }
 
+/* Giao dien trang chu */
 
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.stats-main-content {
+    margin-left: 235px;
+    padding: 2rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+    transition: margin-left 0.5s;
+}
+
+.stats-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.stats-page-header h3 {
+    font-size: 1.6rem;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.stats-orders {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.stats-order-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.stats-order-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6f61, #ff8a80);
+}
+
+.stats-order-box.products::before {
+    background: linear-gradient(90deg, #ff6f61, #ff8a80);
+}
+
+.stats-order-box.categories::before {
+    background: linear-gradient(90deg, #28a745, #34c759);
+}
+
+.stats-order-box.employees::before {
+    background: linear-gradient(90deg, #007bff, #3399ff);
+}
+
+.stats-order-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stats-order-box h2 {
+    font-size: 2.2rem;
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.stats-order-box p {
+    font-size: 1rem;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 768px) {
+    .stats-main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .stats-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .stats-orders {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 /* Giao dien ho so */

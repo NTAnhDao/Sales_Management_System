@@ -1,22 +1,25 @@
 <?php
-    require '../database/db.php';
+require '../database/db.php';
 
-    $conn = connectDB();
-    $sql = "SELECT * FROM sanpham, danhmucsp WHERE sanpham.id_danhmuc = danhmucsp.id";
-    $result = $conn->query($sql);
+$conn = connectDB();
+$sql = "SELECT sanpham.*, danhmucsp.tendm FROM sanpham 
+        LEFT JOIN danhmucsp ON sanpham.id_danhmuc = danhmucsp.id";
+$result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<tr data-mavach='{$row["mavach"]}'>";
-                echo "<td>" . $row["mavach"]. "</td>";
-                echo "<td><img src='image/" . htmlspecialchars($row["img"]) . "' width='80' height='80'></td>";
-                echo "<td>" . $row["tensp"]. "</td>";
-                echo "<td>" . $row["giagoc"]. "</td>";
-                echo "<td>" . $row["giabanle"]. "</td>";
-                echo "<td>" . $row["id_danhmuc"]. "</td>";
-                echo "<td>" . $row["ngaytao"]. "</td>";
-                echo "<td>
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr data-mavach='{$row["mavach"]}'>";
+        echo "<td>" . htmlspecialchars($row["mavach"]) . "</td>";
+        $imgPath = $row["img"] ? "images/" . htmlspecialchars($row["img"]) : '';
+        $imgSrc = $imgPath && file_exists($imgPath) ? $imgPath : ''; // Kiểm tra xem file hình ảnh có tồn tại không
+        echo "<td>" . ($imgSrc ? "<img src='{$imgSrc}' width='80' height='80'>" : "Không có hình ảnh") . "</td>";
+        
+        echo "<td>" . htmlspecialchars($row["tensp"]) . "</td>";
+        echo "<td>" . number_format($row["giagoc"], 0, ',', '.') . "</td>";
+        echo "<td>" . number_format($row["giabanle"], 0, ',', '.') . "</td>";
+        echo "<td>" . htmlspecialchars($row["tendm"] ?? 'Không có danh mục') . "</td>";
+        echo "<td>" . $row["ngaytao"] . "</td>";
+        echo "<td>
                 <a href='#' class='btn btn-sm btn-primary mr-1 edit-btn' 
                    data-mavach='" . htmlspecialchars($row["mavach"], ENT_QUOTES) . "' 
                    data-img='" . htmlspecialchars($row["img"], ENT_QUOTES) . "' 
@@ -27,11 +30,11 @@
                    data-ngaytao='" . $row["ngaytao"] . "'>Chỉnh sửa</a>
                 <a href='#' class='btn btn-sm btn-danger delete-btn' 
                    data-mavach='" . htmlspecialchars($row["mavach"], ENT_QUOTES) . "'>Xóa</a>
-            </td>";
-    echo "</tr>";
-}
+              </td>";
+        echo "</tr>";
+    }
 } else {
-echo "<tr><td colspan='8'>Không có sản phẩm nào.</td></tr>";
+    echo "<tr><td colspan='8'>Không có sản phẩm nào.</td></tr>";
 }
 
 $conn->close();

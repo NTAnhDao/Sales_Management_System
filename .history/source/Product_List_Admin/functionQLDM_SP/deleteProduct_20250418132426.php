@@ -1,0 +1,42 @@
+<?php
+header("Content-Type: application/json");
+require '../../database/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $mavach = $_POST["mavach"] ?? '';
+
+    if (empty($mavach)) {
+        echo json_encode(["success" => false, "message" => "Mã vạch không hợp lệ!"]);
+        exit;
+    }
+
+    $conn = connectDB();
+    if (!$conn) {
+        echo json_encode(["success" => false, "message" => "Lỗi kết nối cơ sở dữ liệu!"]);
+        exit;
+    }
+
+    $imgQuery = $conn->prepare("SELECT img FROM sanpham WHERE mavach = ?");
+    $imgQuery->bind_param("s", $mavach);
+    $imgQuery->execute();
+    $imgQuery->bind_result($img);
+    $imgQuery->fetch();
+    $imgQuery->close();
+
+    $query = $conn->prepare("DELETE FROM sanpham WHERE mavach = ?");
+    $query->bind_param("s", $mavach);
+    if ($query->execute()) {
+        if ($img && file_exists("../images/" . $img)) {
+            unlink("../images/" . $img);
+        }
+        echo json_encode(["success" => true, "message" => "Xóa sản phẩm thành công!"]);
+    } else {
+        echo json_encode(["success" => false, "message" => "Xóa sản phẩm thất bại: " . $query->error]);
+    }
+
+    $query->close();
+    $conn->close();
+} else {
+    echo json_encode(["success" => false, "message" => "Yêu cầu không hợp lệ!"]);
+}
+?>

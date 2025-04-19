@@ -41,7 +41,7 @@
                         <div class="col-md-12 col-sm-12 my-4 mx-auto p-3">
                             <div class="card-product">
                                 <h2 class="text-center mb-4" id="form-title">Thêm sản phẩm</h2>
-                                <form id="add-product" class="d-flex flex-wrap position-relative" action="" method = "POSTPOST">
+                                <form id="add-product" class="d-flex flex-wrap position-relative" action="" method="POST">
                                     <input type="hidden" id="edit-mavach-old" name="mavach_old">
                                     <div class="form-left col-md-6 pr-3">
                                         <div class="form-group">
@@ -73,7 +73,7 @@
                                                 $sql = "SELECT id, tendm FROM danhmucsp";
                                                 $result = $conn->query($sql);
                                                 while ($row = $result->fetch_assoc()) {
-                                                    echo "<option value='{$row["id"]}'>{$row["tendm"]} ({$row["id"]})</option>";
+                                                    echo "<option value='{$row["id"]}'>{$row["tendm"]}</option>";
                                                 }
                                                 $conn->close();
                                                 ?>
@@ -91,6 +91,7 @@
                                             </div>
                                             <div class="file-info" id="file-info">
                                                 <p><strong>Tên tệp:</strong> <span id="file-name"></span></p>
+                                                <p><strong>Thư mục:</strong> <span>functionQLDM_SP/image/</span></p>
                                                 <p><strong>Loại tệp:</strong> <span id="file-type"></span></p>
                                                 <p><strong>Kích thước:</strong> <span id="file-size"></span> bytes</p>
                                             </div>
@@ -98,6 +99,7 @@
                                                 <button type="button" class="btn btn-primary" id="save-file-btn">Lưu file</button>
                                                 <button type="button" class="btn btn-danger" id="cancel-file-btn">Hủy file</button>
                                             </div>
+                                            <img id="preview-img" src="" alt="Preview" style="display: none; max-width: 100%; margin-top: 10px;" />
                                         </div>
                                     </div>
 
@@ -112,4 +114,4 @@
         </div>
     </main>
 </div>
-<script src="functionQLDM_SP/functionForProduct.js" ></script>
+<script src="functionQLDM_SP/functionForProduct.js"></script>

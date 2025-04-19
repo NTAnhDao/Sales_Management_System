@@ -189,7 +189,7 @@ INSERT INTO `sanpham` (`mavach`, `tensp`, `giagoc`, `giabanle`, `img`, `id_danhm
 ('12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, 'tai-nghe-bluetooth-chup-tai-sony.jpgjpg', 2, '2025-03-09 15:04:00'),
 ('12349', 'OPPO Find N5', 40000000, 45990000, 'oppo_find_n3_oppo.png', 1, '2025-03-29 15:24:40'),
 ('12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, 'dien_thoai_apple_iphone_16_plus_hong_3.jpg', 1, '2025-03-29 15:24:40'),
-('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, 'pin-sac-du-phong_Ava.jpg'L, 3, '2025-03-29 16:08:36'),
+('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, 'pin-sac-du-phong_Ava.jpg', 3, '2025-03-29 16:08:36'),
 ('12352', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, 'pinscduphongAnkerZolo.jpg', 3, '2025-03-29 16:08:36'),
 ('12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, 'pinscduphongAnkerZolo.jpg', 4, '2025-03-29 16:10:55'),
 ('12354', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, 'op-lung-galaxy-s24-fe-nhua-cung-vien-deo.jpg' , 4, '2025-03-29 16:10:55'),
