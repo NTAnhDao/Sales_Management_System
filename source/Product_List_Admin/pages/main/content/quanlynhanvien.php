@@ -14,7 +14,7 @@
                 <br>
                 <div class="employee">
                     <h5>Danh sách nhân viên</h5>
-                    <table class="cart-table" border="1">
+                    <table class="cart-table">
                         <thread>
                             <tr>
                                 <th>Ảnh đại diện</th>

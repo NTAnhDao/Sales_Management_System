@@ -11,14 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         let gender = document.querySelector("input[name='gender']:checked");
         gender = gender ? gender.value : null;  //nếu không có giá trị, gán null
 
-        
         let sdt = document.getElementById("SDT").value;
 
         if(fullname === "" || email === "") {
             alert("Vui lòng nhập đầy đủ thông tin họ tên và email!");
             return;
         }
-
             
         fetch("functionQLNV/addAcc.php", {
             method: "POST",
@@ -32,12 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
         return JSON.parse(text);
         })
         .then(result => {
-
             if(result.success) {
                 alert("Tạo tài khoản thành công!");
-                alert(result.mail);
+                alert(result.mess);
             } else {
-                alert("Lỗi: " + result.error);
+                alert("Lỗi: " + result.mess);
             }
             
         })

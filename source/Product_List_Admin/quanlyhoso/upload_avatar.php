@@ -32,7 +32,7 @@
         if ($uploadOk) {
             $conn = connectDB();
             $stmt = $conn->prepare("UPDATE nhanvien SET img = ? WHERE id = ?");
-            $stmt->bind_param("ss", $avatarPath, $_SESSION["id"]);
+            $stmt->bind_param("ss", $avatarName, $_SESSION["id"]);
             $stmt->execute();
             $stmt->close();
             $conn->close();

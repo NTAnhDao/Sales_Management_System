@@ -25,7 +25,7 @@
                 include("main/content/donhang.php");
             }
         }else if($side == 'baocao'){
-            include("main/content/baocao.php");
+            include("../Product_List_Admin/pages/main/content/baocao.php");
         }
     }else if(isset($_GET['nav'])){
         if($_GET['nav']== 'hoso'){

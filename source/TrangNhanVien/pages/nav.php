@@ -25,7 +25,7 @@
                             if (empty($profile_img) || $profile_img == "") {
                                 $avtPath = "../images/user.jpg";
                             } else {
-                                $avtPath = "modules/quanlyhoso/" . $profile_img;
+                                $avtPath = "modules/quanlyhoso/imagesNV/" . $profile_img;
                             }
                             ?>
                             <img id="nav-avatar" src = "<?=$avtPath?>" height = "30px"  width = "30px" alt = "Avatar">

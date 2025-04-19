@@ -2,11 +2,12 @@
     require '../database/db.php';
 
     $conn = connectDB();
-    if (empty($_SESSION["id"])) {
-        header("Location: ../index.php");
-        exit();
-    }else{
-        $sql = "SELECT * FROM nhanvien WHERE id =" . $_SESSION["id"];
+
+    if ($_SESSION['role'] == "Admin" && isset($_GET["id_detail"])) {
+        // Admin xem thông tin nhân viên
+        $sql = "SELECT * FROM nhanvien, taikhoan WHERE taikhoan.id_nhanvien=nhanvien.id AND nhanvien.id =" . $_GET["id_detail"];
+    } else {
+        $sql = "SELECT * FROM nhanvien, taikhoan WHERE taikhoan.id_nhanvien=nhanvien.id AND nhanvien.id =" . $_SESSION["id"];
     }
 
     $result = $conn->query($sql);
@@ -20,6 +21,12 @@
         $profile_ngaysinh = $row["ngaysinh"];
         $profile_diachi = $row["diachi"];
         $profile_img = $row["img"];
+        $profile_role = $row["role"];
+        if ($row["trangthai_khoa"] == 0) {
+            $profile_status = "Đang làm việc";
+        } else if ($row["trangthai_khoa"] == 1) {
+            $profile_status = "Đã bị khóa";
+        }
     }
     $conn->close();
 ?>

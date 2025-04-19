@@ -11,7 +11,18 @@
         }else if($side == 'quanlydanhmuc'){
             include("main/content/quanlydanhmuc.php");
         }else if($side == 'quanlynhanvien'){
-            include("main/content/quanlynhanvien.php");
+            if(isset($_GET['id_view'])) {
+                include("main/content/thongtinbanhang.php");
+            } else {
+                include("main/content/quanlynhanvien.php");
+            }
+        }else if ($side == 'baocao'){
+            if(isset($_GET["idctdh"])) {
+                include("../TrangNhanVien/pages/main/content/ctdh_donhang.php");
+            } else {
+                include("main/content/baocao.php");
+            }
+            
         }
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){
@@ -23,7 +34,7 @@
                 }
                 break;
             case 'changepass':
-                include("../TrangNhanVien/pages/main/content/changePass.php");
+                include("../TrangNhanVien/pages/main/changePass.php");
                 break;
             case 'Dangxuat':
                 if (isset($_SESSION['role'])) {

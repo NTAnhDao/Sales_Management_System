@@ -1,8 +1,8 @@
 <div class="sidebar"  id="mySidebar" >
     <div class="sidebar-user">
-        <img src="quanlyhoso/<?=$profile_img?>" height = "70px"  width = "70px" alt = "">
+        <img src="../images/<?=$_SESSION['img']?>" height = "70px"  width = "70px" alt = "">
             <div>
-                <h3><?=$profile_name?></h3>
+                <h3><?=$_SESSION['tennv']?></h3>
                 <span><?=$_SESSION['role']?></span>
         </div>
     </div>
@@ -38,10 +38,17 @@
                 </a>
             </li>
             
+            <li class="item">
+                <a class="link" href="index.php?sidebar=baocao">
+                    <span class = "fa fa-bar-chart"></span>
+                    <p class="item-sidebar">Báo cáo</p> 
+                </a>
+            </li>
+
         </ul>
     </div>
     <div class="logout">
-        <a class="link" href="../Login/logout.php">
+        <a class="link" href="../../Login/logout.php">
             <span class = "fa fa-sign-out"></span>
         </a>
     </div>
