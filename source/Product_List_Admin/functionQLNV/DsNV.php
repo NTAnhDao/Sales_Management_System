@@ -25,7 +25,7 @@
             }
             
             echo "<tr>";
-            echo "<td><img src='../images/" .$img. "' alt='Avatar' id='avatar'></td>";
+            echo "<td><img src='../TrangNhanVien/modules/quanlyhoso/imagesNV/" .$img. "' alt='Avatar' id='avatar'></td>";
             echo "<td>" .$name. "</td>";
             echo "<td>" .$activated. "</td>";
             echo "<td>" .$status_lock. "</td>";

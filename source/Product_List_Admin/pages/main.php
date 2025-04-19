@@ -17,7 +17,12 @@
                 include("main/content/quanlynhanvien.php");
             }
         }else if ($side == 'baocao'){
-            include("main/content/baocao.php");
+            if(isset($_GET["idctdh"])) {
+                include("../TrangNhanVien/pages/main/content/ctdh_donhang.php");
+            } else {
+                include("main/content/baocao.php");
+            }
+            
         }
     }else if(isset($_GET['nav'])){
         switch($_GET['nav']){
@@ -29,7 +34,7 @@
                 }
                 break;
             case 'changepass':
-                include("../TrangNhanVien/pages/main/content/changePass.php");
+                include("../TrangNhanVien/pages/main/changePass.php");
                 break;
             case 'Dangxuat':
                 if (isset($_SESSION['role'])) {

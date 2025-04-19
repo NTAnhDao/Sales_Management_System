@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(result => {
             if(result.success) {
                 alert("Tạo tài khoản thành công!");
-                alert(result.mail);
+                alert(result.mess);
             } else {
-                alert("Lỗi: " + result.error);
+                alert("Lỗi: " + result.mess);
             }
             
         })

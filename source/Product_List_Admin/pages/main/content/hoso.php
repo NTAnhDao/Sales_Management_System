@@ -31,7 +31,7 @@
                     ?>
                     
                     <div>
-                        <img src="../images/<?=$profile_img?>" alt="Avatar" class="avatar">
+                        <img src="../TrangNhanVien/modules/quanlyhoso/imagesNV/<?=$profile_img?>" alt="Avatar" class="avatar">
                         <h2 class="name"><?=$profile_name?></h2>
                         <p class="position"><?=$profile_role?></p>
                         <span class="status"><?=$profile_status?></span>
