@@ -2,8 +2,12 @@
     require '../database/db.php';
 
     $conn = connectDB();
-
-    $sql = "SELECT * FROM nhanvien WHERE id =" . $_SESSION["id"];
+    if (empty($_SESSION["id"])) {
+        header("Location: ../index.php");
+        exit();
+    }else{
+        $sql = "SELECT * FROM nhanvien WHERE id =" . $_SESSION["id"];
+    }
 
     $result = $conn->query($sql);
 
