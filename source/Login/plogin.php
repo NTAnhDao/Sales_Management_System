@@ -20,11 +20,8 @@
             $_SESSION["img"] = $result["img"];
             
 
-            if($role == "Admin") {
-                header("Location: ../Product_List_Admin/index.php");
-                exit();
-            } else if($role == "Nhân viên") {
-                header("Location: ../TrangNhanVien/index.php");
+            if($role == "Admin" || $role == "Nhân viên") {
+                header("Location: ../views/index.php");
                 exit();
             }
         
