@@ -27,15 +27,12 @@
                         <tbody>
                         <?php 
                             include "../models/nhanvien/DsNV.php";
-                            
                         ?>
                         </tbody>
                         
                     </table>
                 </div>
-                
             </section>
-            
             <section class="addAccount d-none">
                 <div class="container">
                     <h4>Tạo tài khoản</h4>
