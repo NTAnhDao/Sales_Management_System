@@ -59,7 +59,7 @@ function loadReport() {
   }
 
   $.ajax({
-    url: "getdata.php",
+    url: "../models/report/getdata.php",
     method: "POST",
     data: {fromDate: fromDate, toDate: toDate},
     dataType: "json",
@@ -107,10 +107,10 @@ function loadReport() {
       }
       
     },
-    error: function () {
-      alert("Không thể tải dữ liệu báo cáo.");
-      exit();
-      location.reload();
+    error: function (xhr, status, error) {
+      console.error("Lỗi khi gọi AJAX:", error);
+      console.log("Chi tiết lỗi:", xhr.responseText);
+      alert("Không thể tải dữ liệu báo cáo.\nChi tiết: " + error);
     }
   });
 }

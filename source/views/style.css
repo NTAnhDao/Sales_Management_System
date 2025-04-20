@@ -241,7 +241,7 @@ input{
     color: gray;
 }
 
-/* Không biếtbiết */
+
 #main .cards {
     display: flex;
     gap: 20px;
@@ -336,59 +336,59 @@ table{
 }
 
 
-.btn {
-    padding: 5px 10px;
-    margin: 5px;
-    border: none;
+.bt {
+    padding: 5px;
+    margin: 2px;
+    width: 60px;
+    height: 60px;
     border-radius: 5px;
-    color: white;
     cursor: pointer;
 }
 
-.btn.btn-sendEmail {
+.bt.btn-sendEmail {
+    border: 3px solid #ffa551;
+    color: #ffa551;
+}
+
+.bt.btn-sendEmail:hover {
     background-color: #ffa551;
     color: white;
-    font-size: 14px;
 }
 
-.btn.btn-sendEmail:hover {
-    background-color: #c07a38;
+.bt.btn-lock {
+    border: 3px solid red;
+    color: red;
 }
-
-.btn.btn-lock {
+.bt.btn-lock:hover {
     background-color: red;
     color: white;
-    font-size: 14px;
-}
-.btn.btn-lock:hover {
-    background-color: #b73729;
 }
 
-.btn.btn-unlock {
+.bt.btn-unlock {
+    border: 3px solid green;
+    color: green;
+}
+.bt.btn-unlock:hover {
     background-color: green;
     color: white;
-    font-size: 14px;
 }
-.btn.btn-unlock:hover {
-    background-color: #2e6b2e;
+.bt.btn-detail {
+    border: 3px solid #007bff;
+    color: #007bff;
 }
-.btn.btn-detail {
+
+.bt.btn-detail:hover {
     background-color: #007bff;
     color: white;
-    font-size: 14px;
 }
 
-.btn.btn-detail:hover {
-    background-color: #0056b3;
+.bt.btn-viewSale {
+    border: 3px solid #ff89e0;
+    color: #ff89e0;
 }
-
-.btn.btn-viewSale {
+.bt.btn-viewSale:hover {
     background-color: #ff89e0;
     color: white;
-    font-size: 14px;
-}
-.btn.btn-viewSale:hover {
-    background-color: #be57a1;
 }
 
 /* CSS Quản lý danh mục và sản phẩm */
@@ -994,7 +994,7 @@ h2 {
     padding: 20px;
 }
 
-.right-actions .fa-edit, .fa-long-arrow-left{
+.right-actions .fa-edit{
     color: black;
 }
 
@@ -1059,7 +1059,7 @@ input {
 .date-type {
     padding: 5px;
     margin: 5px;
-    width: 130px;
+    width: 150px;
     height: 30px;
     background-color: #f8f9fa;
     border: 1px solid #ccc;

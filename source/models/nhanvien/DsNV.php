@@ -30,11 +30,11 @@
             echo "<td>" .$activated. "</td>";
             echo "<td>" .$status_lock. "</td>";
             echo "<td class='action'>
-                <a class='btn btn-sendEmail' href='index.php?sidebar=quanlynhanvien&token_send=" .$row['activate_token']. "'><i class='fa fa-paper-plane-o'></i></a>
-                <a class='btn btn-lock' href='index.php?sidebar=quanlynhanvien&token_lock=" .$row['activate_token']. "'><i class='fa fa-lock'></i></a>
-                <a class='btn btn-unlock' href='index.php?sidebar=quanlynhanvien&token_unlock=" .$row['activate_token']. "'><i class='fa fa-unlock'></i></a>
-                <a class='btn btn-detail' href='index.php?nav=hoso&id_detail=" .$row['id_nhanvien']. "'><i class='fa fa-info'></i></a>
-                <a class='btn btn-viewSale' href='index.php?sidebar=quanlynhanvien&id_view=" .$row['id_nhanvien']. "'><i class='fa fa-vcard-o'></i></a>
+                <a class='bt btn-sendEmail' href='index.php?sidebar=quanlynhanvien&token_send=" .$row['activate_token']. "'><i class='fa fa-paper-plane-o'></i></a>
+                <a class='bt btn-lock' href='index.php?sidebar=quanlynhanvien&token_lock=" .$row['activate_token']. "'><i class='fa fa-lock'></i></a>
+                <a class='bt btn-unlock' href='index.php?sidebar=quanlynhanvien&token_unlock=" .$row['activate_token']. "'><i class='fa fa-unlock'></i></a>
+                <a class='bt btn-detail' href='index.php?nav=hoso&id_detail=" .$row['id_nhanvien']. "'><i class='fa fa-info'></i></a>
+                <a class='bt btn-viewSale' href='index.php?sidebar=quanlynhanvien&id_view=" .$row['id_nhanvien']. "'><i class='fa fa-vcard-o'></i></a>
             </td>
             </tr>";
         }

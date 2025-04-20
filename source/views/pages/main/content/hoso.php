@@ -8,9 +8,21 @@
         <section class="profife-view">
             <div class="profile-container">
                 <div class="profile-header">
-                    <div class="right-actions">
-                        <a href="index.php?nav=hoso&query=sua"><i class='fa fa-edit'></i></a>
-                    </div>
+                    <?php
+                        if(isset($_GET['id_detail'])) {
+                            ?> 
+                                <div class="right-actions">
+                                    <a href="index.php?sidebar=quanlynhanvien"><i class="fa-solid fa-left-long" style="color: black;"></i></a>
+                                </div> 
+                            <?php
+                        } else {
+                            ?>
+                                <div class="right-actions">
+                                    <a href="index.php?nav=hoso&query=sua"><i class='fa fa-edit'></i></a>
+                                </div>
+                            <?php
+                        }
+                    ?>
                     <div>
                         <img src="<?=$avtPath?>" alt="Avatar" class="avatar">
                         <h2 class="name"><?=$profile_name?></h2>
