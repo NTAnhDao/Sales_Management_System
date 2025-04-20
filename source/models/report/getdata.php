@@ -1,7 +1,7 @@
 <?php
     session_start();
     header("Content-Type: application/json"); 
-    include "../../database/db.php";
+    include "../database/db.php";
 
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $fromDate = $_POST["fromDate"] ?? date('Y-m-01');

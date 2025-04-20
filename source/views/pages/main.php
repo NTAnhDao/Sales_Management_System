@@ -8,9 +8,7 @@ include '../models/danhmuc_sanpham/forDashboard.php';
 <div class="main">
     <!-- sidebar -->
     <?php
-      include("main/sidebar_nv.php");?>
-
-     
+      include("main/sidebar.php");?>
     ?>
     <!-- nội dung chính -->
     <?php
@@ -47,7 +45,7 @@ include '../models/danhmuc_sanpham/forDashboard.php';
             }
         } else if ($side == 'baocao') {
             if (isset($_GET["idctdh"])) {
-                include("../TrangNhanVien/pages/main/content/ctdh_donhang.php");
+                include("main/content/ctdh_donhang.php");
             } else {
                 include("main/content/baocao.php");
             }

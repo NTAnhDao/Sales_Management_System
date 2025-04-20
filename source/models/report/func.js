@@ -59,9 +59,9 @@ function loadReport() {
   }
 
   $.ajax({
-    url: "report/getdata.php",
+    url: "getdata.php",
     method: "POST",
-    data: { fromDate: fromDate, toDate: toDate },
+    data: {fromDate: fromDate, toDate: toDate},
     dataType: "json",
     success: function(response) {
       if(response.success) {

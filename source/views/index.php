@@ -23,21 +23,16 @@
 
 <body>
 <?php
-    if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Nhân viên")) {
+    if (isset($_SESSION["role"])) {
         //kiểm tra tài khoản đã đổi mật khẩu chưa
         if (isset($_SESSION["pass_changed"]) && $_SESSION["pass_changed"] === 0) {
-            include("pages/changePass.php");
+            include("pages/main/content/changePass.php");
         } else {
              // NAVIGATION
             include("pages/nav.php");
             // Main
-            include("pages/main_nv.php");
+            include("pages/main.php");
         }
-    } else if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Admin")) {
-        // NAVIGATION
-        include("pages/nav.php");
-        // Main
-        include("pages/main_ad.php");
     } else {
         header("Location: ../index.php");
         exit();
