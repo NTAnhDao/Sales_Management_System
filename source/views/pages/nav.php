@@ -8,7 +8,6 @@
             <div class="openclose"><span class="navbar-toggler-icon" style="font-size:30px;cursor:pointer" onclick="open_closeNav() " class = "las la-bars"></span>  </div>
             
         </div>
-
         <div class="rightnav justify-content-end">
             <ul  class=" navbar-nav" >
                 <li class="nav-item">
@@ -23,7 +22,7 @@
                         <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <?php 
                             if (empty($profile_img) || $profile_img == "") {
-                                $avtPath = "../images/user.jpg";
+                                $avtPath = "../models/quanlyhoso/imagesNV/user.jpg";
                             } else {
                                 $avtPath = "../models/quanlyhoso/imagesNV/" . $profile_img;
                             }

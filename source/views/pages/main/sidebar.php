@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a class="link" href="index.php?sidebar=khachhang" >
+                    <a class="link" href="index.php?sidebar=khachhang">
                         <span class = "fa fa-users"></span>
                         <p class="item-sidebar">Khách hàng</p>
                     </a>

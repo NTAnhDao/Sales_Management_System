@@ -34,34 +34,43 @@
                 </div>
             </section>
             <section class="addAccount d-none">
-                <div class="container">
-                    <h4>Tạo tài khoản</h4>
+                <div class="form-container">
+                    <div class="text-center mb-4" id="form-title">
+                        <h3>Tạo tài khoản</h3>
+                    </div>
                     <form action="" method="POST">
-                        <div class="group">
+                        <div class="form-group">
                             <div class="input-box">
                                 <label for="fullname">Họ tên:</label>
                                 <input type="text" id="fullname" name="fullname" required>
                             </div>
+                        </div>
+                        <div class="form-group">
                             <div class="input-box">
                                 <label for="email">Gmail:</label>
                                 <input type="email" id="emailNV" name="email" required>
                             </div>
                         </div>
-                        <div class="group">
+                        <div class="form-group">
                             <div class="input-box">
                                 <label for="gender">Giới tính:</label>
-                                <div class="group" style="gap: 10px;">
-                                    <input type="radio" id="male" name="gender" value="male">Nam
-                                    <input type="radio" id="female" name="gender" value="female">Nữ
+                                <div class="radio-group">
+                                    <div class="radio-option"><input type="radio" id="male" name="gender" value="male"> Nam</div>
+                                    <div class="radio-option"><input type="radio" id="female" name="gender" value="female"> Nữ</div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
                             <div class="input-box">
                                 <label for="SDT">Số điện thoại:</label>
                                 <input type="tel" id="SDT" name="SDT" pattern="[0-9]{10}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-account">Tạo</button>
-                        <button type="button" class="btn btn-secondary" onclick="chuyengiaodien('addAccount','listAccount')">Quay lại</button>
+                        <div class="right-actions">
+                            <button type="submit" class="btn btn-primary edit-btn" id="add-account">Tạo</button>
+                            <button type="button" class="btn btn-secondary edit-btn" onclick="chuyengiaodien('addAccount','listAccount')">Quay lại</button>
+                        </div>
+                        
                     </form>
                     
                 </div>

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
             
-        fetch("functionQLNV/addAcc.php", {
+        fetch("../models/nhanvien/addAcc.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `fullname=${fullname}&email=${email}&gender=${gender}&SDT=${sdt}`
