@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    require '../../../database/db.php';
+    require '../../database/db.php';
 // Lấy dữ liệu JSON từ AJAX
     $data = json_decode(file_get_contents("php://input"), true);
 

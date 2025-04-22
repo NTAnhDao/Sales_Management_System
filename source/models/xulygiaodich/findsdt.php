@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require '../../../database/db.php';
+require '../../database/db.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sdt = $_POST["sdt"] ?? '';
 

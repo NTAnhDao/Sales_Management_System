@@ -2,6 +2,73 @@ var hoten = document.getElementById("hoten");
 var diachi = document.getElementById("diachi");
 var idkh = "";
 var btnfindsdt = document.getElementById("search-sdt");
+var isNew = false;
+var tenv = "";
+var diachiv = "";
+var sdtv = "";
+var tongsp = 0;
+var total = 0;
+var tienkhachdua = 0;
+// Kiểm tra xem đã nhập thông tin khách hàng chưa
+function checkData() {
+    tenv = document.getElementById("enter-name").value;
+    diachiv = document.getElementById("enter-diachi").value;
+    sdtv = document.getElementById("customer-phone").value;
+    document.getElementById("enter-name").focus();
+    if (sdtv === "" || tenv === "" || diachiv === "" ){
+        errormessage("Lỗi. Vui lòng nhập đầy đủ thông tin khách hàng!", 'err-addkh');
+        return;
+    }else{
+        let nhapcustomer = bootstrap.Modal.getInstance(document.getElementById('nhapcustomer'));
+        nhapcustomer.hide(); 
+        isNew = true;
+    } 
+}
+
+// Thêm thông tin khách hàng khi nhấn thanh toán
+function insertData() { 
+    tenv = document.getElementById("enter-name").value;
+    diachiv = document.getElementById("enter-diachi").value;
+    sdtv = document.getElementById("customer-phone").value;
+    tienkhachdua = document.getElementById("tienkhachdua").value;
+    
+    if (tongsp == 0){
+        alert("Vui lòng kiểm tra lại thông tin giỏ hàng trước khi thanh toán!");
+        return false;
+    }
+    if (sdtv === ""){
+        errormessage("Vui lòng nhập số điện thoại!", 'err-findsdt');
+        return false;
+    }
+    if (tienkhachdua == 0){
+        errormessage("Vui lòng nhập tiền khách đưa!", 'err-tien');
+        return false;
+    }
+    if (tienkhachdua < total){
+        errormessage("Lỗi. Số tiền khách đưa phải nhiều hơn tổng tiền!", 'err-tien');
+        return false;
+    }
+    if(isNew){
+        if (sdtv === "" || tenv === "" || diachiv === ""){
+            alert("Vui lòng kiểm tra lại thông tin khách hàng trước khi thanh toán!");
+            return false;
+        }
+        $.ajax({
+            url: "../models/xulygiaodich//addcustomer.php",
+            type: "POST",
+            data: { ten: tenv, diachi: diachiv, sdt: sdtv},
+            success: function() {
+                errormessage(null,'err-addkh');
+            }
+        });
+        isNew = false;
+    }
+    errormessage(null, 'err-tien');
+
+    return true;
+}
+
+
 // Tìm số điện thoại
 document.addEventListener("DOMContentLoaded", function () {
     btnfindsdt.addEventListener("click", function () {
@@ -12,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;  
         }
 
-        fetch("modules/xulygiaodich/findsdt.php", {
+        fetch("../models/xulygiaodich/findsdt.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `sdt=${sdt}`
@@ -59,7 +126,7 @@ function isAddProduct(button){
             return;
         }
 
-        fetch("modules/xulygiaodich/addsptocart.php", {
+        fetch("../models/xulygiaodich/addsptocart.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `name=${name}&sl=${sl}`
@@ -230,7 +297,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
 
     if(insertData()){
         // đưa dữ liệu vào taoHD.php để tạo hóa đơn(đơn hàng)
-        fetch("modules/xulygiaodich/taoHD.php", {
+        fetch("../models/xulygiaodich/taoHD.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `tienkhachdua=${tienkhachdua}&slsp=${tongsp}&tong=${total}&sdt=${sdtv}`
@@ -242,7 +309,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
                 return;
             }
             // Gửi cartData tạo chi tiết hóa đơn
-            fetch("modules/xulygiaodich/taoCTHD.php", {
+            fetch("../models/xulygiaodich/taoCTHD.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

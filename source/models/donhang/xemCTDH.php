@@ -15,14 +15,9 @@ require '../database/db.php';
             echo "<tr>";
             echo "<td>" . $stt++. "</td>";
             echo "<td>" . $row["tensp"]. "</td>";
-            echo "<td>" . $row["dongia"]. "</td>";
+            echo "<td>" . $row["giaban"]. "</td>";
             echo "<td>" . $row["soluong"]. "</td>";
             echo "<td>" . $row["tongtien"]. "</td>";
-            echo "<td>
-                    <button class='btn-search' onclick='searchFunction()'>
-                        <i class='fa fa-search btn-search'> </i>
-                    </button>
-                </td>";
             echo "</tr>";
         }
     }
