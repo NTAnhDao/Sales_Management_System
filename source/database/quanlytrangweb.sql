@@ -267,8 +267,7 @@ ALTER TABLE `khachhang`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `sdt` (`sdt`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `sanpham`

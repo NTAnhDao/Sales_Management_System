@@ -8,8 +8,9 @@ include '../models/danhmuc_sanpham/forDashboard.php';
 <div class="main">
     <!-- sidebar -->
     <?php
-      include("main/sidebar.php");?>
+      include("main/sidebar.php");
     ?>
+    
     <!-- nội dung chính -->
     <?php
     if (isset($_GET['sidebar'])) {

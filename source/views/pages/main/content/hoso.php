@@ -26,8 +26,15 @@
                     <div>
                         <img src="<?=$avtPath?>" alt="Avatar" class="avatar">
                         <h2 class="name"><?=$profile_name?></h2>
-                        <p class="position"><?=$_SESSION['role']?></p>
-                        <span class="status">Đang làm việc</span>
+                        <p class="position"><?=$profile_role?></p>
+                        <?php
+                            if($profile_trangthai == 1) {
+                                ?><span class="status">Đang làm việc</span><?php
+                            } else {
+                                ?><span class="status" style="background-color:rgb(251, 189, 189); color:rgb(216, 86, 86);">Tài khoản đã bị khóa</span><?php
+                            }
+                        ?>
+                        
                     </div>
                 </div>
 

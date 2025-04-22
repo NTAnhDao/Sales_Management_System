@@ -4,6 +4,9 @@ var bool = true;
 function open_closeNav() {
     var sidebar = document.getElementById("mySidebar");
     var main = document.getElementById("main");
+
+    if (!sidebar || !main) return;
+    
     if(!bool){
         sidebar.style.width = "220px";
         main.style.marginLeft = "220px";
@@ -20,6 +23,9 @@ function open_closeNav() {
 function changeWebsize() {
     var sidebar = document.getElementById("mySidebar");
     var main = document.getElementById("main");
+
+    if (!sidebar || !main) return;
+
     if(bool){
         if (window.innerWidth <= 768) {
             sidebar.style.width = "65px";
