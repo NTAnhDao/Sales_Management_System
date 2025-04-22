@@ -4,6 +4,9 @@
             <div>
                 <h3>Xử lý giao dịch</h3>
             </div>
+            <div>
+                <a href="" class="btn btn-success" style="position: absolute; right: 30px; color : white;" ><i class="fa fa-plus"></i> Giao dịch</a>
+            </div>
         </div>
         <div class="content">
             <section class="cart">
