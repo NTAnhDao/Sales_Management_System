@@ -177,7 +177,7 @@ function add_sanpham(sl, tensp, giaban, tongtien) {
                 </div>
             </td>
             <td>${tongtien}</td>
-            <td><a onclick="removeProduct(this)"><i class="fa fa-trash" style="font-size:20px;color:#ffa551;cursor: pointer;"></i></a></td>
+            <td><a onclick="removeProduct(this)"><i class="fa fa-trash" ></i></a></td>
         </tr>`;
 
         let tbody = document.getElementById("tbody");

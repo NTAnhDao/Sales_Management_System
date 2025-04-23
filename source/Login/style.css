@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(bgb.jpg);
+    background-image: url(bgpos1.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -72,7 +72,7 @@ h3 {
     margin: 0 15px 0 25px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
-    padding: 40px 20px 0px;
+    padding: 10px 20px 0px;
 }
 .login-form {
     display: flex;
@@ -104,13 +104,13 @@ h3 {
     border: 2px solid #afafaf;
     border-radius: 40px;
     color: #ffa08f;
-    box-shadow: inset 1.5px 1.5px 4.5px rgba(201, 135, 84, 0.586),
-    inset -3px -3px 10px rgba(224, 143, 81, 0.278);
+    box-shadow: inset 1.5px 1.5px 4.5px #e5a69b,
+    inset -3px -3px 10px #e08d7e;
 }
 
 .input-box input:focus {
-    box-shadow: inset 1px 1px 2px rgba(201, 135, 84, 0.586),
-    inset -1px -1px 2px rgba(224, 143, 81, 0.278);
+    box-shadow: inset 1px 1px 2px #ffa08f,
+    inset -1px -1px 2px #ffa08f;
 }
 
 .input-box input::placeholder {

@@ -305,9 +305,9 @@
 /* Main content */
 .content {
     height: 100%;
-    padding: 15px;
+    padding: 5px 15px;
     max-width: 100%;
-    background: #fff0ed;
+    background: #fff6f6c3;
     min-height: 88.8vh;
     border-radius: 2rem;
 }
@@ -637,11 +637,13 @@ table {
 }
 
 .card-cart, .card-customer {
-    border-radius: 5px;
     border: 2px solid #ffa08f;
-    padding: 10px;
     background-color: #ffffff;
-    margin: 4px 0;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .purchase, .bill, .profile-view {
@@ -655,6 +657,7 @@ table {
     padding: 40px 25px 25px;
     width: 480px;
     font-family: monospace;
+    background-color: white;
 }
 
 .card-customer {
@@ -663,12 +666,12 @@ table {
 }
 
 .list-cart {
-    height: 350px;
+    height: 360px;
     overflow: auto;
 }
 
 .list-product {
-    height: 460px;
+    height: 501px;
     overflow: auto;
 }
 
@@ -712,10 +715,13 @@ table {
 }
 
 .addToCart {
-    color: #ffa551;
     padding: 15px 4px;
+    color: #27ae60;
     font-size: 18px !important;
     cursor: pointer;
+}
+.addToCart:hover {
+    color: #13542e;
 }
 
 @media print {
@@ -821,6 +827,7 @@ table {
     text-align: center;
     padding: 4px;
     font-size: medium;
+    background-color: white;
 }
 
 .modify-sl {
@@ -829,7 +836,6 @@ table {
 }
 
 .modify-sl input {
-    background-color: #f1f1f1;
     border: none;
 }
 
@@ -1185,6 +1191,18 @@ h2 {
 .card-icon {
     font-size: 35px;
     color: white;
+}
+
+.fa-trash{
+    font-size: 18px  !important;
+    color:#d14539;
+    cursor: pointer;
+    align-items: center;
+}
+
+
+.fa-trash:hover{
+    color:#c98079;
 }
 
 .pink {
