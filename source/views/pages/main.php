@@ -1,18 +1,38 @@
 <?php
+
 $sokhach = isset($_COOKIE["newcustomer"]) ? $_COOKIE["newcustomer"] : 0;
 $donhang = isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"] : 0;
 $doanhthu = isset($_COOKIE["doanhthutoday"]) ? $_COOKIE["doanhthutoday"] : 0;
 
 include '../models/danhmuc_sanpham/forDashboard.php';
+include_once("../models/danhmuc_sanpham/permission.php"); // Đường dẫn tới file kiểm tra quyền
+
+// Lưu quyền vào các thuộc tính data để sử dụng phía client
+$isAdminValue = isAdmin() ? "1" : "0";
+$canManageProductsValue = canManageProducts() ? "1" : "0";
+$canManageCategoriesValue = canManageCategories() ? "1" : "0";
+$canViewImportPriceValue = canViewImportPrice() ? "1" : "0";
 ?>
 <div class="main">
+    <!-- Hidden element to store user permissions for client-side access -->
+    <div id="user-permissions" 
+        data-is-admin="<?= $isAdminValue ?>" 
+        data-can-manage-products="<?= $canManageProductsValue ?>" 
+        data-can-manage-categories="<?= $canManageCategoriesValue ?>" 
+        data-can-view-import-price="<?= $canViewImportPriceValue ?>" 
+        style="display: none;"></div>
+
     <!-- sidebar -->
-    <?php
-      include("main/sidebar.php");
+
+    <?php 
+    include("main/sidebar.php");
+    // Kiểm tra quyền truy cập
+    redirectIfNoPermission();
     ?>
-    
+
+
     <!-- nội dung chính -->
-    <?php
+    <?php 
     if (isset($_GET['sidebar'])) {
         $side = $_GET['sidebar'];
 
@@ -23,8 +43,10 @@ include '../models/danhmuc_sanpham/forDashboard.php';
         } else if ($side == 'quanlynhanvien') {
             if (isset($_GET['id_view'])) {
                 include("main/content/thongtinbanhang.php");
-            } else {
+            } else if (hasEmployeeManagementPermission()) {
                 include("main/content/quanlynhanvien.php");
+            } else {
+                include("main/content/trangchu_nv.php");
             }
         } else if ($side == 'khachhang') {
             if (isset($_GET['idlskh'])) {
@@ -71,10 +93,8 @@ include '../models/danhmuc_sanpham/forDashboard.php';
                 break;
         }
     } else {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+        if (isset($_SESSION['role']) && $_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Nhân viên') {
             include("main/content/trangchu_ad.php");
-        } else {
-            include("main/content/trangchu_nv.php");
         }
     }
     ?>

@@ -14,30 +14,32 @@
                     <p class="item-sidebar">Trang chủ</p>
                 </a>
             </li>
-            <?php if($_SESSION["role"] == "Admin") {
-            ?>
+            <?php
+            if ($_SESSION['role'] == 'Admin') {
+                ?>
                 <li class="item">
                     <a class="link" href="index.php?sidebar=quanlynhanvien">
                         <span class = "fa fa-users"></span>
                         <p class="item-sidebar">Quản lý nhân viên</p> 
                     </a>
                 </li>
+            <?php 
+        }?>
+
                 <li class="item">
                     <a class="link" href="index.php?sidebar=quanlydanhmuc">
                         <span class = "fa fa-tags"></span>
                         <p class="item-sidebar">Quản lý danh mục</p>
                     </a>
                 </li>
-            <?php
-            }?>
+            
             <li class="item">
                 <a class="link" href="index.php?sidebar=quanlysanpham">
                     <span class = "fa fa-list"></span>
                     <p class="item-sidebar">Quản lý sản phẩm</p> 
                 </a>
             </li>
-            <?php if($_SESSION["role"] == "Nhân viên") {
-            ?>
+           
                 <li class="item">
                     <a class="link" href="index.php?sidebar=giaodich">
                         <span class = "fa fa-shopping-cart"></span>
@@ -56,14 +58,15 @@
                         <p class="item-sidebar">Đơn hàng</p>
                     </a>
                 </li>
-                <?php
-            }?>
+             
             <li class="item">
                 <a class="link" href="index.php?sidebar=baocao">
                     <span class = "fa fa-bar-chart"></span>
                     <p class="item-sidebar">Báo cáo</p> 
                 </a>
             </li>
+            
+        
         </ul>
     </div>
     <div class="logout">

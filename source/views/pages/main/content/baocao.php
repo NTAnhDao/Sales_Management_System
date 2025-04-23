@@ -57,9 +57,12 @@
                         </div>
                     </div>
                 </div>
+        
                 <div class="report-chart">
                     <canvas id="myChart" height="100px"></canvas>
                 </div>
+
+            
                 <div class="card-catalog">
                     <h5>Danh sách đơn hàng</h5>
                     <table class="cart-table">
@@ -73,7 +76,7 @@
                                 <th>Chi tiết</th>
                             </tr>
                         </thead>
-                        <tbody id="reporttbody"></tbody>
+                        <tbody id="reporttbody"></tbody>       
                     </table>
                 </div>
             </session>

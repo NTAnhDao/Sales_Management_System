@@ -1,62 +1,78 @@
 <?php
 session_start();
-require '../database/db.php';
+require '../../database/db.php';
+require 'permission.php'; // Đường dẫn tới file permission.php trong cùng thư mục
 
 header('Content-Type: application/json');
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
-    echo json_encode(['success' => false, 'message' => 'Bạn không có quyền thực hiện thao tác này!']);
+// Kiểm tra quyền xóa sản phẩm
+if (!canManageProducts()) {
+    echo json_encode(['success' => false, 'message' => 'Bạn không có quyền xóa sản phẩm!']);
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mavach'])) {
-    $mavach = $_POST['mavach'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $mavach = $_POST["mavach"] ?? '';
+
+    if (empty($mavach)) {
+        echo json_encode(["success" => false, "message" => "Mã vạch sản phẩm không hợp lệ!"]);
+        exit;
+    }
 
     $conn = connectDB();
     if (!$conn) {
-        echo json_encode(['success' => false, 'message' => 'Lỗi kết nối cơ sở dữ liệu!']);
+        echo json_encode(["success" => false, "message" => "Lỗi kết nối cơ sở dữ liệu!"]);
         exit;
     }
 
-    // Kiểm tra sản phẩm có trong đơn hàng không
-    $checkOrderQuery = $conn->prepare("SELECT * FROM chitietdonhang WHERE id_sanpham = ?");
-    $checkOrderQuery->bind_param("s", $mavach);
-    $checkOrderQuery->execute();
-    $checkOrderResult = $checkOrderQuery->get_result();
-    if ($checkOrderResult->num_rows > 0) {
-        echo json_encode(['success' => false, 'message' => 'Sản phẩm đã tồn tại trong đơn hàng, không thể xóa!']);
-        $checkOrderQuery->close();
+    // Kiểm tra nếu sản phẩm nằm trong đơn hàng
+    $checkSql = "SELECT COUNT(*) as count FROM chitietdonhang WHERE id_sanpham = ?";
+    $stmt = $conn->prepare($checkSql);
+    $stmt->bind_param("s", $mavach);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    if ($row['count'] > 0) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Không thể xóa sản phẩm vì sản phẩm đã được mua trong chi tiết đơn hàng!'
+        ]);
+        $stmt->close();
         $conn->close();
-        exit;
+        exit();
     }
-    $checkOrderQuery->close();
 
+
+    
     // Lấy hình ảnh để xóa file
     $imgQuery = $conn->prepare("SELECT img FROM sanpham WHERE mavach = ?");
     $imgQuery->bind_param("s", $mavach);
     $imgQuery->execute();
-    $imgResult = $imgQuery->get_result();
-    $img = $imgResult->fetch_assoc()['img'];
+    $imgQuery->bind_result($img);
+    $imgQuery->fetch();
     $imgQuery->close();
 
     // Xóa sản phẩm
     $query = $conn->prepare("DELETE FROM sanpham WHERE mavach = ?");
     $query->bind_param("s", $mavach);
-    $query->execute();
 
-    if ($query->affected_rows > 0) {
-        // Xóa file hình ảnh nếu có
-        if ($img && file_exists("../images/$img")) {
-            unlink("../images/$img");
+    if ($query->execute()) {
+        // Xóa file hình ảnh nếu tồn tại
+        $imagePath = __DIR__ . '/images/'; // Thư mục images nằm cùng cấp với file PHP
+
+        if ($img && file_exists($imagePath . $img)) {
+            unlink($imagePath . $img);
         }
-        echo json_encode(['success' => true, 'message' => 'Xóa sản phẩm thành công!']);
+        echo json_encode(["success" => true, "message" => "Xóa sản phẩm thành công!"]);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Xóa sản phẩm thất bại: ' . $query->error]);
+        echo json_encode(["success" => false, "message" => "Xóa sản phẩm thất bại: " . $query->error]);
     }
+
 
     $query->close();
     $conn->close();
 } else {
-    echo json_encode(['success' => false, 'message' => 'Yêu cầu không hợp lệ!']);
+    echo json_encode(["success" => false, "message" => "Yêu cầu không hợp lệ!"]);
 }
 ?>

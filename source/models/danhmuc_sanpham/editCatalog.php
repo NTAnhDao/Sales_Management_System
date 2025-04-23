@@ -1,11 +1,13 @@
 <?php
 session_start();
 require '../../database/db.php';
+require 'permission.php'; // Đường dẫn tới file permission.php trong cùng thư mục
 
 header('Content-Type: application/json');
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
-    echo json_encode(['success' => false, 'message' => 'Bạn không có quyền thực hiện thao tác này!']);
+// Kiểm tra quyền chỉnh sửa danh mục
+if (!canManageCategories()) {
+    echo json_encode(['success' => false, 'message' => 'Bạn không có quyền chỉnh sửa danh mục sản phẩm!']);
     exit;
 }
 

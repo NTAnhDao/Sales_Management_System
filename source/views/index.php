@@ -23,7 +23,7 @@
 
 <body>
 <?php
-    if (isset($_SESSION["role"])) {
+     if (isset($_SESSION["role"]) && ($_SESSION["role"]=="Admin" || $_SESSION["role"]=="Nhân viên")) {
         //kiểm tra tài khoản đã đổi mật khẩu chưa
         if (isset($_SESSION["pass_changed"]) && $_SESSION["pass_changed"] === 0) {
             include("pages/main/content/changePass.php");
