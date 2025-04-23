@@ -46,4 +46,8 @@
     echo "<script>alert('" .$mess. "!');
     window.location.href = 'index.php?sidebar=quanlynhanvien';</script>";
     exit();
+    
+    
+    
+    
 ?>

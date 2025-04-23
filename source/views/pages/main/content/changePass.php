@@ -18,9 +18,9 @@
             $stmt->fetch();
             $stmt->close();
             if ($password !== $oldPass) {
-                $error = "Mật khẩu hiện tại không đúng!";
+                $error = "Mật khẩu cũ không đúng!";
             } else if ($password == $newPass) {
-                $error = "Mật khẩu mới không được giống mật khẩu hiện tại!";
+                $error = "Mật khẩu mới không được giống mật khẩu cũ!";
             }
         }
     
@@ -66,7 +66,7 @@
                         ?>
                             <div class="form-group">
                                 <div class="input-box">
-                                    <label for="oldPass">Mật khẩu hiện tại:</label>
+                                    <label for="oldPass">Mật khẩu cũ:</label>
                                     <input type="password" id="oldPass" name="oldPass" required>
                                 </div>
                             </div>

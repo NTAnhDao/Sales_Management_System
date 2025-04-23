@@ -7,7 +7,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
         
-        if(!$stmt->execute()) return 'Không thể đăng nhập, vui lòng liên hệ với admin';
+        if(!$stmt->execute()) return 'Không thể login, vui lòng liên hệ với admin';
 
         $res = $stmt->get_result();
         if($res->num_rows !== 1) return 'Tên đăng nhập không chính xác';

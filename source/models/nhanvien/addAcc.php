@@ -32,7 +32,7 @@
             }
 
             //Lưu data vào database bảng nhân viên
-            $sql = 'INSERT INTO nhanvien (hoten, email, gioitinh, sdt, ngaysinh, diachi, img) VALUE (?, ?, ?, ?, null, null, "user.jpg")';
+            $sql = 'INSERT INTO nhanvien (hoten, email, gioitinh, sdt) VALUE (?, ?, ?, ?)';
             $stmt->prepare($sql);
             $stmt->bind_param("ssss", $fullname, $email, $gender, $sdt);
             
@@ -46,7 +46,7 @@
                 $row = $result->fetch_assoc(); 
                 $id = $row['id'];
 
-                $temp_pass = "52300048"; //Mật khẩu tạm thời
+                $temp_pass = "52300048"; // Mật khẩu tạm thời
 
                 //tạo data
                 $usename = strstr($email, '@', true); //Tách phần đầu của email
@@ -72,9 +72,9 @@
             } else {
                 echo json_encode(["success" => false, "mess" => "Lỗi khi thêm nhân viên vào database!"]);
             }
-            $conn->close(); 
+            
         }
-        
+        $conn->close(); 
     }
    
 ?>
