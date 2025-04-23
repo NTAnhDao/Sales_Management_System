@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="col col-1">
                     <img src="Login/pos.png" style="width: fit-content;">
-                    <h3>Chào mừng bạn đến với <br> Quản lý bán hàng Point of Sale</h3>
+                    <h3>Chào mừng bạn đến với Quản lý bán hàng <br> Point of Sale</h3>
                 </div>
                 <div class="col col-2">
                     <div class="login-form">
