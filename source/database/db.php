@@ -6,8 +6,6 @@ if (!function_exists("connectDB")) {
     $password = "";
     $database = "quanlytrangweb2";
     
-
-
     // Tạo kết nối với databasedatabase
     $conn = new mysqli($servername, $username, $password, $database);
 
@@ -19,8 +17,4 @@ if (!function_exists("connectDB")) {
     return $conn;
   }
 }
-    
-
-// Đóng kết nốinối
-// $conn->close();
 ?>

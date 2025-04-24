@@ -54,7 +54,7 @@ function insertData() {
             return false;
         }
         $.ajax({
-            url: "../models/xulygiaodich/addcustomer.php",
+            url: "../models/xulygiaodich//addcustomer.php",
             type: "POST",
             data: { ten: tenv, diachi: diachiv, sdt: sdtv},
             success: function() {
@@ -64,6 +64,7 @@ function insertData() {
         isNew = false;
     }
     errormessage(null, 'err-tien');
+
     return true;
 }
 
@@ -99,7 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 hoten.innerHTML = "Khách hàng: " + product.name + " - " + sdt;
                 diachi.innerHTML = "Địa chỉ: " + product.address;
                 errormessage(null,'err-findsdt');
+                errormessage(null ,'suc-addkh');
             }
+
         })
         .catch(error => console.error("Lỗi:", error));
     });
@@ -113,7 +116,7 @@ function isAddProduct(button){
         let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
         let giaban = parseInt(row.children[2].textContent); // Giá
         let tensp = row.children[1].textContent;
-        updateCart(1, tensp, giaban);
+        add_sanpham(1, tensp, giaban, giaban);
     }else{ // Thêm bằng cách nhập mã vạch
         let name = $("#product_id").val().trim();
         let sl = $("#soluong").val().trim();
@@ -135,16 +138,15 @@ function isAddProduct(button){
                 return;
             }
 
-            updateCart(sl, product.tensp, product.giabanle);
+            add_sanpham(sl, product.tensp, product.giabanle, product.tongtien);
             errormessage(null,'err-addsp');
         })
         .catch(error => console.error("Lỗi:", error));
     }        
 }
 
-// Cập nhật giỏ hàng
-function updateCart(sl, tensp, giaban) {
-    let tongtien = sl*giaban;
+// Thêm sản phẩm vào giỏ
+function add_sanpham(sl, tensp, giaban, tongtien) {
     tongsp += parseInt(sl);
     let existingRow = null;
     document.querySelectorAll("#tbody tr").forEach(row => {
@@ -199,7 +201,7 @@ function increaseQuantity(button) {
     tongsp += 1;
     let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
     let td_giaban = parseInt(row.children[1].textContent); // Giá bán của dòng điều chỉnh sô lượng
-    row.children[3].textContent = value*td_giaban;  // Cập nhật tổng tiền
+    row.children[3].textContent = value*td_giaban;
     total += td_giaban;
     document.querySelectorAll(".total").forEach(el => {
         el.innerHTML = total.toLocaleString('vi-VN');
@@ -216,7 +218,7 @@ function decreaseQuantity(button) {
         tongsp -= 1;
         let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
         let td_giaban = parseInt(row.children[1].textContent); // Giá bán của dòng điều chỉnh sô lượng
-        row.children[3].textContent = value*td_giaban;   // Cập nhật tổng tiền
+        row.children[3].textContent = value*td_giaban;
         total -= td_giaban;
         document.querySelectorAll(".total").forEach(el => {
             el.innerHTML = total.toLocaleString('vi-VN');
@@ -266,6 +268,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
     document.getElementById("sdtkh").innerHTML = sdtv;
 
     destinationTable.innerHTML = ""; 
+
     let selectedCols = [0, 1, 2, 3]; 
 
     // Lấy dữ liệu từ giỏ hàng
@@ -320,6 +323,7 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
             });
             const now = dayjs();
            
+
             // Hiển thị hóa đơn
             document.getElementById("day").innerHTML = now.format('DD/MM/YYYY HH:mm:ss');
             document.getElementById("sohd").innerHTML = product.idhd;

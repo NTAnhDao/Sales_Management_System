@@ -20,14 +20,7 @@
                     </a></li>
                 <li class="nav-item dropdown">
                         <a id="nav-user" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <?php 
-                            if (empty($profile_img) || $profile_img == "") {
-                                $avtPath = "../models/quanlyhoso/imagesNV/user.jpg";
-                            } else {
-                                $avtPath = "../models/quanlyhoso/imagesNV/" . $profile_img;
-                            }
-                            ?>
-                            <img id="nav-avatar" src = "<?=$avtPath?>" height = "30px"  width = "30px" alt = "Avatar">
+                            <img id="nav-avatar" src = "../models/quanlyhoso/imagesNV/<?=$profile_img?>" height = "30px"  width = "30px" alt = "Avatar">
                             <div class="infor">
                                 <p id ="user"><?= $_SESSION["username"]?></p>
                                 <p id="email"><?= $_SESSION["email"]?></p>
