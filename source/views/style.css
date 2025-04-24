@@ -1138,6 +1138,12 @@ h2 {
     border-radius: 5px;
 }
 
+.cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 0px 5px;
+}
 .card {
     flex: 1;
     max-width: 280px;

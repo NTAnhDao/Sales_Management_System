@@ -23,12 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `fullname=${fullname}&email=${email}&gender=${gender}&SDT=${sdt}`
         })
-        // .then(response => response.json()) // Chuyển đổi kết quả JSON
-        .then(response => response.text())
-        .then(text => {
-        console.log("Phản hồi từ API:", text);
-        return JSON.parse(text);
-        })
+        .then(response => response.json()) // Chuyển đổi kết quả JSON
         .then(result => {
             if(result.success) {
                 alert("Tạo tài khoản thành công!");
