@@ -735,20 +735,21 @@ table {
         visibility: hidden !important;
     }
     
-    #hoadon-print, #hoadon-print * {
+    #HoaDon, #HoaDon * {
         visibility: visible !important;
     }
 
-    #hoadon-print {
+    #HoaDon {
         top: 0;
         left: 0;
         position: absolute;
-        width: 90mm;
+        width: auto;
+        height: auto;
         font-size: 12px;
         background: white;
     }
 
-    #hoadon-print .cart-table th {
+    #HoaDont .cart-table th {
         font-size: 12px;
     }
 }

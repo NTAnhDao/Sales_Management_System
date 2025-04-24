@@ -154,7 +154,7 @@
             
             <section class="bill d-none">
                 <div id="HoaDon">
-                    <div id="hoadon-print">
+                    <div>
                         <div class="text-center">
                             <b> HÓA ĐƠN THANH TOÁN </b>
                             <div> Số HD: <span id="sohd"></span></div>
