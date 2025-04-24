@@ -17,9 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($row = $result->fetch_assoc()) {
     $response = [
         "tensp" => $row["tensp"],
-        "giabanle" => $row["giabanle"],
-        "soluong" => $soluong,
-        "tongtien" => $soluong * $row["giabanle"]
+        "giabanle" => $row["giabanle"]
     ];
     echo json_encode($response);
     } else {

@@ -4,7 +4,7 @@ if (!function_exists("connectDB")) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "quan";
+    $database = "quanlytrangweb";
     
 
 

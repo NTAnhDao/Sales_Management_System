@@ -116,7 +116,7 @@ function isAddProduct(button){
         let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
         let giaban = parseInt(row.children[2].textContent); // Giá
         let tensp = row.children[1].textContent;
-        add_sanpham(1, tensp, giaban, giaban);
+        updateCart(1, tensp, giaban);
     }else{ // Thêm bằng cách nhập mã vạch
         let name = $("#product_id").val().trim();
         let sl = $("#soluong").val().trim();
@@ -138,7 +138,7 @@ function isAddProduct(button){
                 return;
             }
 
-            add_sanpham(sl, product.tensp, product.giabanle, product.tongtien);
+            updateCart(sl, product.tensp, product.giabanle);
             errormessage(null,'err-addsp');
         })
         .catch(error => console.error("Lỗi:", error));
@@ -146,7 +146,8 @@ function isAddProduct(button){
 }
 
 // Thêm sản phẩm vào giỏ
-function add_sanpham(sl, tensp, giaban, tongtien) {
+function updateCart(sl, tensp, giaban) {
+    let tongtien = sl*giaban;
     tongsp += parseInt(sl);
     let existingRow = null;
     document.querySelectorAll("#tbody tr").forEach(row => {
