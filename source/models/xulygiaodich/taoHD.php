@@ -52,11 +52,4 @@
         $query->close(); 
         $conn->close();
     } 
-    $donhang = isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"] + 1 : 1;
-    setcookie("donhangtoday", $donhang, $_SESSION["1day"], "/");
-
-    $doanhthu = isset($_COOKIE["doanhthutoday"]) ? $_COOKIE["doanhthutoday"] + $tong : $tong;
-    setcookie("doanhthutoday", $doanhthu, $_SESSION["1day"], "/");
-
-
 ?>
