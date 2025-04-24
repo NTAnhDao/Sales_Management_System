@@ -1,12 +1,11 @@
 <?php
-require '../database/db.php';
+    require '../database/db.php';
 
     $idnv =  $_SESSION["id"];
 
     $conn = connectDB();
 
     $sql = "SELECT donhang.*, khachhang.hoten FROM donhang, khachhang WHERE id_khachhang = khachhang.id and id_nhanvien =" .$idnv;
-
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -28,5 +27,5 @@ require '../database/db.php';
             echo "</tr>";
         }
     }
-$conn->close();
+    $conn->close();
 ?>

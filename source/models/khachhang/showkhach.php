@@ -1,7 +1,6 @@
 <?php
     require '../database/db.php';
-
-
+    
     $conn = connectDB();
     $sql = "SELECT * FROM khachhang";
     $result = $conn->query($sql);
@@ -23,5 +22,5 @@
         }
     }
 
-$conn->close();
+    $conn->close();
 ?>

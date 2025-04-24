@@ -23,7 +23,7 @@
         $fileType = mime_content_type($avatarTmp);
         $fileExt = strtolower(pathinfo($avatarName, PATHINFO_EXTENSION));
     
-        if (in_array($fileType, $allowedTypes) && in_array($fileExt, ['jpg', 'jpeg', 'png', 'webp','ico'])) {
+        if (in_array($fileType, $allowedTypes) && in_array($fileExt, ['jpg', 'jpeg', 'png', 'webp'])) {
             if (move_uploaded_file($avatarTmp, $avatarPath)) {
                 $uploadOk = true;
             }

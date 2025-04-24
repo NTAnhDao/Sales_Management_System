@@ -1,5 +1,5 @@
 <?php
-require '../database/db.php';
+    require '../database/db.php';
 
     $id = $_GET['idctdh'];
 
@@ -21,5 +21,5 @@ require '../database/db.php';
             echo "</tr>";
         }
     }
-$conn->close();
+    $conn->close();
 ?>

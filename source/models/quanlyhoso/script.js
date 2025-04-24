@@ -1,20 +1,3 @@
-function annoucement(message,id){
-    let messageID = document.getElementById(id)
-
-    if(message == null || message == undefined){
-        //hide
-        if(!messageID.classList.contains('d-none')){
-            messageID.classList.add('d-none')
-        }
-    }else{
-        messageID.classList.remove('d-none')
-        messageID.innerHTML = message
-    }
-    setTimeout(() => {
-        messageID.classList.add('d-none');
-    }, 2000);
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     const dropavatar = document.getElementById('drop-avatar');
     const avatarInput = document.getElementById('avatarInput');

@@ -1,7 +1,5 @@
 <?php
  session_start();
- $expire = strtotime('tomorrow');
- $_SESSION["1day"] = $expire;
  include '../models/quanlyhoso/getProfileNV.php';
 ?>
 <!DOCTYPE html>

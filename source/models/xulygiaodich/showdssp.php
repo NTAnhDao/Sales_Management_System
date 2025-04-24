@@ -1,7 +1,6 @@
 <?php
     require '../database/db.php';
 
-
     $conn = connectDB();
     $sql = "SELECT tensp, giabanle, mavach FROM sanpham";
     $result = $conn->query($sql);
@@ -19,5 +18,5 @@
         }
     }
 
-$conn->close();
+    $conn->close();
 ?>
