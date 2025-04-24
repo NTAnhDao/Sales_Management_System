@@ -1,14 +1,14 @@
 <?php
-require '../database/db.php';
+    require '../database/db.php';
 
     $id = $_GET['idlskh'];
 
     $conn = connectDB();
 
     $sql = "SELECT * FROM donhang WHERE id_khachhang =" .$id;
-
     $result = $conn->query($sql);
     $stt = 1;
+    
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -26,5 +26,5 @@ require '../database/db.php';
             echo "</tr>";
         }
     }
-$conn->close();
+    $conn->close();
 ?>
