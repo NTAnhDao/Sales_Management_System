@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2025 at 03:16 PM
+-- Generation Time: Apr 24, 2025 at 10:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,22 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baocao`
---
-
-CREATE TABLE `baocao` (
-  `id` int(11) NOT NULL,
-  `moctg` enum('ngày','tuần','tháng','tùy chọn') NOT NULL,
-  `ngaybd` date NOT NULL,
-  `ngaykt` date NOT NULL,
-  `tongsp` int(11) NOT NULL,
-  `tongdonhang` int(11) NOT NULL,
-  `tongtien` decimal(10,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `chitietdonhang`
 --
 
@@ -55,12 +39,7 @@ CREATE TABLE `chitietdonhang` (
 -- Dumping data for table `chitietdonhang`
 --
 
-INSERT INTO `chitietdonhang` (`id_donhang`, `id_sanpham`, `soluong`, `tongtien`, `giaban`) VALUES
-(2, '12347', 1, 550000, 550000),
-(2, '12348', 1, 2500000, 2500000),
-(3, '12346', 2, 11380000, 5690000),
-(4, '12354', 1, 160000, 160000),
-(4, '12356', 2, 660000, 330000);
+
 -- --------------------------------------------------------
 
 --
@@ -79,11 +58,7 @@ CREATE TABLE `danhmucsp` (
 -- Dumping data for table `danhmucsp`
 --
 
-INSERT INTO `danhmucsp` (`id`, `tendm`, `mota`, `ngaytao`, `id_nguoitao`) VALUES
-(1, 'Điện thoại', NULL, '2025-03-09 14:55:14', NULL),
-(2, 'Tai nghe', NULL, '2025-03-09 14:55:17', NULL),
-(3, 'Sạc dự phòng', NULL, '2025-03-29 15:27:48', NULL),
-(4, 'Ốp lưng', NULL, '2025-03-29 15:27:48', NULL);
+
 
 -- --------------------------------------------------------
 
@@ -106,11 +81,8 @@ CREATE TABLE `donhang` (
 -- Dumping data for table `donhang`
 --
 
-INSERT INTO `donhang` (`id`, `id_khachhang`, `id_nhanvien`, `tongtien`, `tienkhachdua`, `tientra`, `ngaymua`, `soluongsp`) VALUES
-(1, 1, 2, 900000, 1000000, 100000, '2025-03-12 14:29:32', 2),
-(2, 1, 3, 3050000, 3100000, 50000, '2025-04-04 12:16:55', 2),
-(3, 3, 3, 11380000, 12000000, 620000, '2025-04-04 12:19:11', 2),
-(4, 1, 2, 820000, 1000000, 180000, '2025-04-12 13:01:53', 3);
+
+
 -- --------------------------------------------------------
 
 --
@@ -129,11 +101,7 @@ CREATE TABLE `khachhang` (
 -- Dumping data for table `khachhang`
 --
 
-INSERT INTO `khachhang` (`id`, `hoten`, `diachi`, `sdt`, `ngaytao`) VALUES
-(1, 'Trương Lê Hiếu An', 'Bình Chánh', '0828828176', '2025-03-12 14:25:19'),
-(2, 'Nguyễn Thị Anh Đào', 'Quận 7', '0289712912', '2025-03-12 14:25:19'),
-(3, 'Nguyễn Thúc Thùy Tiên', 'Phú Mỹ Hưng, quận 7', '0717717717', '2025-03-29 15:17:47'),
-(4, 'Trần Trung Dũng', 'Korea', '0552552552', '2025-03-29 15:18:43');
+
 
 -- --------------------------------------------------------
 
@@ -157,10 +125,7 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`id`, `hoten`, `email`, `gioitinh`, `sdt`, `ngaysinh`, `diachi`, `img`) VALUES
-(1, 'Lee Min Hoo', 'admin@gmail.com', 'Nam', '828828176', NULL, NULL, 'user.jpg'),
-(2, 'Trần Thị Mỹ Nữ', '52300048@student.tdtu.edu.vn', 'Nữ', NULL, NULL, NULL, 'user.jpg'),
-(3, 'Nguyễn Thị Anh Đào', '52300014@student.tdtu.edu.vn', 'Nữ', NULL, NULL, NULL, 'user.jpg'),
-(4, 'Trần Thị A', 'trannuu2005@gmail.com', 'Nam', NULL, NULL, NULL, 'user.jpg');
+(1, 'Administrator', 'admin@gmail.com', NULL, NULL, NULL, NULL, 'user.jpg');
 
 -- --------------------------------------------------------
 
@@ -181,22 +146,6 @@ CREATE TABLE `sanpham` (
 --
 -- Dumping data for table `sanpham`
 --
-
-INSERT INTO `sanpham` (`mavach`, `tensp`, `giagoc`, `giabanle`, `img`, `id_danhmuc`, `ngaytao`) VALUES
-('12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, 'reno12-5g-3.png', 1, '2025-03-09 15:00:16'),
-('12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, 'airpods-pro-2nd.jpg', 2, '2025-03-09 15:00:16'),
-('12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, 'tai-nghe-bluetooth-chup-tai-baseus-bass-35-max-kem-5.jpg', 2, '2025-03-09 15:04:00'),
-('12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, 'tai-nghe-bluetooth-chup-tai-sony.jpgjpg', 2, '2025-03-09 15:04:00'),
-('12349', 'OPPO Find N5', 40000000, 45990000, 'oppo_find_n3_oppo.png', 1, '2025-03-29 15:24:40'),
-('12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, 'dien_thoai_apple_iphone_16_plus_hong_3.jpg', 1, '2025-03-29 15:24:40'),
-('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, 'pin-sac-du-phong_Ava.jpg', 3, '2025-03-29 16:08:36'),
-('12352', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, 'pinscduphongAnkerZolo.jpg', 3, '2025-03-29 16:08:36'),
-('12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, 'pinscduphongAnkerZolo.jpg', 4, '2025-03-29 16:10:55'),
-('12354', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, 'op-lung-galaxy-s24-fe-nhua-cung-vien-deo.jpg' , 4, '2025-03-29 16:10:55'),
-('12355', 'Ốp lưng Galaxy S24 Ultra Nhựa cứng viền dẻo Samsung kèm dây đứng Chính hãng', 650000, 833000, 'op_lung_cung_s24ultra.jpg', 4, '2025-03-29 16:13:27'),
-('12356', 'Ốp lưng Galaxy A26 TPU có khe đựng thẻ Samsung Chính hãng', 250000, 330000, 'op_lung_a26_co_khe_dung_the.jpg', 4, '2025-03-29 16:13:27');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `taikhoan`
@@ -220,19 +169,11 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `activate_token`, `expire_time`, `pass_changed`, `trangthai_khoa`) VALUES
-(1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0),
-(2, 2, '52300048', '52300048', 'Nhân viên', 1, 'e58d174b', 1744346223, 1, 0),
-(3, 4, 'trannuu2005', '123456', 'Nhân viên', 1, 'e58d194a', 1744038659, 1, 1);
+(1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `baocao`
---
-ALTER TABLE `baocao`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chitietdonhang`
@@ -289,40 +230,34 @@ ALTER TABLE `taikhoan`
 --
 
 --
--- AUTO_INCREMENT for table `baocao`
---
-ALTER TABLE `baocao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `danhmucsp`
 --
 ALTER TABLE `danhmucsp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
