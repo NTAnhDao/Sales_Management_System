@@ -45,7 +45,7 @@ include '../models/quanlyhoso/getProfileNV.php';
 
                     <div class="form-group">
                     <label><i class="fa fa-phone"></i> Số điện thoại</label>
-                    <input value="<?=$profile_sdt?>" type="text" name="phone" placeholder="Nhập số điện thoại">
+                    <input value="<?=$profile_sdt?>" type="text" name="phone" placeholder="Nhập số điện thoại" pattern="[0-9]{10}">
                     </div>
 
                     <div class="form-group">

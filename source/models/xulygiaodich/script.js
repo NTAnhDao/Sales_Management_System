@@ -54,7 +54,7 @@ function insertData() {
             return false;
         }
         $.ajax({
-            url: "../models/xulygiaodich//addcustomer.php",
+            url: "../models/xulygiaodich/addcustomer.php",
             type: "POST",
             data: { ten: tenv, diachi: diachiv, sdt: sdtv},
             success: function() {
@@ -64,7 +64,6 @@ function insertData() {
         isNew = false;
     }
     errormessage(null, 'err-tien');
-
     return true;
 }
 
@@ -100,9 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 hoten.innerHTML = "Khách hàng: " + product.name + " - " + sdt;
                 diachi.innerHTML = "Địa chỉ: " + product.address;
                 errormessage(null,'err-findsdt');
-                errormessage(null ,'suc-addkh');
             }
-
         })
         .catch(error => console.error("Lỗi:", error));
     });
@@ -145,7 +142,7 @@ function isAddProduct(button){
     }        
 }
 
-// Thêm sản phẩm vào giỏ
+// Cập nhật giỏ hàng
 function updateCart(sl, tensp, giaban) {
     let tongtien = sl*giaban;
     tongsp += parseInt(sl);
@@ -202,7 +199,7 @@ function increaseQuantity(button) {
     tongsp += 1;
     let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
     let td_giaban = parseInt(row.children[1].textContent); // Giá bán của dòng điều chỉnh sô lượng
-    row.children[3].textContent = value*td_giaban;
+    row.children[3].textContent = value*td_giaban;  // Cập nhật tổng tiền
     total += td_giaban;
     document.querySelectorAll(".total").forEach(el => {
         el.innerHTML = total.toLocaleString('vi-VN');
@@ -219,7 +216,7 @@ function decreaseQuantity(button) {
         tongsp -= 1;
         let row = button.closest("tr"); // Tìm thẻ <tr> chứa nút
         let td_giaban = parseInt(row.children[1].textContent); // Giá bán của dòng điều chỉnh sô lượng
-        row.children[3].textContent = value*td_giaban;
+        row.children[3].textContent = value*td_giaban;   // Cập nhật tổng tiền
         total -= td_giaban;
         document.querySelectorAll(".total").forEach(el => {
             el.innerHTML = total.toLocaleString('vi-VN');
@@ -269,7 +266,6 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
     document.getElementById("sdtkh").innerHTML = sdtv;
 
     destinationTable.innerHTML = ""; 
-
     let selectedCols = [0, 1, 2, 3]; 
 
     // Lấy dữ liệu từ giỏ hàng
@@ -324,7 +320,6 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
             });
             const now = dayjs();
            
-
             // Hiển thị hóa đơn
             document.getElementById("day").innerHTML = now.format('DD/MM/YYYY HH:mm:ss');
             document.getElementById("sohd").innerHTML = product.idhd;
