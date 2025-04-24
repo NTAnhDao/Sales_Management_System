@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    $sokhach = $_COOKIE["newcustomer"] + 1; // Tăng giá trị lên 1
+    setcookie("newcustomer", $sokhach, $_SESSION["1day"], "/");
+
     require '../../database/db.php';
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $ten = $_POST["ten"] ?? '';

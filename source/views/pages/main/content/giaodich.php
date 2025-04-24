@@ -46,6 +46,7 @@
                                 <input id="soluong" type="number" name="soluong" placeholder="Số lượng" min="1" >
                                 <button class="btn-custom btn btn-success" id="addbyID" onclick="isAddProduct(this)"  class="btn btn-default">Thêm</button>
                             </div> 
+                            
                             <div class="d-none errorMessage" id="err-addsp"></div>
                         </div>
                     
@@ -89,21 +90,25 @@
                     <div class="purchase-item">
                         <div class="form-product row">
                             <label for="customer-phone" style="margin:10px 0;" > Số điện thoại: </label>
-                            <input class="sdt"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" pattern="[0-9]{10}" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
+                            <input class="sdt"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
                             <button id="search-sdt"  class="btn-custom btn btn-secondary" >Tìm kiếm</button>
                         </div>
                         <div class="customer-infor" id="hoten"> </div>
                         <div class="customer-infor" id="diachi"> </div>
                         <div class="d-none errorMessage" id="err-findsdt"></div>
+                        <div class="d-none successMessage" id="suc-addkh"></div>
+
                     </div>
 
                     <!-- The Modal -->
                     <div class="modal" id="nhapcustomer">
                         <div class="modal-dialog">
                             <div class="modal-content">
+
                                 <div class="modal-header">
                                     <h4 class="modal-title">Nhập thông tin khách hàng</h4>
                                 </div>
+
                                 <div class="modal-body">
                                     <div class="annouce">
                                         Nhập đầy đủ và chính xác thông tin của khách hàng trước khi thoát.
@@ -118,9 +123,11 @@
                                     </div>
                                     <div class="d-none errorMessage" id="err-addkh"></div>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button onclick="checkData()" class="btn btn-success">Hoàn tất</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -154,7 +161,7 @@
             
             <section class="bill d-none">
                 <div id="HoaDon">
-                    <div>
+                    <div id="hoadon-print">
                         <div class="text-center">
                             <b> HÓA ĐƠN THANH TOÁN </b>
                             <div> Số HD: <span id="sohd"></span></div>

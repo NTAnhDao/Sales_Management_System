@@ -37,7 +37,6 @@
                     <p class="item-sidebar">Quản lý sản phẩm</p> 
                 </a>
             </li>
-           
             <li class="item">
                 <a class="link" href="index.php?sidebar=giaodich">
                     <span class = "fa fa-shopping-cart"></span>

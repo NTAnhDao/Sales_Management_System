@@ -1,4 +1,9 @@
 <?php
+
+$sokhach = isset($_COOKIE["newcustomer"]) ? $_COOKIE["newcustomer"] : 0;
+$donhang = isset($_COOKIE["donhangtoday"]) ? $_COOKIE["donhangtoday"] : 0;
+$doanhthu = isset($_COOKIE["doanhthutoday"]) ? $_COOKIE["doanhthutoday"] : 0;
+
 include '../models/danhmuc_sanpham/forDashboard.php';
 include_once("../models/danhmuc_sanpham/permission.php"); // Đường dẫn tới file kiểm tra quyền
 

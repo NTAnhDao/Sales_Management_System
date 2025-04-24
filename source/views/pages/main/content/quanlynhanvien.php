@@ -38,7 +38,7 @@
                     <div class="text-center mb-4" id="form-title">
                         <h3>Tạo tài khoản</h3>
                     </div>
-                    <form action="" method="POST">
+                    <form id="add-form" action="" method="POST">
                         <div class="form-group">
                             <div class="input-box">
                                 <label for="fullname">Họ tên:</label>
@@ -68,11 +68,9 @@
                         </div>
                         <div class="right-actions">
                             <button type="submit" class="btn btn-primary edit-btn" id="add-account">Tạo</button>
-                            <button type="button" class="btn btn-secondary edit-btn" onclick="chuyengiaodien('addAccount','listAccount')">Quay lại</button>
+                            <button type="button" class="btn btn-secondary edit-btn" onclick="quaylai()">Quay lại</button>
                         </div>
-                        
                     </form>
-                    
                 </div>
 
             </section>
