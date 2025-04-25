@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function checkHoten(input) {
-    const alphabetRegex = /^[a-zA-Z\s]+$/;
+    const alphabetRegex = /^[\p{L}\s]+$/u;
     return alphabetRegex.test(input);
 }
   
@@ -66,5 +66,5 @@ function quaylai() {
     //Làm sạch các trường input khi bỏ dỡ giữa chừng
     document.getElementById("add-form").reset();
 
-    chuyengiaodien('addAccount','listAccount');
+    chuyengiaodien('display-content','listAccount');
 }

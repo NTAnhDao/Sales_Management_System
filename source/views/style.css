@@ -1099,7 +1099,9 @@ h2 {
     background-color: white;
     width: fit-content;
     padding: 30px;
-    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid #ffa08f;
 }
 
 .group {
@@ -1139,6 +1141,7 @@ h2 {
     flex: 1;
     max-width: 280px;
     padding: 8px;
+    margin-right: 12px;
     border-radius: 12px;
     position: relative;
     overflow: hidden;
@@ -1219,4 +1222,10 @@ h2 {
 
 .yellow {
     background: linear-gradient(135deg, #fde4a4, #f8b500);
+}
+
+.display-content, .display-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

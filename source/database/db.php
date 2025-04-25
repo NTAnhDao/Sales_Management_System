@@ -4,7 +4,7 @@ if (!function_exists("connectDB")) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "quanlytrangweb2";
+    $database = "quanlytrangweb";
     
     // Tạo kết nối với databasedatabase
     $conn = new mysqli($servername, $username, $password, $database);

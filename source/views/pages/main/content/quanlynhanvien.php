@@ -9,7 +9,7 @@
         <div class="content">
             <section class="listAccount">
                 <div class="actions">
-                    <button type="button" class="btn btn-success" style="position: absolute; right: 30px;" onclick="chuyengiaodien('listAccount','addAccount')"><i class="fa fa-plus"></i> Tạo tài khoản</button>
+                    <button type="button" class="btn btn-success" style="position: absolute; right: 30px;" onclick="chuyengiaodien('listAccount','display-content')"><i class="fa fa-plus"></i> Tạo tài khoản</button>
                 </div>
                 <br>
                 <div class="employee">
@@ -33,7 +33,7 @@
                     </table>
                 </div>
             </section>
-            <section class="addAccount d-none">
+            <section class="display-content d-none">
                 <div class="form-container">
                     <div class="text-center mb-4" id="form-title">
                         <h3>Tạo tài khoản</h3>

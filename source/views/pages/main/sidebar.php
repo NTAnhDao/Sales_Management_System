@@ -61,6 +61,7 @@
                     <p class="item-sidebar">Báo cáo</p> 
                 </a>
             </li>
+            <br>
         </ul>
     </div>
     <div class="logout">

@@ -158,6 +158,8 @@ function drawChart(data) {
             label: 'Số lượng sản phẩm',
             data: soluongsp,
             backgroundColor: '#42e695',
+            barThickness: 40, 
+            maxBarThickness: 50,
             yAxisID: 'y',
             pointStyle: 'rect'
         },
@@ -166,6 +168,8 @@ function drawChart(data) {
             label: 'Số lượng đơn hàng',
             data: sodon,
             backgroundColor: '#5b86e5',
+            barThickness: 40,
+            maxBarThickness: 50,
             yAxisID: 'y',
             pointStyle: 'rect'
         }

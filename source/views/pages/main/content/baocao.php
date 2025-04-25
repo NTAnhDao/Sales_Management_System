@@ -18,7 +18,7 @@
                         <option value="thismonth">Tháng này</option>
                     </select>
                 </div>
-                <div class="cards mb-3">
+                <div class="display-cards mb-3">
                     <div class="card pink">
                         <div class="card-content">
                             <div class="card-icon"><i class="fa fa-money"></i></div>

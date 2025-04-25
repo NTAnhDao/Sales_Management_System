@@ -45,7 +45,7 @@
 ?>
 <div class="main-content" id="main">
     <main>
-        <div class="content">
+        <div class="display-content">
             <section class="form-container">
                 <div class="text-center mb-4" id="form-title">
                     <?php 
