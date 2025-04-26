@@ -16,14 +16,14 @@
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
-            // Thiết lập charset cho tiêu đề và nội dung email
+            //Thiết lập charset cho tiêu đề và nội dung email
             $mail->CharSet = 'UTF-8';
 
             //cấu hình email
             $mail->setFrom('itnotformehihi@gmail.com', 'Admin của hệ thống cửa hàng MyPOS'); //Người gửi
-            $mail->addAddress($email); // Người nhận
+            $mail->addAddress($email); //Người nhận
 
-            $mail->isHTML(true); // Cho phép sử dụng HTML
+            $mail->isHTML(true); //Cho phép sử dụng HTML
             $mail->Subject = 'Thông tin đăng nhập hệ thống POS'; //Tiêu đề
 
             $link = 'http://localhost/d-an-cu-i-k/source/index.php?token='.$token; //link để đăng nhập
@@ -36,7 +36,7 @@
                         Trân trọng,<br>
                         Admin của hệ thống cửa hàng MyPOS"; //Nội dung email
             
-            // Gửi email
+            //Gửi email
             $mail->send();
             return true;
         } catch (Exception $e) {

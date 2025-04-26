@@ -101,7 +101,6 @@ function loadReport() {
                 });
             } else {
                 alert(response.mess);
-                location.reload();
             }
         },
         error: function () {
@@ -130,15 +129,15 @@ function drawChart(data) {
     if (data.isAdmin && loinhuan.some(p => p > 0)) {
         datasets.push(
         {
-        type: 'line',
-        label: 'Tổng lợi nhuận',
-        data: loinhuan,
-        borderColor: '#f8b500',
-        fill: false,
-        yAxisID: 'y1',
-        borderWidth: 2,
-        tension: 0.3,
-        pointStyle: 'line'
+            type: 'line',
+            label: 'Tổng lợi nhuận',
+            data: loinhuan,
+            borderColor: '#f8b500',
+            fill: false,
+            yAxisID: 'y1',
+            borderWidth: 2,
+            tension: 0.3,
+            pointStyle: 'line'
         });
     }
     datasets.push(
