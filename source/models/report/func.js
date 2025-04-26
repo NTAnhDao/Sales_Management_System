@@ -71,9 +71,6 @@ function loadReport() {
                 $("#totalProducts").text(response.totalProducts);
                 if (response.isAdmin) {
                     $('#totalProfit').text(response.totalProfit);
-                    $("#profitCard").removeClass("d-none");
-                } else {
-                    $("#profitCard").addClass("d-none");
                 }
 
                 // Vẽ biểu đồ

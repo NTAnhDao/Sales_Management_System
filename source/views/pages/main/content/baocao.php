@@ -47,21 +47,26 @@
                             
                         </div>
                     </div>
-                    <div class="card yellow d-none" id="profitCard">
-                        <div class="card-content">
-                            <div class="card-icon"><i class="fa fa-line-chart"></i></div>
-                            <div class="card-text">
-                                <h5>Tổng lợi nhuận</h5>
-                                <h2 id="totalProfit">0</h2>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        if($_SESSION["role"] === "Admin") {
+                        ?>
+                            <div class="card yellow" id="profitCard">
+                                <div class="card-content">
+                                    <div class="card-icon"><i class="fa fa-line-chart"></i></div>
+                                    <div class="card-text">
+                                        <h5>Tổng lợi nhuận</h5>
+                                        <h2 id="totalProfit">0</h2>
+                                    </div>
+                                </div>
+                            </div> 
+                        <?php
+                        } 
+                    ?>
                 </div>
         
                 <div class="report-chart">
                     <canvas id="myChart" height="100px"></canvas>
                 </div>
-
             
                 <div class="card-catalog">
                     <h5>Danh sách đơn hàng</h5>
