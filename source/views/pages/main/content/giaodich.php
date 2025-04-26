@@ -128,7 +128,7 @@
                             <h5>Thông tin giao dịch </h5>
                             <div class="purchase-item">
                                 <label for="tienkhachdua" style="margin:10px 0;" > Tiền khách đưa: </label>
-                                <input id="tienkhachdua" oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
+                                <input id="tienkhachdua" oninput="this.value = this.value.replace(/[^0-9]/g, '')"  type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
                                 <div class="customer-infor">Tổng sản phẩm :
                                     <span id="tongsp"></span>
                                 </div>

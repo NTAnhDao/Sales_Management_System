@@ -23,6 +23,7 @@ function checkData() {
         nhapcustomer.hide(); 
         isNew = true;
     } 
+    errormessage("Khách hàng mới!",'err-findsdt');
 }
 
 // Thêm thông tin khách hàng khi nhấn thanh toán
@@ -78,6 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
             errormessage("Vui lòng nhập số điện thoại!",'err-findsdt')
             return;  
         }
+        if (sdt.length != 10){
+            errormessage("Số điện thoại không hợp lệ!",'err-findsdt')
+            return;  
+        }
 
         fetch("../models/xulygiaodich/findsdt.php", {
             method: "POST",
@@ -92,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert(product.error);
                 let nhapcustomer = new bootstrap.Modal(document.getElementById("nhapcustomer"));
                 nhapcustomer.show(); 
+                errormessage("Khách hàng mới!",'err-findsdt');
                 return;
             }else{
                 tenv = product.name;
