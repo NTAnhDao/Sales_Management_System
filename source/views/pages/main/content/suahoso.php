@@ -16,7 +16,7 @@ include '../models/quanlyhoso/getProfileNV.php';
                 <form action="../models/quanlyhoso/upload_avatar.php" method="POST" enctype="multipart/form-data">
                     <h5> Chỉnh sửa hồ sơ</h5>
                     <div class="drop-zone avatar-edit" id="drop-avatar">
-                        <img id ="preview" src="<?=$avtPath?>" alt="Ảnh đại diện" class="avatar">
+                        <img id ="preview" src="../models/quanlyhoso/imagesNV/<?=$profile_img?>" alt="Ảnh đại diện" class="avatar">
                         <br>
                         <p>Kéo và thả ảnh ở đây</p>
                         <p>--hoặc--</p>
