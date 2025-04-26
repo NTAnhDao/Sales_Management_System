@@ -31,9 +31,7 @@
                             <th>Chi tiết</th>
                         </tr>
                         <tbody id = "lichsumua">
-            
                             <?php include '../models/khachhang/xemlichsu.php'; ?>
-
                         </tbody>
                     </table>
                 </div>
@@ -41,9 +39,6 @@
                     <span class = "	fa fa-arrow-left"></span> Quay lại 
                 </a>
             </section>
-
-            
-        </div>
-       
+        </div> 
     </main>
 </div> 

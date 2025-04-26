@@ -9,7 +9,6 @@
             <h3> \ Lịch sử mua hàng </h3>
             </a>
             <h3> \ Chi tiết đơn hàng </h3>
-
         </div>
         <div class="content">
             <div class="d-flex justify-content-center">
@@ -19,22 +18,15 @@
                     <input onkeyup="filterTable(this,'ctdh')" type="text" placeholder="Nhập tên sản phẩm" name="searchBox">
                 </div>
             </div>               
-             
-
             <section class="detail-bill">
                 <div class=" customer">
                     <?php include("../models/khachhang/hienthikh.php"); ?>
                 </div>
-                
                 <?php include("bangCTDH.php"); ?>
-
                 <a class='btn-custom btn btn-secondary' href=<?= $link ?>>
                     <span class = "	fa fa-arrow-left"></span> Quay lại 
                 </a>
             </section>
-
-            
         </div>
-       
     </main>
 </div> 

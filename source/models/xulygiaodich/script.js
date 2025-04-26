@@ -100,13 +100,65 @@ document.addEventListener("DOMContentLoaded", function () {
                 hoten.innerHTML = "Khách hàng: " + product.name + " - " + sdt;
                 diachi.innerHTML = "Địa chỉ: " + product.address;
                 errormessage(null,'err-findsdt');
-                errormessage(null ,'suc-addkh');
+                openLichSu(product.lichsu);
             }
-
         })
         .catch(error => console.error("Lỗi:", error));
     });
 });
+
+function openLichSu(lichsu) {
+    let lichsuContainer = document.getElementById("lichsumua");
+    lichsuContainer.innerHTML = ""; // clear cũ
+
+    if (lichsu.length === 0) {
+        lichsuContainer.innerHTML = "<tr><td colspan='7'>Không có lịch sử mua hàng</td></tr>";
+        return;
+    }
+
+    lichsu.forEach((order, index) => {
+        let html = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${order.ngaymua}</td>
+                <td>${formatMoney(order.tongtien)}</td>
+                <td>${formatMoney(order.tienkhachdua)}</td>
+                <td>${formatMoney(order.tientra)}</td>
+                <td>${order.soluongsp}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick='xemChiTiet(${JSON.stringify(order.chitiet)})'>
+                        Xem chi tiết
+                    </button>
+                </td>
+            </tr>
+        `;
+        lichsuContainer.innerHTML += html;
+    });
+}
+
+
+function xemChiTiet(chitiet) {
+    let html = '<table class="table table-striped">';
+    html += '<thead><tr><th>STT</th><th>Tên sản phẩm</th><th>Số lượng</th><th>Đơn giá</th></tr></thead><tbody>';
+
+    chitiet.forEach((item, index) => {
+        html += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item.tensp}</td>
+                <td>${item.soluong}</td>
+                <td>${formatMoney(item.giaban)}</td>
+            </tr>
+        `;
+    });
+
+    html += '</tbody></table>';
+
+    document.getElementById('chitiet-container').innerHTML = html;
+
+    let myModal = new bootstrap.Modal(document.getElementById('modalChiTiet'));
+    myModal.show();
+}
 
 // thêm vào giỏ hàng
 function isAddProduct(button){
@@ -253,7 +305,6 @@ function removeallProduct(){
     document.querySelectorAll(".total").forEach(el => {
         el.innerHTML = total.toLocaleString('vi-VN');
     });
-
 }
 
 // Khi nhấn nút tiếp theo ở trang xử lý giao dịch sẽ hiển thị tổng sản phẩm đã chọn
@@ -337,5 +388,4 @@ document.getElementById("btnthanhtoan").addEventListener("click", function () {
         })
     }
 });
-
 

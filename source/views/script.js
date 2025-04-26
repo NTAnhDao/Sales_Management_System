@@ -95,3 +95,7 @@ return str.normalize("NFD")
             .replace(/Đ/g, "D");
 }
 
+
+function formatMoney(money) {
+    return new Intl.NumberFormat('vi-VN').format(money);
+}

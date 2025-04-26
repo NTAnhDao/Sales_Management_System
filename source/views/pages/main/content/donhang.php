@@ -11,7 +11,6 @@
                     <input onkeyup="filterTable(this,'donhang')" type="text" placeholder="Search" name="searchBox">
                 </div>
             </div>               
-            
             <section class="detail-bill">
             <div class="card-customer">
                     <h5>Đơn hàng đã tạo</h5>
@@ -34,9 +33,6 @@
                     </table>
                 </div>
             </section>
-
-            
         </div>
-       
     </main>
 </div> 

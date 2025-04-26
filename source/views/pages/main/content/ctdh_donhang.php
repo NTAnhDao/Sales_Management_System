@@ -11,18 +11,12 @@
                     <input onkeyup="filterTable(this,'ctdh')" type="text" placeholder="Nhập tên sản phẩm" name="searchBox">
                 </div>
             </div>
-
             <section class="detail-bill">
-                
                 <?php include("bangCTDH.php"); ?>
-                
                 <a class='btn-custom btn btn-secondary' <?php if($_SESSION["role"] == "Admin") {?> href='index.php?sidebar=baocao'<?php } else {?> href='index.php?sidebar=donhang' <?php }?> >
                     <span class = "	fa fa-arrow-left"></span> Quay lại 
                 </a>
             </section>
-
-            
         </div>
-       
     </main>
 </div> 

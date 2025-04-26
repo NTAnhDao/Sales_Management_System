@@ -69,10 +69,8 @@
                             </table>
                         </div>
                     </div>
-                
                 </div>
                 
-
                 <div class="cart-submit">
                     <div>
                         <h5 >Tổng tiền:  <span class="total">0</span> VNĐ</h5>
@@ -81,81 +79,111 @@
                         <span class = "fa fa-arrow-right"> </span> Tiếp tục
                     </button>
                 </div> 
-
             </section>
 
-            <section class="purchase d-none" >
-                <div class="card-cart">
-                    <h5>Thông tin khách hàng</h5>
-                    <div class="purchase-item">
-                        <div class="form-product row">
-                            <label for="customer-phone" style="margin:10px 0;" > Số điện thoại: </label>
-                            <input class="sdt"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
-                            <button id="search-sdt"  class="btn-custom btn btn-secondary" >Tìm kiếm</button>
+            <section class="purchase d-none">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="card-cart">
+                            <h5>Thông tin khách hàng</h5>
+                            <div class="purchase-item">
+                                <div class="form-product row">
+                                    <label for="customer-phone" style="margin:10px 0;" > Số điện thoại: </label>
+                                    <input class="sdt" oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" id="customer-phone" name="customer-phone" placeholder="Nhập số điện thoại">
+                                    <button id="search-sdt"  class="btn-custom btn btn-secondary" >Tìm kiếm</button>
+                                </div>
+                                <div class="d-none errorMessage" id="err-findsdt"></div>
+                            </div>
                         </div>
-                        <div class="customer-infor" id="hoten"> </div>
-                        <div class="customer-infor" id="diachi"> </div>
-                        <div class="d-none errorMessage" id="err-findsdt"></div>
-                        <div class="d-none successMessage" id="suc-addkh"></div>
+                        
+                        <!-- Nếu là khách mới -->
+                        <div class="modal" id="nhapcustomer">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Nhập thông tin khách hàng</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="annouce">
+                                            Nhập đầy đủ và chính xác thông tin của khách hàng trước khi thoát.
+                                        </div>
+                                        <div>
+                                            <label for="name" style="margin:10px 0;" > Tên khách hàng: </label>
+                                            <input id="enter-name" type="text" name="name" placeholder="Nhập tên khách hàng">
+                                        </div>
+                                        <div>
+                                            <label for="name" style="margin:10px 0;" > Địa chỉ: </label>
+                                            <input id="enter-diachi" type="text" name="diachi" placeholder="Nhập địa chỉ"  >
+                                        </div>
+                                        <div class="d-none errorMessage" id="err-addkh"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button onclick="checkData()" class="btn btn-success">Hoàn tất</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="card-cart">
+                            <h5>Thông tin giao dịch </h5>
+                            <div class="purchase-item">
+                                <label for="tienkhachdua" style="margin:10px 0;" > Tiền khách đưa: </label>
+                                <input id="tienkhachdua" oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
+                                <div class="customer-infor">Tổng sản phẩm :
+                                    <span id="tongsp"></span>
+                                </div>
+                                <div class="customer-infor">Tổng tiền :
+                                    <span class="total"></span>
+                                </div>
+                                <div class="d-none errorMessage" id="err-tien"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="cart-submit">
+                            <button onclick = "chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
+                                <span class = "	fa fa-arrow-left"></span> Quay lại 
+                            </button>
+                            <button type="button" id = "btnthanhtoan" class="btn-custom btn btn-success" >
+                                <span class = "fa fa-shopping-cart"></span> Thanh toán
+                            </button>
+                        </div> 
                     </div>
 
-                    <!-- The Modal -->
-                    <div class="modal" id="nhapcustomer">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
+                    <div class="col-lg-6 col-sm-12">
+                        <div class = "card-history">
+                            <!-- Nếu là khách cũ -->
+                            <h5>Lịch sử mua hàng</h5>
+                            <div class="customer-infor" id="hoten"> </div>
+                            <div class="customer-infor" id="diachi"> </div>
+                            <table class="cart-table">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Ngày mua</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Số tiền khách đưa</th>
+                                        <th>Số tiền trả lại</th>
+                                        <th>Số lượng sản phẩm</th>
+                                        <th>Chi tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lichsumua">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal fade" id="modalChiTiet" tabindex="-1" aria-labelledby="modalChiTietLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Nhập thông tin khách hàng</h4>
+                                    <h5 class="modal-title" id="modalChiTietLabel">Chi tiết đơn hàng</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
                                 </div>
-
-                                <div class="modal-body">
-                                    <div class="annouce">
-                                        Nhập đầy đủ và chính xác thông tin của khách hàng trước khi thoát.
-                                    </div>
-                                    <div>
-                                        <label for="name" style="margin:10px 0;" > Tên khách hàng: </label>
-                                        <input id="enter-name" type="text" name="name" placeholder="Nhập tên khách hàng">
-                                    </div>
-                                    <div>
-                                        <label for="name" style="margin:10px 0;" > Địa chỉ: </label>
-                                        <input id="enter-diachi" type="text" name="diachi" placeholder="Nhập địa chỉ"  >
-                                    </div>
-                                    <div class="d-none errorMessage" id="err-addkh"></div>
+                                <div class="modal-body" id="chitiet-container"> </div>
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button onclick="checkData()" class="btn btn-success">Hoàn tất</button>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="card-cart">
-                    <h5>Thông tin giao dịch </h5>
-                    <div class="purchase-item">
-                        <label for="tienkhachdua" style="margin:10px 0;" > Tiền khách đưa: </label>
-                        <input id="tienkhachdua" oninput="this.value = this.value.replace(/[^0-9]/g, '')" type="text" name="tienkhachdua" placeholder="Nhập số tiền" required>
-                        <div class="customer-infor">Tổng sản phẩm :
-                            <span id="tongsp"></span>
-                        </div>
-                        <div class="customer-infor">Tổng tiền :
-                            <span class="total"></span>
-                        </div>
-                        <div class="d-none errorMessage" id="err-tien"></div>
-                    </div>
-                </div>
-                
-                <div class="cart-submit">
-                    <button onclick = "chuyengiaodien('cart','purchase')" type="button" class="btn-custom btn btn-secondary" class="btn btn-default">
-                        <span class = "	fa fa-arrow-left"></span> Quay lại 
-                    </button>
-                    <button type="button" id = "btnthanhtoan" class="btn-custom btn btn-success" >
-                        <span class = "fa fa-shopping-cart"></span> Thanh toán
-                    </button>
-                </div> 
             </section>
                         
             

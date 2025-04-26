@@ -640,7 +640,7 @@ table {
     margin: 4px 0;
 }
 
-.card-cart, .card-customer {
+.card-history, .card-cart, .card-customer {
     border: 2px solid #ffa08f;
     background-color: #ffffff;
     border-radius: 10px;
@@ -650,7 +650,7 @@ table {
     width: 100%;
 }
 
-.purchase, .bill, .profile-view {
+.bill, .profile-view {
     display: grid;
     align-items: center;
     justify-content: center;
@@ -665,7 +665,12 @@ table {
 }
 
 .card-customer {
-    height: 480px;
+    height: auto;
+    overflow: auto;
+}
+
+.card-history{
+    height: 470px;
     overflow: auto;
 }
 
