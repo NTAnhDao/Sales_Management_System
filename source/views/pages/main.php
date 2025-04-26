@@ -89,7 +89,7 @@ $canViewImportPriceValue = canViewImportPrice() ? "1" : "0";
         }
     } else {
         if (isset($_SESSION['role']) && $_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Nhân viên') {
-            include("main/content/trangchu_ad.php");
+            include("main/content/trangchu.php");
         }
     }
     ?>
