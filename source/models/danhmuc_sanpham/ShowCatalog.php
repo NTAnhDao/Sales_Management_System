@@ -28,6 +28,7 @@ if ($result->num_rows > 0) {
         // Chỉ hiển thị cột hành động nếu có quyền quản lý danh mục
         if (canManageCategories()) {
             echo "<td>
+                <div class='action-buttons' style ='display: flex; align-items: center; justify-content: center;'>
                     <a href='#' class='btn btn-sm btn-primary edit-btn' 
                         data-id='" . htmlspecialchars($row["id"], ENT_QUOTES) . "' 
                         data-tendm='" . htmlspecialchars($row["tendm"], ENT_QUOTES) . "' 
@@ -36,6 +37,7 @@ if ($result->num_rows > 0) {
 
                     <a href='#' class='btn btn-sm btn-danger delete-btn' 
                         data-id='" . htmlspecialchars($row["id"], ENT_QUOTES) . "'>Xóa</a>
+                </div>
                 </td>";
         }
         echo "</tr>";

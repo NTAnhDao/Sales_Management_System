@@ -60,6 +60,6 @@ function checkEmail(email) {
 function quaylai() {
     //Làm sạch các trường input khi bỏ dỡ giữa chừng
     document.getElementById("add-form").reset();
-
     chuyengiaodien('display-content','listAccount');
+    location.reload(); //Tải lại trang để cập nhật danh sách tài khoản
 }
