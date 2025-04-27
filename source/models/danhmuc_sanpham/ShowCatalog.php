@@ -15,11 +15,11 @@ $sql = "SELECT danhmucsp.id, danhmucsp.tendm, danhmucsp.mota, danhmucsp.ngaytao,
         FROM danhmucsp 
         LEFT JOIN taikhoan ON danhmucsp.id_nguoitao = taikhoan.id";
 $result = $conn->query($sql);
-
+$stt = 1;
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr data-id='{$row["id"]}'>"; // Thêm data-id vào <tr>
-        echo "<td>" . $row["id"] . "</td>";
+        echo "<td>" . $stt++ . "</td>"; // In STT, mỗi dòng tăng 1
         echo "<td>" . $row["tendm"] . "</td>";
         echo "<td>" . $row["mota"] . "</td>";
         echo "<td>" . $row["ngaytao"] . "</td>";
