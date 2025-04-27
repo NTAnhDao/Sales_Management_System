@@ -194,7 +194,7 @@
                             <b> HÓA ĐƠN THANH TOÁN </b>
                             <div> Số HD: <span id="sohd"></span></div>
                             <div class = "hd-inf">
-                                <div>Thu ngân: <?=$_SESSION["tennv"] ?> </div>
+                                <div>Thu ngân: <?=$profile_name?> </div>
                                 <div>Ngày: <span id = "day"></span></div>
                             </div>
                         </div>

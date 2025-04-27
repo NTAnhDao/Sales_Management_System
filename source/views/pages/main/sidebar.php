@@ -2,7 +2,7 @@
     <div class="sidebar-user">
         <img src="../models/quanlyhoso/imagesNV/<?=$profile_img?>" height = "70px"  width = "70px" alt = "">
             <div>
-                <h3><?=$_SESSION['tennv']?></h3>
+                <h3><?=$profile_name?></h3>
                 <span><?=$_SESSION['role']?></span>
         </div>
     </div>
