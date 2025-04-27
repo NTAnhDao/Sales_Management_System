@@ -56,6 +56,9 @@
                         } else {
                         ?>
                             <h3>Vui lòng đổi mật khẩu để sử dụng hệ thống</h3>
+                            <script>
+                                main.style.marginLeft= "0";
+                            </script>
                         <?php
                         }
                     ?>
@@ -95,11 +98,11 @@
                         } ?>
                     </div>
                     <div class="right-actions">
-                        <button class="btn btn btn-primary edit-btn" type="submit" name="changePass">Lưu</button>
+                        <button class="btn btn btn-primary m-2" type="submit" name="changePass">Lưu</button>
                         <?php 
                             if ($_SESSION['pass_changed'] == 0) {
                                 ?>
-                                    <button class="btn btn btn-secondary edit-btn" type="button" onclick="window.location.href='../Login/logout.php'">Đăng xuất</button>
+                                    <button class="btn btn btn-secondary m-2" type="button" onclick="window.location.href='../Login/logout.php'">Đăng xuất</button>
                                 <?php
                             } 
                         ?>
