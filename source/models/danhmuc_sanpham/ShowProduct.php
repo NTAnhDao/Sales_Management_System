@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
         // Chỉ hiển thị nút hành động nếu có quyền quản lý sản phẩm
         if(canManageProducts()) {
             echo "<td>
-              <div class='action-buttons' style ='display: flex; gap: 5px; align-items: center; justify-content: center;'>
+              <div class='action-buttons' style ='display: flex; gap: 5px; align-items: center;'>
                   <a href='#' class='btn btn-sm btn-primary edit-btn' 
                      data-mavach='" . htmlspecialchars($row["mavach"], ENT_QUOTES) . "' 
                      data-img='" . htmlspecialchars($row["img"], ENT_QUOTES) . "' 
