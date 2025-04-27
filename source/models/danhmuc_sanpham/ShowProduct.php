@@ -13,7 +13,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<tr data-mavach='{$row["mavach"]}' data-id_danhmuc='{$row["id_danhmuc"]}' data-img='{$row["img"]}'>";
+        echo "<tr data-mavach='{$row["mavach"]}' data-giagoc='{$row["giagoc"]}' data-giabanle='{$row["giabanle"]}' data-id_danhmuc='{$row["id_danhmuc"]}' data-img='{$row["img"]}'>";
         echo "<td>" . htmlspecialchars($row["mavach"]) . "</td>";
         
         // Kiểm tra đường dẫn hình ảnh ở nhiều thư mục có thể
