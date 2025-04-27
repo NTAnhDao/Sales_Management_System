@@ -274,8 +274,8 @@ function editProduct(row) {
     }
 
     const tensp = cells[2].innerText;
-    const giagoc = parseFloat(cells[3].innerText.replace(/[^0-9.-]+/g, ""));
-    const giabanle = parseFloat(cells[4].innerText.replace(/[^0-9.-]+/g, ""));
+    const giagoc = parseFloat(row.getAttribute("data-giagoc")); 
+    const giabanle = parseFloat(row.getAttribute("data-giabanle"));
     const id_danhmuc =
         row.getAttribute("data-id_danhmuc") ||
         cells[5].innerText.match(/\(ID: (\d+)\)/)?.[1] ||
