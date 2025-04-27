@@ -65,7 +65,6 @@ function insertData() {
         isNew = false;
     }
     errormessage(null, 'err-tien');
-
     return true;
 }
 
@@ -132,8 +131,8 @@ function openLichSu(lichsu) {
                 <td>${formatMoney(order.tientra)}</td>
                 <td>${order.soluongsp}</td>
                 <td>
-                    <button class="btn btn-primary btn-sm" onclick='xemChiTiet(${JSON.stringify(order.chitiet)})'>
-                        Xem chi tiết
+                    <button class="btn btn-secondary btn-sm" onclick='xemChiTiet(${JSON.stringify(order.chitiet)})'>
+                        <i class='fas fa-file-alt'></i>
                     </button>
                 </td>
             </tr>
