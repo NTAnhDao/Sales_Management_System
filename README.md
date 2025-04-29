@@ -41,6 +41,6 @@
 - Bước 2: Đăng nhập:
     Sử dụng thông tin đăng nhập trên để truy cập vào hệ thống.
 
-6. Link video demo
+6. Link video demo: https://drive.google.com/file/d/1TqNmDWAwNaolEEVtPX4gt6wWIZcfxnAl/view?usp=sharing
 
 
