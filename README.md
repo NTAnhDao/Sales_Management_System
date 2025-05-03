@@ -36,7 +36,7 @@
 
 - Tài khoản dùng để đăng nhập vào hệ thống nhân viên
     + Username: 52300048
-    + Password: 5230004852300048
+    + Password: 52300048
 
 5. Chạy hệ thống
 - Bước 1: Mở ứng dụng:
