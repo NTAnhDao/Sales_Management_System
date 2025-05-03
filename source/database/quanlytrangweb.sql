@@ -58,6 +58,11 @@ CREATE TABLE `danhmucsp` (
 -- Dumping data for table `danhmucsp`
 --
 
+INSERT INTO `danhmucsp` (`id`, `tendm`, `mota`, `ngaytao`, `id_nguoitao`) VALUES
+(1, 'Điện thoại', NULL, '2025-03-09 14:55:14', NULL),
+(2, 'Tai nghe', NULL, '2025-03-09 14:55:17', NULL),
+(3, 'Sạc dự phòng', NULL, '2025-03-29 15:27:48', NULL),
+(4, 'Ốp lưng', NULL, '2025-03-29 15:27:48', NULL);
 
 
 -- --------------------------------------------------------
@@ -98,14 +103,6 @@ CREATE TABLE `khachhang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `khachhang`
---
-
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `nhanvien`
 --
 
@@ -124,8 +121,10 @@ CREATE TABLE `nhanvien` (
 -- Dumping data for table `nhanvien`
 --
 
+
 INSERT INTO `nhanvien` (`id`, `hoten`, `email`, `gioitinh`, `sdt`, `ngaysinh`, `diachi`, `img`) VALUES
-(1, 'Administrator', 'admin@gmail.com', NULL, NULL, NULL, NULL, 'user.jpg');
+(1, 'Admin', 'admin@gmail.com', 'Nam', '828828176', NULL, NULL, 'user.jpg'),
+(2, 'Trần Thị Mỹ Nữ', '52300048@student.tdtu.edu.vn', 'Nữ', NULL, NULL, NULL, 'user.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,6 +146,19 @@ CREATE TABLE `sanpham` (
 -- Dumping data for table `sanpham`
 --
 
+INSERT INTO `sanpham` (`mavach`, `tensp`, `giagoc`, `giabanle`, `img`, `id_danhmuc`, `ngaytao`) VALUES
+('12345', 'Điện thoại OPPO Reno12 5G 12GB/256GB', 10000000, 11490000, NULL, 1, '2025-03-09 15:00:16'),
+('12346', 'Tai nghe Bluetooth AirPods Pro Gen 2 MagSafe Charge (USB-C) Apple MTJV3', 4999999, 5690000, NULL, 2, '2025-03-09 15:00:16'),
+('12347', 'Tai nghe Bluetooth Chụp Tai Baseus Bass 35 Max', 450000, 550000, NULL, 2, '2025-03-09 15:04:00'),
+('12348', 'Tai nghe Bluetooth Chụp Tai Sony WH-CH720N', 2300000, 2500000, NULL, 2, '2025-03-09 15:04:00'),
+('12349', 'OPPO Find N5', 40000000, 45990000, NULL, 1, '2025-03-29 15:24:40'),
+('12350', 'Điện thoại iPhone 16 Plus 128GB', 20000000, 23690000, NULL, 1, '2025-03-29 15:24:40'),
+('12351', 'Pin sạc dự phòng Polymer 20000mAh Type C 10.5W AVA+ G-DX258 kèm Cáp Lightning và Cáp Type C', 400000, 450000, NULL, 3, '2025-03-29 16:08:36'),
+('12352', 'Pin sạc dự phòng Polymer 20000mAh Type C PD QC 3.0 30W Anker Zolo A1681 kèm Cáp Lightning và Type C', 800000, 890000, NULL, 3, '2025-03-29 16:08:36'),
+('12353', 'Ốp lưng iPhone 16 Pro Max nhựa cứng viền dẻo JM Bayer II', 180000, 200000, NULL, 4, '2025-03-29 16:10:55'),
+('12354', 'Ốp lưng Galaxy S24 FE Nhựa cứng viền dẻo Jincase YF9261', 125000, 160000, NULL, 4, '2025-03-29 16:10:55'),
+('12355', 'Ốp lưng Galaxy S24 Ultra Nhựa cứng viền dẻo Samsung kèm dây đứng Chính hãng', 650000, 833000, NULL, 4, '2025-03-29 16:13:27'),
+('12356', 'Ốp lưng Galaxy A26 TPU có khe đựng thẻ Samsung Chính hãng', 250000, 330000, NULL, 4, '2025-03-29 16:13:27');
 --
 -- Table structure for table `taikhoan`
 --
@@ -169,7 +181,8 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`id`, `id_nhanvien`, `username`, `password`, `role`, `trangthai_hd`, `activate_token`, `expire_time`, `pass_changed`, `trangthai_khoa`) VALUES
-(1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0);
+(1, 1, 'admin', 'admin', 'Admin', 1, NULL, NULL, 1, 0),
+(2, 2, '52300048', '52300048', 'Nhân viên', 1, 'e58d174b', 1744346223, 1, 0);
 
 --
 -- Indexes for dumped tables
