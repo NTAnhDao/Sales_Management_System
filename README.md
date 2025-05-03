@@ -34,6 +34,10 @@
     + Username: admin
     + Password: admin
 
+- Tài khoản dùng để đăng nhập vào hệ thống nhân viên
+    + Username: 52300048
+    + Password: 5230004852300048
+
 5. Chạy hệ thống
 - Bước 1: Mở ứng dụng:
     Mở trình duyệt và nhập `http://localhost/d-an-cu-i-k/source/index.php` vào thanh địa chỉ.
