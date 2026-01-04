@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Theme chính cho toàn bộ app -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Biểu tượng status bar tối (đen) -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Màu nền cửa sổ -->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!-- Màu thanh điều hướng -->
+        <item name="android:navigationBarColor">@color/white</item>
+
+
+    </style>
+
+</resources>

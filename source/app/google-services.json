@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "839007256808",
+    "project_id": "mobileck-56aa5",
+    "storage_bucket": "mobileck-56aa5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839007256808:android:361611d1fd5f85860d095d",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjh5aV-_RLyEiLy-K9afKsmMsQhgVsaW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
